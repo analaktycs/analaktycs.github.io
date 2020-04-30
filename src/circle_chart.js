@@ -227,7 +227,7 @@ function move_color_circle(id, pkm_list, radius, rad, posx, posy){
 }
 
 function get_color(pkm, feature){
-    let color = d3.csv("../circle_chart/dot_colors.csv").then(function(d){
+    let color = d3.csv("data/dot_colors.csv").then(function(d){
         feat=pkm[feature]
         let index = d.findIndex((k)=>{ return k.feature === feat})
         return d[index].color
@@ -401,7 +401,7 @@ function update_chart(index, feature, d3_version){
     d3.select("#radar_base").remove()
     d3.selectAll(".color_circle").remove()
     d3.select("#main_svg_circle").remove()
-    let csv_file="../circle_chart/data_for_circle_chart.csv"
+    let csv_file="data/data_for_circle_chart.csv"
     let screen_part = 100
     create_svg(screen_part, 1.5*screen_part, "beige")
     add_chart("main_svg_circle", screen_part/2, "beige", csv_file, index, feature, d3_version)
