@@ -2,10 +2,12 @@
 
 var svg3 = d3.select("#bipartite2").append("svg").attr("width", 1100).attr("height", 800);
 
+console.log('aaaa',viz)
+
+
 AbilitiesvsTypes(d3)
 
 function AbilitiesvsTypes(d3) {
-	console.log('aaaa',d3.version)
 
 
 	svg3.selectAll("*").remove();
