@@ -1,8 +1,7 @@
 
 
-var svg3 = d3.select("#bipartite2").append("svg").attr("width", 1100).attr("height", 800);
+var svg3 = d3.select("#bipartite2").append("svg").attr("width", 2000).attr("height", 800);
 
-console.log('aaaa',viz)
 
 
 AbilitiesvsTypes(d3)
@@ -13,13 +12,18 @@ function AbilitiesvsTypes(d3) {
 	svg3.selectAll("*").remove();
 
 svg3.append("text").attr("x",250).attr("y",70)
-	.attr("class","header").text("Abilities vs Types Count #");
+	.attr("class","header").text("Abilities vs Types Count #")
+	.style("fill", 'black');
 	
 svg3.append("text").attr("x",750).attr("y",70)
-	.attr("class","header").text("Abilities vs Types Fraction %");
+	.attr("class","header").text("Abilities vs Types Fraction %")
+	.style("fill", 'black');
+
+console.log('blaaacl')
 
 var g =[svg3.append("g").attr("transform","translate(150,100)")
 		,svg3.append("g").attr("transform","translate(650,100)")];
+
 
 
 			const file_name1 = "data/test7.csv"
@@ -35,10 +39,12 @@ function TypesvsBody(d3){
 
 	svg3.selectAll("*").remove();
 svg3.append("text").attr("x",250).attr("y",70)
-	.attr("class","header").text("Types vs BodyShape Count #");
+	.attr("class","header").text("Types vs BodyShape Count #")
+	.style("fill", 'black');
 	
 svg3.append("text").attr("x",750).attr("y",70)
-	.attr("class","header").text("Types vs BodyShape Fraction %");
+	.attr("class","header").text("Types vs BodyShape Fraction %")
+	.style("fill", 'black');
 
 var g =[svg3.append("g").attr("transform","translate(150,100)")
 		,svg3.append("g").attr("transform","translate(650,100)")];
@@ -54,10 +60,12 @@ function ColorvsBody(d3){
 
 	svg3.selectAll("*").remove();
 svg3.append("text").attr("x",250).attr("y",70)
-	.attr("class","header").text("BodyShape vs Color Count #");
+	.attr("class","header").text("BodyShape vs Color Count #")
+	.style("fill", 'black');
 	
 svg3.append("text").attr("x",750).attr("y",70)
-	.attr("class","header").text("BodyShape vs Color Fraction %");
+	.attr("class","header").text("BodyShape vs Color Fraction %")
+	.style("fill", 'black');
 
 var g =[svg3.append("g").attr("transform","translate(150,100)")
 		,svg3.append("g").attr("transform","translate(650,100)")];
@@ -135,7 +143,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 						.min(12)
 						.pad(1)
 						.height(600)
-						.width(300)
+						.width(250)
 						.barSize(35)
 						.fill(d=>color[d.primary])		
 					,viz.bP()
@@ -144,7 +152,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 						.min(12)
 						.pad(1)
 						.height(600)
-						.width(300)
+						.width(250)
 						.barSize(35)
 						.fill(d=>color[d.primary])
 				];
@@ -152,8 +160,10 @@ function construct_graph(file_name,g,var1,var2,d3){
 				[0,1].forEach(function(i){
 					g[i].call(bp2[i])
 					
-					g[i].append("text").attr("x",-50).attr("y",-8).style("text-anchor","left").text(var1);
-					g[i].append("text").attr("x", 250).attr("y",-8).style("text-anchor","left").text(var2);
+					g[i].append("text").attr("x",-50).attr("y",-8).style("text-anchor","left").text(var1)
+					.style("fill", 'black');
+					g[i].append("text").attr("x", 250).attr("y",-8).style("text-anchor","left").text(var2)
+						.style("fill", 'black');
 					
 					g[i].append("line").attr("x1",-100).attr("x2",0);
 					g[i].append("line").attr("x1",200).attr("x2",300);
@@ -169,19 +179,21 @@ function construct_graph(file_name,g,var1,var2,d3){
 						.attr("x",d=>(d.part=="primary"? -30: 30))
 						.attr("y",d=>+6)
 						.text(d=>d.key)
+						.style("fill", 'black')
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
 					
 					g[i].selectAll(".mainBars").append("text").attr("class","perc")
 						.attr("x",d=>(d.part=="primary"? -100: 100))
+						.style("fill", 'black')
 						.attr("y",d=>+6)
 						.text(function(d){ 
 
 							if (i == 0) {
-								return d3.format(".1f")(d.value)
+								return "  " + d3.format(".1f")(d.value)
 
 
 							}else {
-								return d3.format("0.0%")(d.percent)
+								return "  "+d3.format("0.0%")(d.percent)
 							}})
 							
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
@@ -196,11 +208,11 @@ function construct_graph(file_name,g,var1,var2,d3){
 						
 						if (i == 0){
 							g[i].selectAll(".mainBars").select(".perc")
-							.text(function(d){ return d3.format(format[i])(d.value)});
+							.text(function(d){ return "  "+d3.format(format[i])(d.value)});
 
 						} else {
 							g[i].selectAll(".mainBars").select(".perc")
-							.text(function(d){ return d3.format(format[i])(d.percent)});
+							.text(function(d){ return "   " +d3.format(format[i])(d.percent)});
 						}
 
 						
@@ -232,4 +244,4 @@ function construct_graph(file_name,g,var1,var2,d3){
    ;
 
    
-   // ** Update data section (Called from the onclick)
+   //Update data section (Called from the onclick)

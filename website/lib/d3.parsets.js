@@ -175,8 +175,11 @@
                       .tween("ribbon", ribbonTweenY);
                 }));
           dimension.select("text").select("tspan.sort.alpha")
+          .style("fill", 'black')
               .on("click.parsets", sortBy("alpha", function(a, b) { return a.name < b.name ? 1 : -1; }, dimension));
           dimension.select("text").select("tspan.sort.size")
+          .style("fill", 'black')
+
               .on("click.parsets", sortBy("size", function(a, b) { return a.count - b.count; }, dimension));
           dimension.transition().duration(duration)
               .attr("transform", function(d) { return "translate(0," + d.y + ")"; })
@@ -347,6 +350,8 @@
           categoryEnter.append("line")
               .style("stroke-width", 2);
           categoryEnter.append("text")
+          .style("fill", 'black')
+
               .attr("dy", "-.3em");
           category.select("rect")
               .attr("width", function(d) { return d.dx; })
@@ -356,6 +361,7 @@
           category.select("line")
               .attr("x2", function(d) { return d.dx; });
           category.select("text")
+          .style("fill", 'black')
               .text(truncateText(function(d) { return d.name; }, function(d) { return d.dx; }));
         }
       });

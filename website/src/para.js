@@ -6,7 +6,7 @@ draw_generation(1)
 
 function draw_generation(number){
 	var chart = d3.parsets()
-      .dimensions(["abilities", "types", "Body_Stylee", "Color"]);
+      .dimensions(["abilities", "types", "Body_Style", "Color"]);
 
 var vis = d3.select("#vis").append("svg")
     .attr("width", chart.width())
