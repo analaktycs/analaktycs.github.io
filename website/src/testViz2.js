@@ -26,7 +26,7 @@ var g =[svg3.append("g").attr("transform","translate(150,100)")
 
 
 
-			const file_name1 = "data/test7.csv"
+			const file_name1 = "data/test7_most_present_abs.csv"
 
 
 	construct_graph(file_name1,g,"Abilities","Types",d3)
@@ -113,7 +113,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 					for (const [key, value] of Object.entries(d)) {
 						
 
-						if (key == "count" || key == "value"){
+						if (key == "value" || key == "values"){
 
 							interr.push(parseFloat(value))
 
@@ -193,7 +193,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 
 
 							}else {
-								return "  "+d3.format("0.0%")(d.percent)
+								return "  "+d3.format("0.0%")(d.value)
 							}})
 							
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
@@ -212,7 +212,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 
 						} else {
 							g[i].selectAll(".mainBars").select(".perc")
-							.text(function(d){ return "   " +d3.format(format[i])(d.percent)});
+							.text(function(d){ return "   " +d3.format(format[i])(d.value)});
 						}
 
 						
