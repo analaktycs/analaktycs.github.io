@@ -1,7 +1,24 @@
 
 
 var svg3 = d3.select("#bipartite2").append("svg").attr("width", 2000).attr("height", 800);
+var generation = [1,2,3,4,5,6]
+var generations = d3.select("#bipartite2")
 
+						    generations
+								.append("select")
+								.selectAll("option")
+						        .data(generation)
+						        .enter()
+						        .append("option")
+						        .attr("value", function(d){
+						        	console.log(d)
+						            return d;
+						        })
+						        .text(function(d){
+						            return "generation " + String(d);
+
+
+						        })
 
 
 AbilitiesvsTypes(d3)
@@ -26,7 +43,7 @@ var g =[svg3.append("g").attr("transform","translate(150,100)")
 
 
 
-			const file_name1 = "data/test7_most_present_abs.csv"
+			const file_name1 = "data/test7_most_present_abs_test7_gen.csv"
 
 
 	construct_graph(file_name1,g,"Abilities","Types",d3)
@@ -49,7 +66,7 @@ svg3.append("text").attr("x",750).attr("y",70)
 var g =[svg3.append("g").attr("transform","translate(150,100)")
 		,svg3.append("g").attr("transform","translate(650,100)")];
 
-			const file_name2 = "data/type_vs_shape.csv"
+			const file_name2 = "data/type_vs_shape_merged_gen.csv"
 
 	construct_graph(file_name2,g,"Types","Body Shape",d3)
 
@@ -70,7 +87,7 @@ svg3.append("text").attr("x",750).attr("y",70)
 var g =[svg3.append("g").attr("transform","translate(150,100)")
 		,svg3.append("g").attr("transform","translate(650,100)")];
 
-			const file_name3 = "data/bodyvscolor.csv"
+			const file_name3 = "data/bodyvscolor_gen.csv"
 
 	construct_graph(file_name3,g,"BodyShape","Color",d3)
 
@@ -85,6 +102,11 @@ function construct_graph(file_name,g,var1,var2,d3){
 
 
 				d3.csv(file_name, function(error, data) {
+
+					function onlyUnique(value, index, self) { 
+						    return self.indexOf(value) === index;
+						}
+
 
 
 				function hashCode(str) { // java String#hashCode
@@ -104,6 +126,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 				}
 
 					var data_= []
+					var generation = []
 					var color = {}
 					data.forEach(function (d) {
 
@@ -119,8 +142,13 @@ function construct_graph(file_name,g,var1,var2,d3){
 
 						}else {
 
-							if (key == "target" || key == "source"){
+							if (key == "target" || key == "source" || key == "generation"){
 								interr.push(value)
+
+							}
+
+							if (key == 'generation'){
+								generation.push(value)
 							}
 
 							
@@ -135,8 +163,11 @@ function construct_graph(file_name,g,var1,var2,d3){
 				})
 							
 					console.log(data_)
-						
+					generation= generation.filter( onlyUnique );
+					console.log(generation)
 
+						
+				function initial_graph (data_,g,var1,var2,d3){
 
 					var bp2=[ viz.bP()
 						.data(data_)
@@ -159,26 +190,31 @@ function construct_graph(file_name,g,var1,var2,d3){
 						
 				[0,1].forEach(function(i){
 					g[i].call(bp2[i])
+						.transition()
+                 			 .duration(1000)
 					
-					g[i].append("text").attr("x",-50).attr("y",-8).style("text-anchor","left").text(var1)
+					g[i].append("text").attr("x",-50).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var1)
 					.style("fill", 'black');
-					g[i].append("text").attr("x", 250).attr("y",-8).style("text-anchor","left").text(var2)
+					g[i].append("text").attr("x", 250).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var2)
 						.style("fill", 'black');
 					
-					g[i].append("line").attr("x1",-100).attr("x2",0);
-					g[i].append("line").attr("x1",200).attr("x2",300);
+					g[i].append("line").attr("x1",-100).transition().duration(1000).attr("x2",0);
+					g[i].append("line").attr("x1",200).transition().duration(1000).attr("x2",300);
 					
-					g[i].append("line").attr("y1",610).attr("y2",610).attr("x1",-100).attr("x2",0);
-					g[i].append("line").attr("y1",610).attr("y2",610).attr("x1",200).attr("x2",300);
+					g[i].append("line").attr("y1",610).transition().duration(1000).attr("y2",610).attr("x1",-100).attr("x2",0);
+					g[i].append("line").attr("y1",610).transition().duration(1000).attr("y2",610).attr("x1",200).attr("x2",300);
 					
 					g[i].selectAll(".mainBars")
 						.on("mouseover",mouseover)
-						.on("mouseout",mouseout);
+						.on("mouseout",mouseout)
+						.transition().duration(3000);
 
 					g[i].selectAll(".mainBars").append("text").attr("class","label")
 						.attr("x",d=>(d.part=="primary"? -30: 30))
 						.attr("y",d=>+6)
 						.text(d=>d.key)
+						.transition()
+                 			 .duration(1000)
 						.style("fill", 'black')
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
 					
@@ -186,6 +222,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 						.attr("x",d=>(d.part=="primary"? -100: 100))
 						.style("fill", 'black')
 						.attr("y",d=>+6)
+						
 						.text(function(d){ 
 
 							if (i == 0) {
@@ -195,8 +232,12 @@ function construct_graph(file_name,g,var1,var2,d3){
 							}else {
 								return "  "+d3.format("0.0%")(d.value)
 							}})
+						.transition()
+                  			.duration(1000)
 							
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+						
+
 				});
 
 				function mouseover(d){
@@ -208,11 +249,15 @@ function construct_graph(file_name,g,var1,var2,d3){
 						
 						if (i == 0){
 							g[i].selectAll(".mainBars").select(".perc")
-							.text(function(d){ return "  "+d3.format(format[i])(d.value)});
+							.text(function(d){ return "  "+d3.format(format[i])(d.value)})
+							.transition()
+                  			.duration(1000);;
 
 						} else {
 							g[i].selectAll(".mainBars").select(".perc")
-							.text(function(d){ return "   " +d3.format(format[i])(d.value)});
+							.text(function(d){ return "   " +d3.format(format[i])(d.value)})
+							.transition()
+                  			.duration(1000);;
 						}
 
 						
@@ -226,19 +271,77 @@ function construct_graph(file_name,g,var1,var2,d3){
 						if (i == 0){
 									g[i].selectAll(".mainBars").select(".perc")
 
-							.text(function(d){ return d3.format(format[i])(d.value)});
+							.text(function(d){ return d3.format(format[i])(d.value)})
+							.transition()
+                  			.duration(1000);
 
 						} else {
 									g[i].selectAll(".mainBars").select(".perc")
 
-							.text(function(d){ return d3.format(format[i])(d.percent)});
+							.text(function(d){ return d3.format(format[i])(d.percent)})
+							.transition()
+                  			.duration(1000);
 						}
 					});
 				}
-				d3.select(self.frameElement).style("height", "800px");
+				d3.select(self.frameElement).style("height", "800px");}
+
+				 var updateGraph = function(value,g,var1,var2,d3){
+
+ 		// Filter the data to include only fruit of interest
+					 		var selectGen= data_.filter(function(d){
+					                return d[4] == value;
+					              })
+
+							svg3.selectAll("*").remove();
+							svg3.append("text").attr("x",250).attr("y",70)
+								.attr("class","header").text("BodyShape vs Color Count #")
+								.transition()
+                  			.duration(1000)
+								.style("fill", 'black');
+								
+							svg3.append("text").attr("x",750).attr("y",70)
+								.attr("class","header").text("BodyShape vs Color Fraction %")
+								.transition()
+                  			.duration(1000)
+								.style("fill", 'black');
+
+							var g =[svg3.append("g").attr("transform","translate(150,100)")
+									,svg3.append("g").attr("transform","translate(650,100)")];
+
+
+					 		// Select all of the grouped elements and update the data
+						    initial_graph(selectGen,g,var1,var2,d3)
+
+					
+
+					 	}
+					 	updateGraph(1,g,var1,var2,d3)
+
+
+
+
+
+
+				     	generations.on('change', function(){
+
+ 		// Find which fruit was selected from the dropdown
+						 		var selectedFruit = d3.select(this)
+						            .select("select")
+						            .property("value")
+
+
+
+						        // Run update function with the selected fruit
+						        updateGraph(selectedFruit,g,var1,var2,d3)
+
+
+						    });
+
 
 				})
 				} 
+
 
 
    ;
