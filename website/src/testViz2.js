@@ -166,7 +166,6 @@ function construct_graph(file_name,g,var1,var2,d3){
 					generation= generation.filter( onlyUnique );
 					console.log(generation)
 
-						
 				function initial_graph (data_,g,var1,var2,d3){
 
 					var bp2=[ viz.bP()
