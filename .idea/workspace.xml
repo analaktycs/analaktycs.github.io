@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d320a535-c9f9-4b41-8638-8962df5078a5" name="Default Changelist" comment="" />
+    <list default="true" id="e9f6c695-b9a9-4f9a-a4fc-6e10a2d10bf6" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,7 +10,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1bGvVVfOqc3GN0pPKHBcBBfihp4" />
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1bGBpjP2hYa1D6fan9R9nOutewX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -19,6 +26,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
   </component>
   <component name="RecentsManager">
@@ -26,20 +34,29 @@
       <recent name="C:\Users\Ludovic\Documents\GitHub\analaktycs.github.io\src" />
       <recent name="C:\Users\Ludovic\Documents\GitHub\analaktycs.github.io\data" />
     </key>
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+>>>>>>> 21e2cc9be59cab79facb0c60d5aac7c422a270ea
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d320a535-c9f9-4b41-8638-8962df5078a5" name="Default Changelist" comment="" />
-      <created>1588271268132</created>
+      <changelist id="e9f6c695-b9a9-4f9a-a4fc-6e10a2d10bf6" name="Default Changelist" comment="" />
+      <created>1588248734456</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1588271268132</updated>
       <workItem from="1588271269276" duration="2285000" />
       <workItem from="1588282770109" duration="87000" />
       <workItem from="1589640419039" duration="4442000" />
+=======
+      <updated>1588248734456</updated>
+      <workItem from="1588248736381" duration="7643000" />
+>>>>>>> 21e2cc9be59cab79facb0c60d5aac7c422a270ea
     </task>
     <servers />
   </component>
@@ -47,9 +64,16 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="747" y="312" key="FileChooserDialogImpl" timestamp="1588282853752">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="747" y="312" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588282853752" />
+=======
+    <state x="468" y="200" key="SettingsEditor" timestamp="1588250567091">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="468" y="200" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588250567091" />
+>>>>>>> 21e2cc9be59cab79facb0c60d5aac7c422a270ea
   </component>
 </project>
