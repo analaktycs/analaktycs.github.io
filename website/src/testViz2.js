@@ -1,6 +1,6 @@
 
 
-var svg3 = d3.select("#bipartite2").append("svg").attr("width", 2000).attr("height", 800);
+var svg3 = d3.select("#bipartite2").append("svg").attr("width", 1000).attr("height", 800);
 var generation = [1,2,3,4,5,6]
 var generations = d3.select("#bipartite2")
 
@@ -28,25 +28,22 @@ function AbilitiesvsTypes(d3) {
 
 	svg3.selectAll("*").remove();
 
-svg3.append("text").attr("x",250).attr("y",70)
-	.attr("class","header").text("Abilities vs Types Count #")
+svg3.append("text").attr("x",300).attr("y",70)
+	.attr("class","header").text("Abilities vs Fraction %")
 	.style("fill", 'black');
 	
-svg3.append("text").attr("x",750).attr("y",70)
-	.attr("class","header").text("Abilities vs Types Fraction %")
-	.style("fill", 'black');
 
-console.log('blaaacl')
 
-var g =[svg3.append("g").attr("transform","translate(150,100)")
-		,svg3.append("g").attr("transform","translate(650,100)")];
+
+var g =svg3.append("g").attr("transform","translate(150,100)");
+		
 
 
 
 			const file_name1 = "data/test7_most_present_abs_test7_gen.csv"
 
 
-	construct_graph(file_name1,g,"Abilities","Types",d3)
+	construct_graph(file_name1,g,"Abilities","Types",d3,generations)
 
 }
 
@@ -54,21 +51,18 @@ var g =[svg3.append("g").attr("transform","translate(150,100)")
 
 function TypesvsBody(d3){
 
-	svg3.selectAll("*").remove();
-svg3.append("text").attr("x",250).attr("y",70)
-	.attr("class","header").text("Types vs BodyShape Count #")
-	.style("fill", 'black');
-	
-svg3.append("text").attr("x",750).attr("y",70)
+svg3.selectAll("*").remove();
+svg3.append("text").attr("x",300).attr("y",70)
 	.attr("class","header").text("Types vs BodyShape Fraction %")
 	.style("fill", 'black');
+	
 
-var g =[svg3.append("g").attr("transform","translate(150,100)")
-		,svg3.append("g").attr("transform","translate(650,100)")];
+var g = svg3.append("g").attr("transform","translate(150,100)")
+		
 
-			const file_name2 = "data/type_vs_shape_merged_gen.csv"
+const file_name2 = "data/type_vs_shape_merged_gen.csv"
 
-	construct_graph(file_name2,g,"Types","Body Shape",d3)
+construct_graph(file_name2,g,"Types","Body Shape",d3,generations)
 
 }
 
@@ -76,20 +70,18 @@ var g =[svg3.append("g").attr("transform","translate(150,100)")
 function ColorvsBody(d3){
 
 	svg3.selectAll("*").remove();
-svg3.append("text").attr("x",250).attr("y",70)
-	.attr("class","header").text("BodyShape vs Color Count #")
+svg3.append("text").attr("x",300).attr("y",70)
+	.attr("class","header").text("Types vs Color Fraction %")
 	.style("fill", 'black');
 	
-svg3.append("text").attr("x",750).attr("y",70)
-	.attr("class","header").text("BodyShape vs Color Fraction %")
-	.style("fill", 'black');
 
-var g =[svg3.append("g").attr("transform","translate(150,100)")
-		,svg3.append("g").attr("transform","translate(650,100)")];
+var g = svg3.append("g").attr("transform","translate(150,100)")
+		
+
 
 			const file_name3 = "data/bodyvscolor_gen.csv"
 
-	construct_graph(file_name3,g,"BodyShape","Color",d3)
+	construct_graph(file_name3,g,"BodyShape","Color",d3,generations)
 
 }
 
@@ -97,7 +89,7 @@ var g =[svg3.append("g").attr("transform","translate(150,100)")
 
 
 
-function construct_graph(file_name,g,var1,var2,d3){
+function construct_graph(file_name,g,var1,var2,d3,generations){
 
 
 
@@ -161,6 +153,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 					}
 					data_.push(interr)
 				})
+				
 							
 					console.log(data_)
 					generation= generation.filter( onlyUnique );
@@ -168,47 +161,37 @@ function construct_graph(file_name,g,var1,var2,d3){
 
 				function initial_graph (data_,g,var1,var2,d3){
 
-					var bp2=[ viz.bP()
+					var bp2=viz.bP()
 						.data(data_)
 						.min(12)
 						.pad(1)
-						.height(600)
-						.width(250)
+						.height(700)
+						.width(400)
 						.barSize(35)
-						.fill(d=>color[d.primary])		
-					,viz.bP()
-						.data(data_)
-						.value(d=>d[3])
-						.min(12)
-						.pad(1)
-						.height(600)
-						.width(250)
-						.barSize(35)
-						.fill(d=>color[d.primary])
-				];
+						.fill(d=>color[d.primary]);
 						
-				[0,1].forEach(function(i){
-					g[i].call(bp2[i])
+				
+					g.call(bp2)
 						.transition()
                  			 .duration(1000)
 					
-					g[i].append("text").attr("x",-50).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var1)
+					g.append("text").attr("x",-50).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var1)
 					.style("fill", 'black');
-					g[i].append("text").attr("x", 250).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var2)
+					g.append("text").attr("x", 450).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var2)
 						.style("fill", 'black');
 					
-					g[i].append("line").attr("x1",-100).transition().duration(1000).attr("x2",0);
-					g[i].append("line").attr("x1",200).transition().duration(1000).attr("x2",300);
+					g.append("line").attr("x1",-100).transition().duration(1000).attr("x2",0);
+					g.append("line").attr("x1",400).transition().duration(1000).attr("x2",500);
 					
-					g[i].append("line").attr("y1",610).transition().duration(1000).attr("y2",610).attr("x1",-100).attr("x2",0);
-					g[i].append("line").attr("y1",610).transition().duration(1000).attr("y2",610).attr("x1",200).attr("x2",300);
+					g.append("line").attr("y1",710).transition().duration(1000).attr("y2",710).attr("x1",-100).attr("x2",0);
+					g.append("line").attr("y1",710).transition().duration(1000).attr("y2",710).attr("x1",200).attr("x2",300);
 					
-					g[i].selectAll(".mainBars")
+					g.selectAll(".mainBars")
 						.on("mouseover",mouseover)
 						.on("mouseout",mouseout)
 						.transition().duration(3000);
 
-					g[i].selectAll(".mainBars").append("text").attr("class","label")
+					g.selectAll(".mainBars").append("text").attr("class","label")
 						.attr("x",d=>(d.part=="primary"? -30: 30))
 						.attr("y",d=>+6)
 						.text(d=>d.key)
@@ -217,73 +200,57 @@ function construct_graph(file_name,g,var1,var2,d3){
 						.style("fill", 'black')
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
 					
-					g[i].selectAll(".mainBars").append("text").attr("class","perc")
+					g.selectAll(".mainBars").append("text").attr("class","perc")
 						.attr("x",d=>(d.part=="primary"? -100: 100))
 						.style("fill", 'black')
 						.attr("y",d=>+6)
 						
 						.text(function(d){ 
 
-							if (i == 0) {
-								return "  " + d3.format(".1f")(d.value)
+							console.log(d)
 
-
-							}else {
-								return "  "+d3.format("0.0%")(d.value)
-							}})
+							
+								return "  "+d3.format("0.0%")(d.percent)
+							})
 						.transition()
                   			.duration(1000)
 							
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
 						
 
-				});
+				
 
 				function mouseover(d){
-					[0,1].forEach(function(i){
-						bp2[i].mouseover(d);
+					
+						bp2.mouseover(d);
 						console.log(d)
 						
-						let format = [".1f" ,"0.0%"]
 						
-						if (i == 0){
-							g[i].selectAll(".mainBars").select(".perc")
-							.text(function(d){ return "  "+d3.format(format[i])(d.value)})
-							.transition()
-                  			.duration(1000);;
-
-						} else {
-							g[i].selectAll(".mainBars").select(".perc")
-							.text(function(d){ return "   " +d3.format(format[i])(d.value)})
+							g.selectAll(".mainBars").select(".perc")
+							.text(function(d){ return "   " +d3.format("0.0%")(d.percent)})
 							.transition()
                   			.duration(1000);;
 						}
 
 						
-					});
-				}
+					
+				
 				function mouseout(d){
-					[0,1].forEach(function(i){
-						bp2[i].mouseout(d);
+						bp2.mouseout(d);
 						
-						let format = [".1f" ,"0.0%"]
-						if (i == 0){
-									g[i].selectAll(".mainBars").select(".perc")
+						
 
-							.text(function(d){ return d3.format(format[i])(d.value)})
+						
+							g.selectAll(".mainBars").select(".perc")
+
+							.text(function(d){ return d3.format("0.0%")(d.percent)})
 							.transition()
                   			.duration(1000);
-
-						} else {
-									g[i].selectAll(".mainBars").select(".perc")
-
-							.text(function(d){ return d3.format(format[i])(d.percent)})
-							.transition()
-                  			.duration(1000);
-						}
-					});
+						
+			
 				}
 				d3.select(self.frameElement).style("height", "800px");}
+	
 
 				 var updateGraph = function(value,g,var1,var2,d3){
 
@@ -292,21 +259,14 @@ function construct_graph(file_name,g,var1,var2,d3){
 					                return d[4] == value;
 					              })
 
-							svg3.selectAll("*").remove();
-							svg3.append("text").attr("x",250).attr("y",70)
-								.attr("class","header").text("BodyShape vs Color Count #")
-								.transition()
-                  			.duration(1000)
-								.style("fill", 'black');
-								
-							svg3.append("text").attr("x",750).attr("y",70)
-								.attr("class","header").text("BodyShape vs Color Fraction %")
+							svg3.selectAll("g").remove()
 								.transition()
                   			.duration(1000)
 								.style("fill", 'black');
 
-							var g =[svg3.append("g").attr("transform","translate(150,100)")
-									,svg3.append("g").attr("transform","translate(650,100)")];
+
+							var g =svg3.append("g").attr("transform","translate(150,100)")
+									
 
 
 					 		// Select all of the grouped elements and update the data
@@ -323,6 +283,7 @@ function construct_graph(file_name,g,var1,var2,d3){
 
 
 				     	generations.on('change', function(){
+				     		console.log('wesg')
 
  		// Find which fruit was selected from the dropdown
 						 		var selectedFruit = d3.select(this)
@@ -337,13 +298,15 @@ function construct_graph(file_name,g,var1,var2,d3){
 
 						    });
 
-
-				})
-				} 
+				     })	
 
 
+				};
 
-   ;
+
+
+
+   
 
    
    //Update data section (Called from the onclick)

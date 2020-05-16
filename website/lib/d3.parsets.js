@@ -360,24 +360,36 @@
           categoryEnter.append("rect")
               .attr("width", function(d) { return d.dx; })
               .attr("y", -20)
-              .attr("height", 20);
+              .attr("height", 20)
+              .transition()
+                          .duration(500);
+
           categoryEnter.append("line")
               .style("stroke-width", 2);
           categoryEnter.append("text")
               .attr("dy", "-.3em")
               .style("fill", 'black')
         .style("font-weight", 10000)
-        .style("font-size", "1.2em");
+        .style("font-size", "1.2em")
+        .transition()
+                          .duration(500);
+
           category.select("rect")
               .attr("width", function(d) { return d.dx; })
               .attr("class", function(d) {
                 return "category-" + (d.dimension === dimensions[0] ? ordinal(d.name) : "background");
-              });
+              })
+              .transition()
+                          .duration(500);
+
           category.select("line")
               .attr("x2", function(d) { return d.dx; });
           category.select("text")
               .text(truncateText(function(d) { return d.name; }, function(d) { return d.dx; }))
-              .style("fill", 'black');
+              .style("fill", 'black')
+              .transition()
+                          .duration(500);
+
         }
       });
     }
@@ -442,8 +454,8 @@
       return parsets;
     };
 
-    var body = d3v3.select("#tool");
-    var tooltip = body.append("div")
+    var body = d3v3.select("#vis")
+    var tooltip = body.append("g")
         .attr("class", "parsets tooltip2")
         .style("fill","black");
 
@@ -459,8 +471,8 @@
 
       tooltip
           .style('display',null)
-          .style("left", m[0]+"px")
-          .style("top", m[1]+"px")
+          .style("left", (50000)+" px")
+          .style("top", (50000)+" px")
           .html(html)
           .style("fill","black")
           .style('background-color','#e6e6e6');
