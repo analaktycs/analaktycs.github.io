@@ -1,0 +1,103 @@
+,name,pokedex_number,abilities,types,classification,generation,Body_Style,Color
+6,Squirtle,7,Torrent,water,Tiny Turtle Pokémon,1,bipedal_tailed,Blue
+7,Wartortle,8,Torrent,water,Turtle Pokémon,1,bipedal_tailed,Blue
+8,Blastoise,9,Torrent,water,Shellfish Pokémon,1,bipedal_tailed,Blue
+11,Butterfree,12,Tinted Lens,bug,Butterfly Pokémon,1,four_wings,White
+11,Butterfree,12,Tinted Lens,flying,Butterfly Pokémon,1,four_wings,White
+14,Beedrill,15,Swarm,bug,Poison Bee Pokémon,1,four_wings,Yellow
+14,Beedrill,15,Swarm,poison,Poison Bee Pokémon,1,four_wings,Yellow
+15,Pidgey,16,Tangled Feet,normal,Tiny Bird Pokémon,1,two_wings,Brown
+15,Pidgey,16,Tangled Feet,flying,Tiny Bird Pokémon,1,two_wings,Brown
+16,Pidgeotto,17,Tangled Feet,normal,Bird Pokémon,1,two_wings,Brown
+16,Pidgeotto,17,Tangled Feet,flying,Bird Pokémon,1,two_wings,Brown
+17,Pidgeot,18,Tangled Feet,normal,Bird Pokémon,1,two_wings,Brown
+17,Pidgeot,18,Tangled Feet,flying,Bird Pokémon,1,two_wings,Brown
+18,Rattata,19,Thick Fat,normal,Mouse Pokémon,1,quadruped,Purple
+18,Rattata,19,Thick Fat,dark,Mouse Pokémon,1,quadruped,Purple
+19,Raticate,20,Thick Fat,normal,Mouse Pokémon,1,quadruped,Brown
+19,Raticate,20,Thick Fat,dark,Mouse Pokémon,1,quadruped,Brown
+22,Ekans,23,Unnerve,poison,Snake Pokémon,1,serpentine_body,Purple
+23,Arbok,24,Unnerve,poison,Cobra Pokémon,1,serpentine_body,Purple
+25,Raichu,26,Surge Surfer,electric,Mouse Pokémon,1,bipedal_tailed,Yellow
+35,Clefable,36,Unaware,fairy,Fairy Pokémon,1,bipedal_tailed,Pink
+47,Venonat,48,Tinted Lens,bug,Insect Pokémon,1,bipedal_tailless,Purple
+47,Venonat,48,Tinted Lens,poison,Insect Pokémon,1,bipedal_tailless,Purple
+48,Venomoth,49,Tinted Lens,bug,Poison Moth Pokémon,1,four_wings,Purple
+48,Venomoth,49,Tinted Lens,poison,Poison Moth Pokémon,1,four_wings,Purple
+48,Venomoth,49,Wonder Skin ,bug,Poison Moth Pokémon,1,four_wings,Purple
+48,Venomoth,49,Wonder Skin ,poison,Poison Moth Pokémon,1,four_wings,Purple
+49,Diglett,50,Tangling Hair,ground,Mole Pokémon,1,head_base,Brown
+50,Dugtrio,51,Tangling Hair,ground,Mole Pokémon,1,multiple_bodies,Brown
+51,Meowth,52,Technician,normal,Scratch Cat Pokémon,1,quadruped,Yellow
+51,Meowth,52,Technician,dark,Scratch Cat Pokémon,1,quadruped,Yellow
+51,Meowth,52,Unnerve,normal,Scratch Cat Pokémon,1,quadruped,Yellow
+51,Meowth,52,Unnerve,dark,Scratch Cat Pokémon,1,quadruped,Yellow
+52,Persian,53,Technician,normal,Classy Cat Pokémon,1,quadruped,Yellow
+52,Persian,53,Technician,dark,Classy Cat Pokémon,1,quadruped,Yellow
+52,Persian,53,Unnerve,normal,Classy Cat Pokémon,1,quadruped,Yellow
+52,Persian,53,Unnerve,dark,Classy Cat Pokémon,1,quadruped,Yellow
+53,Psyduck,54,Swift Swim,water,Duck Pokémon,1,bipedal_tailed,Yellow
+54,Golduck,55,Swift Swim,water,Duck Pokémon,1,bipedal_tailed,Blue
+55,Mankey,56,Vital Spirit,fighting,Pig Monkey Pokémon,1,bipedal_tailed,Brown
+56,Primeape,57,Vital Spirit,fighting,Pig Monkey Pokémon,1,bipedal_tailed,Brown
+59,Poliwag,60,Water Absorb,water,Tadpole Pokémon,1,head_legs,Blue
+59,Poliwag,60,Swift Swim,water,Tadpole Pokémon,1,head_legs,Blue
+60,Poliwhirl,61,Water Absorb,water,Tadpole Pokémon,1,bipedal_tailless,Blue
+60,Poliwhirl,61,Swift Swim,water,Tadpole Pokémon,1,bipedal_tailless,Blue
+61,Poliwrath,62,Water Absorb,water,Tadpole Pokémon,1,bipedal_tailless,Blue
+61,Poliwrath,62,Water Absorb,fighting,Tadpole Pokémon,1,bipedal_tailless,Blue
+61,Poliwrath,62,Swift Swim,water,Tadpole Pokémon,1,bipedal_tailless,Blue
+61,Poliwrath,62,Swift Swim,fighting,Tadpole Pokémon,1,bipedal_tailless,Blue
+62,Abra,63,Synchronize,psychic,Psi Pokémon,1,bipedal_tailed,Brown
+63,Kadabra,64,Synchronize,psychic,Psi Pokémon,1,bipedal_tailed,Brown
+64,Alakazam,65,Synchronize,psychic,Psi Pokémon,1,bipedal_tailless,Brown
+83,Doduo,84,Tangled Feet,normal,Twin Bird Pokémon,1,head_legs,Brown
+83,Doduo,84,Tangled Feet,flying,Twin Bird Pokémon,1,head_legs,Brown
+84,Dodrio,85,Tangled Feet,normal,Triple Bird Pokémon,1,head_legs,Brown
+84,Dodrio,85,Tangled Feet,flying,Triple Bird Pokémon,1,head_legs,Brown
+85,Seel,86,Thick Fat,water,Sea Lion Pokémon,1,with_fins,White
+86,Dewgong,87,Thick Fat,water,Sea Lion Pokémon,1,with_fins,White
+86,Dewgong,87,Thick Fat,ice,Sea Lion Pokémon,1,with_fins,White
+94,Onix,95,Weak Armor,rock,Rock Snake Pokémon,1,serpentine_body,Grey
+94,Onix,95,Weak Armor,ground,Rock Snake Pokémon,1,serpentine_body,Grey
+105,Hitmonlee,106,Unburden,fighting,Kicking Pokémon,1,bipedal_tailless,Brown
+115,Horsea,116,Swift Swim,water,Dragon Pokémon,1,head_base,Blue
+117,Goldeen,118,Swift Swim,water,Goldfish Pokémon,1,with_fins,Red
+117,Goldeen,118,Water Veil,water,Goldfish Pokémon,1,with_fins,Red
+118,Seaking,119,Swift Swim,water,Goldfish Pokémon,1,with_fins,Red
+118,Seaking,119,Water Veil,water,Goldfish Pokémon,1,with_fins,Red
+121,Mr. Mime,122,Technician,psychic,Barrier Pokémon,1,bipedal_tailless,Pink
+121,Mr. Mime,122,Technician,fairy,Barrier Pokémon,1,bipedal_tailless,Pink
+122,Scyther,123,Swarm,bug,Mantis Pokémon,1,four_wings,Green
+122,Scyther,123,Swarm,flying,Mantis Pokémon,1,four_wings,Green
+122,Scyther,123,Technician,bug,Mantis Pokémon,1,four_wings,Green
+122,Scyther,123,Technician,flying,Mantis Pokémon,1,four_wings,Green
+124,Electabuzz,125,Vital Spirit,electric,Electric Pokémon,1,bipedal_tailed,Yellow
+125,Magmar,126,Vital Spirit,fire,Spitfire Pokémon,1,bipedal_tailed,Red
+128,Magikarp,129,Swift Swim,water,Fish Pokémon,1,with_fins,Red
+130,Lapras,131,Water Absorb,water,Transport Pokémon,1,with_fins,Blue
+130,Lapras,131,Water Absorb,ice,Transport Pokémon,1,with_fins,Blue
+133,Vaporeon,134,Water Absorb,water,Bubble Jet Pokémon,1,quadruped,Blue
+134,Jolteon,135,Volt Absorb,electric,Lightning Pokémon,1,quadruped,Yellow
+136,Porygon,137,Trace,normal,Virtual Pokémon,1,head_legs,Pink
+137,Omanyte,138,Swift Swim,rock,Spiral Pokémon,1,several_limbs,Blue
+137,Omanyte,138,Swift Swim,water,Spiral Pokémon,1,several_limbs,Blue
+137,Omanyte,138,Weak Armor,rock,Spiral Pokémon,1,several_limbs,Blue
+137,Omanyte,138,Weak Armor,water,Spiral Pokémon,1,several_limbs,Blue
+138,Omastar,139,Swift Swim,rock,Spiral Pokémon,1,several_limbs,Blue
+138,Omastar,139,Swift Swim,water,Spiral Pokémon,1,several_limbs,Blue
+138,Omastar,139,Weak Armor,rock,Spiral Pokémon,1,several_limbs,Blue
+138,Omastar,139,Weak Armor,water,Spiral Pokémon,1,several_limbs,Blue
+139,Kabuto,140,Swift Swim,rock,Shellfish Pokémon,1,insectoid,Brown
+139,Kabuto,140,Swift Swim,water,Shellfish Pokémon,1,insectoid,Brown
+139,Kabuto,140,Weak Armor,rock,Shellfish Pokémon,1,insectoid,Brown
+139,Kabuto,140,Weak Armor,water,Shellfish Pokémon,1,insectoid,Brown
+140,Kabutops,141,Swift Swim,rock,Shellfish Pokémon,1,bipedal_tailed,Brown
+140,Kabutops,141,Swift Swim,water,Shellfish Pokémon,1,bipedal_tailed,Brown
+140,Kabutops,141,Weak Armor,rock,Shellfish Pokémon,1,bipedal_tailed,Brown
+140,Kabutops,141,Weak Armor,water,Shellfish Pokémon,1,bipedal_tailed,Brown
+141,Aerodactyl,142,Unnerve,rock,Fossil Pokémon,1,two_wings,Purple
+141,Aerodactyl,142,Unnerve,flying,Fossil Pokémon,1,two_wings,Purple
+142,Snorlax,143,Thick Fat,normal,Sleeping Pokémon,1,bipedal_tailless,Black
+149,Mewtwo,150,Unnerve,psychic,Genetic Pokémon,1,bipedal_tailed,Purple
+150,Mew,151,Synchronize,psychic,New Species Pokémon,1,bipedal_tailed,Pink
