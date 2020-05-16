@@ -19,7 +19,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../com-480-project-analaktycs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ludovic\Documents\GitHub\analaktycs.github.io\src" />
+      <recent name="C:\Users\Ludovic\Documents\GitHub\analaktycs.github.io\data" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -31,7 +37,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588271268132</updated>
-      <workItem from="1588271269276" duration="416000" />
+      <workItem from="1588271269276" duration="2285000" />
+      <workItem from="1588282770109" duration="87000" />
+      <workItem from="1589640419039" duration="4442000" />
     </task>
     <servers />
   </component>
@@ -39,9 +47,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="747" y="312" key="FileChooserDialogImpl" timestamp="1588271288974">
+    <state x="747" y="312" key="FileChooserDialogImpl" timestamp="1588282853752">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="747" y="312" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588271288974" />
+    <state x="747" y="312" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1588282853752" />
   </component>
 </project>
