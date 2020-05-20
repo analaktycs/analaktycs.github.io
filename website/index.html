@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,6 +25,7 @@
 
     <link href="src/style.css" rel="stylesheet" />
     <link href="lib/d3.parsets.css" rel="stylesheet" />
+     <link rel="stylesheet" type="text/css" href="res/parallel.css" />
 
 
 
@@ -193,23 +195,6 @@
 
 
 
-   <div  id="chartArea">
-
-
-                            <script src="https://d3js.org/d3.v4.js"></script>
-
-
-              <script class = 'box' src = "src/spk_coord.js" > </script></div>
-
-
-
-
-
-
-
-               <h3>Figure 3.3 : Parallel display of feature relationships, in flow manner </h3>
-                   </script>
-
 
           <div id = "vis">
 
@@ -236,13 +221,76 @@
     </div>
 
 
+    <div id="header">
+    <h1>Pokemon Explorer</h1>
+    <div class="controls">
+      <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
+      <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
+      Lines at <strong id="opacity"></strong> opacity.
+      <span class="settings">
+        <button id="hide-ticks">Hide Ticks</button>
+        <button id="show-ticks" disabled="disabled">Show Ticks</button>
+        <button id="dark-theme">Dark</button>
+        <button id="light-theme" disabled="disabled">Light</button>
+      </span>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="chart">
+    <canvas id="background"></canvas>
+    <canvas id="foreground"></canvas>
+    <canvas id="highlight"></canvas>
+    <svg></svg>
+  </div>
+
+
+   <div id="wrap">
+    <div class="third" id="controls">
+      <div class="bright">
+      </div>
+
+      <div class="little-box">
+        <h3>Controls</h3>
+        <p>
+
+          <strong>Click</strong>: Click on the figure to display ticks and axis.<br/>
+          <strong>Hide Ticks</strong>: Click on Hide thicks to hide ticks.<br/>
+          <strong>Show Ticks</strong>: Click on Show thicks to display back ticks.<br/>
+
+          <strong>Click</strong>: Click on the figure to display thicks.<br/>
+          <strong>Brush</strong>: Drag vertically along an axis.<br/>
+          <strong>Brush</strong>: Drag vertically along an axis.<br/>
+          <strong>Remove Brush</strong>: Tap the axis background.<br/>
+          <strong>Reorder Axes</strong>: Drag a label horizontally.<br/>
+          <strong>Invert Axis</strong>: Tap an axis label.<br/>
+          <strong>Remove Axis</strong>: Drag axis label to the left edge.<br/>
+        </p>
+      </div>
+    </div>
+    <div  class="third">
+      <small>
+        <!--Last rendered <strong id="render-speed"></strong> lines-->
+      </small>
+      <h3>Count, Body Styles</h3>
+      <p id="legend">
+      </p>
+    </div>
+    <div class="third">
+      <h3>Sample of 25 entries <input type="text" id="search" placeholder="Search Pokemons..."></input></h3>
+      <p id="food-list">
+      </p>
+    </div>
+  </div>
 
 
 
+  <script src="http://underscorejs.org/underscore.js"></script>
+  <script src="https://d3js.org/d3.v2.js"></script>
 
+  <script src="src/coord2.js"></script>
 
+  <script src="https://d3js.org/d3.v4.js"></script>
 
-          </div>
 
 
     <script>
@@ -262,7 +310,7 @@
         <script>
 
             let csv_file="data/data_for_circle_chart.csv"
-            let w = window.innerWidth
+                 let w = window.innerWidth
             let h = window.innerHeight
             create_svg(w, h, "beige")
             add_chart("main_svg", "beige", csv_file, 0, "Type", d3_ludo)

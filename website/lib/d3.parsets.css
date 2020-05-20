@@ -28,6 +28,6 @@
 
 .tooltip {
   background-color: rgba(242, 242, 242, .6);
-  position: absolute;
+  position: relative;
   padding: 5px;
 }
