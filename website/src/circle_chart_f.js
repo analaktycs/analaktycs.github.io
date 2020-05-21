@@ -111,7 +111,7 @@ function add_legend(features, d3_version){
             .attr("transform", "translate("+px_txt+", 25) rotate(35)")
             .style("font-size", window.innerWidth/100)
             .style("fill", "black")
-            .attr("font-family", "arial, sans-serif")
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("alignment-baseline", "central")
             .attr("id", "legend_"+i)
         let l = document.getElementById("legend_"+i).getBoundingClientRect().width*1.5
@@ -246,9 +246,9 @@ function add_names_and_dots(names, nb_angles, size, posx, posy, pkm, feature, d3
             .attr("id", "labels_radar_"+pkm[i].pokedex_number)
             .attr("class", "labels_radar")
             .style("fill", "maroon")
-            .attr("font-family", "arial, sans-serif")
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("alignment-baseline", "middle")
-            .style("font-size", "70%")
+            .style("font-size", "120%")
 
         let width = txt.node().getComputedTextLength()
         let a = i*2*Math.PI/nb_angles
@@ -317,9 +317,9 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3_v
     d3=d3_version
     duration = 3000
     looser_x= posx - window.innerWidth/3.25
-    looser_y=posy
+    looser_y=posy-window.innerHeight/8
     winner_x=posx + window.innerWidth/3.25
-    winner_y=posy
+    winner_y=posy-window.innerHeight/8
     let ease = d3.easeExp
     let winners=[]
     let loosers=[]
@@ -396,7 +396,7 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3_v
             nom.transition()
                 .attr("transform", "translate("+name_x+","+name_y+") rotate("+rot+")")
                 .style("fill", "maroon")
-                .style("font-size", "70%")
+                .style("font-size", "100%")
                 .duration(duration)
 
 
@@ -443,7 +443,7 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3_v
             nom.transition()
                 .attr("transform", "translate("+name_x+","+name_y+") rotate("+rot+")")
                 .style("fill", "maroon")
-                .style("font-size", "70%")
+                .style("font-size", "100%")
                 .duration(duration)
 
 
@@ -470,11 +470,11 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3_v
         let width = window.innerWidth/4
         let height = window.innerHeight/1.5
         let posx_txt= (window.innerWidth-width)/2+width/20
-        let posy_txt= (window.innerHeight-height)/2+width/20
+        let posy_txt= (window.innerHeight)/2-window.innerWidth/6.5
         nom.transition()
             .attr("text-anchor", "start")
             .attr("transform", "translate("+posx_txt+","+posy_txt+") rotate(0)")
-            .style("font-size", window.innerHeight/25)
+            .style("font-size", "150%")
             .style("fill", "black")
             .duration(duration)
 
@@ -529,6 +529,9 @@ function get_feat(data, feature){
 function add_select_gen(gen, feature, d3_version){
     d3 = d3_version
     let selection=["generation 1", "generation 2", "generation 3", "generation 4", "generation 5", "generation 6", "generation 7"]
+    if(feature=="Body-Style" || feature=="Color"){
+        selection =["generation 1", "generation 2", "generation 3", "generation 4", "generation 5", "generation 6"]
+    }
     var l=4;
     for(i=0;i<selection.length;i++){if(l<selection[i].length)l=selection[i].length};
     var width = 400, height = 600;
@@ -553,7 +556,7 @@ function add_select_gen(gen, feature, d3_version){
     select.append("text")
         .attr("x", 15)
         .attr("y",30 )
-        .attr("font-family", "arial, sans-serif")
+        .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .attr("id","mydropdown")
         .text( selection[gen]);
     var options = svg.selectAll(".myBars")
@@ -582,7 +585,7 @@ function add_select_gen(gen, feature, d3_version){
 
     options.append("text")
         .attr("x", function(d){ return 15})
-        .attr("font-family", "arial, sans-serif")
+        .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .attr("y", function(d,i){ return 60 + i*30})
         .text(function(d){ return d});
 
@@ -619,7 +622,7 @@ function add_select_feature(gen, feature, d3_version){
     select.append("text")
         .attr("x", px + 0.1*l)
         .attr("y",30 )
-        .attr("font-family", "arial, sans-serif")
+        .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .attr("id","mydropdown")
         .text( feature);
     var options = svg.selectAll(".myBars")
@@ -649,7 +652,7 @@ function add_select_feature(gen, feature, d3_version){
     options.append("text")
         .attr("x", function(d){ return px+0.1*l})
         .attr("y", function(d,i){ return 60 + i*30})
-        .attr("font-family", "arial, sans-serif")
+        .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .text(function(d){ return d});
 
 
@@ -659,8 +662,8 @@ function update_chart(index, feature, d3_version){
     d3.select("#svg_circle").remove()
     let w = window.innerWidth
     let h = window.innerHeight
-    create_svg(w, h, "beige")
-    add_chart("svg_circle", "beige", csv_file, index, feature, d3_version)
+    create_svg(w, h, "#f8f8f8")
+    add_chart("svg_circle", "#f8f8f8", csv_file, index, feature, d3_version)
 }
 
 function get_angle(x, y, cx, cy){
@@ -704,7 +707,7 @@ function create_ID_card(posx, posy, size, angle, pkm, d3_version){
     if(radius<180){
         rect_size = 300
         px =center_x
-        py =center_y-190-radius
+        py =center_y+1.2*radius+window.innerHeight/5
     }
 
 
@@ -765,7 +768,7 @@ function create_ID_card(posx, posy, size, angle, pkm, d3_version){
         .attr("x", px-rect_size/2+5)
         .attr("y", py-rect_size*0.3)
         .style("fill", "black")
-        .attr("font-family", "arial, sans-serif")
+        .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .attr("class", "id_card")
         .text(name)
 
@@ -824,7 +827,7 @@ function create_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_version
         .text(outer_circle)
         .attr("transform", "translate("+transx+", "+posy+") rotate(90)")
         .attr("text-anchor", "middle")
-        .attr("font-family", "arial, sans-serif")
+        .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .attr("class", "id_card")
         .style("fill", col)
 
@@ -859,7 +862,7 @@ function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_versi
             .attr("x", transx)
             .attr("y", transy)
             .text(labels[i])
-            .attr("font-family", "arial, sans-serif")
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("class", "id_card")
             .style("fill", "maroon")
 
@@ -867,7 +870,7 @@ function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_versi
             .attr("x", px)
             .attr("y", py)
             .text(stat[i])
-            .attr("font-family", "arial, sans-serif")
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .style("font-size", window.innerWidth/150)
             .attr("class", "id_card")
             .attr("alignment-baseline", "central")
@@ -894,7 +897,7 @@ function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_versi
 function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
     d3=d3_version
     let width = window.innerWidth/4
-    let height = window.innerHeight/1.5
+    let height = window.innerWidth/3
 
     let info_sheet = d3.select("#svg_circle")
 
@@ -942,9 +945,9 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
 
         let color_band_description= info_sheet.append("rect")
             .attr("x", (window.innerWidth-width)/2)
-            .attr("y", (window.innerHeight)/2 )
+            .attr("y", (window.innerHeight)/2.05 )
             .attr("width", width)
-            .attr("height", height/5)
+            .attr("height", height/4.6)
             .attr("fill", color)
             .attr("opacity", 0.5)
             .attr("class", "info_sheet")
@@ -1006,27 +1009,27 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
         info_sheet.append("text")
             .text(stats[i])
             .attr("x", x_txt)
-            .attr("y", y_txt_st+ 1.4*i*window.innerHeight/40)
-            .style("font-size", window.innerHeight/40)
-            .attr("font-family", "arial, sans-serif")
+            .attr("y", y_txt_st+ 1.4*i*window.innerWidth/80)
+            .style("font-size", window.innerWidth/80)
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .style("fill", "black")
             .attr("class", "info_sheet")
 
         info_sheet.append("text")
             .text(stat_val[i].toString())
             .attr("x", x_txt+0.4*width)
-            .attr("y", y_txt_st+ 1.4*i*window.innerHeight/40)
-            .style("font-size", window.innerHeight/40)
-            .attr("font-family", "arial, sans-serif")
+            .attr("y", y_txt_st+ 1.4*i*window.innerWidth/80)
+            .style("font-size", window.innerWidth/80)
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .style("fill", "black")
             .attr("class", "info_sheet")
     }
     info_sheet.append("text")
         .text("description")
         .attr("x", window.innerWidth/2-0.49*width)
-        .attr("y", window.innerHeight/1.88)
-        .style("font-size",  window.innerHeight/40)
-        .attr("font-family", "arial, sans-serif")
+        .attr("y", window.innerHeight/1.95)
+        .style("font-size",  window.innerWidth/80)
+        .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .style("fill", "black")
         .attr("class", "info_sheet")
         .attr("text-decoration", "underline")
@@ -1036,7 +1039,7 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
 
         let text = d[id_].description
         let text_l = text.length
-        let char_per_line = parseInt(window.innerWidth/30)
+        let char_per_line = 35
         let start_line=0
         let end_line=char_per_line
         line_nbr=0
@@ -1045,10 +1048,10 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
                 info_sheet.append("text")
                     .text(text.slice(start_line, end_line))
                     .attr("x", (window.innerWidth-width)/2+window.innerWidth/100)
-                    .attr("y", (window.innerHeight)/1.8+line_nbr*window.innerHeight/60)
+                    .attr("y", (window.innerHeight)/1.88+line_nbr*window.innerWidth/120)
                     .attr("class", "info_sheet")
-                    .style("font-size", "85%")
-                    .attr("font-family", "arial, sans-serif")
+                    .style("font-size",  "1vw")
+                    .attr("font-family", "Andale Mono,AndaleMono,monospace")
                     .style("fill", "black")
                 line_nbr+=1
                 start_line=end_line+1
@@ -1059,9 +1062,9 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
                     info_sheet.append("text")
                         .text(text.slice(start_line, end_line))
                         .attr("x", (window.innerWidth-width)/2+window.innerWidth/100)
-                        .attr("y", (window.innerHeight)/1.8+line_nbr*window.innerHeight/60)
-                        .style("font-size", "85%")
-                        .attr("font-family", "arial, sans-serif")
+                        .attr("y", (window.innerHeight)/1.88+line_nbr*window.innerWidth/120)
+                        .style("font-size",  "1vw")
+                        .attr("font-family", "Andale Mono,AndaleMono,monospace")
                         .attr("class", "info_sheet")
                         .style("fill", "black")
                 }
@@ -1088,40 +1091,40 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
         info_sheet.append("text")
             .text(winners.length)
             .attr("x", (window.innerWidth)/2+window.innerWidth/100)
-            .attr("y", (window.innerHeight)/1.25)
-            .style("font-size", "500%")
-            .attr("font-family", "arial, sans-serif")
+            .attr("y", (window.innerHeight+height)/2-height*0.1)
+            .style("font-size", window.innerWidth/30)
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("class", "info_sheet")
             .style("fill", "black")
         info_sheet.append("text")
             .text(loosers.length)
             .attr("x", (window.innerWidth-width)/2+window.innerWidth/100)
-            .attr("y", (window.innerHeight)/1.25)
-            .style("font-size", "500%")
-            .attr("font-family", "arial, sans-serif")
+            .attr("y", (window.innerHeight+height)/2-height*0.1)
+            .style("font-size", window.innerWidth/30)
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("class", "info_sheet")
             .style("fill", "black")
         info_sheet.append("text")
             .text("defeats")
             .attr("x", (window.innerWidth)/2+window.innerWidth/100)
-            .attr("y", (window.innerHeight)/1.45)
-            .style("font-size", "250%")
-            .attr("font-family", "arial, sans-serif")
+            .attr("y", (window.innerHeight+height)/2-height*0.25)
+            .style("font-size", window.innerWidth/50)
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("class", "info_sheet")
             .style("fill", "black")
         info_sheet.append("text")
             .text("victories")
             .attr("x", (window.innerWidth-width)/2+window.innerWidth/200)
-            .attr("y", (window.innerHeight)/1.45)
-            .style("font-size", "250%")
-            .attr("font-family", "arial, sans-serif")
+            .attr("y", (window.innerHeight+height)/2-height*0.25)
+            .style("font-size", window.innerWidth/50)
+            .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("class", "info_sheet")
             .style("fill", "black")
         info_sheet.append("rect")
             .attr("x", (window.innerWidth-width)/2)
             .attr("y", (window.innerHeight)/2+height/5 )
             .attr("width", width/2)
-            .attr("height", window.innerHeight/5)
+            .attr("height", window.innerWidth/10)
             .style("fill", "none")
             .attr("stroke-opacity", 1)
             .attr("stroke", "black")
@@ -1130,7 +1133,7 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
             .attr("x", (window.innerWidth)/2)
             .attr("y", (window.innerHeight)/2+height/5 )
             .attr("width", width/2)
-            .attr("height", window.innerHeight/5)
+            .attr("height", window.innerWidth/10)
             .style("fill", "none")
             .attr("stroke-opacity", 1)
             .attr("stroke", "black")
