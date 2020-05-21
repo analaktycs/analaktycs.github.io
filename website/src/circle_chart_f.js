@@ -5,6 +5,8 @@ function create_svg(w, h, color){
         .attr("height", h)
         .attr("id", "svg_circle")
         .style("background-color", color)
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 1200 900")
 
 }
 
@@ -114,7 +116,7 @@ function add_legend(features, d3_version){
             .attr("font-family", "arial, sans-serif")
             .attr("alignment-baseline", "central")
             .attr("id", "legend_"+i)
-        let l = document.getElementById("legend_"+i).getBoundingClientRect().width*1.3
+        let l = document.getElementById("legend_"+i).getBoundingClientRect().width*1.5
 
 
         let color = d3.csv("data/dot_colors.csv").then(function(d){
