@@ -5,8 +5,6 @@ function create_svg(w, h, color){
         .attr("height", h)
         .attr("id", "svg_circle")
         .style("background-color", color)
-        .attr("preserveAspectRatio", "xMinYMin meet")
-        .attr("viewBox", "0 0 1200 900")
 
 }
 
