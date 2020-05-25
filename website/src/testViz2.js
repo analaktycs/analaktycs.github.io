@@ -39,7 +39,7 @@ var g =svg3.append("g").attr("transform","translate(150,100)");
 			const file_name1 = "data/test7_most_present_abs_test7_gen.csv"
 
 
-	construct_graph(file_name1,g,"Abilities","Types",d3,generations)
+	construct_graph(file_name1,g,"Abilities","Types",d3,generations,2)
 
 }
 
@@ -58,7 +58,7 @@ var g = svg3.append("g").attr("transform","translate(150,100)")
 
 const file_name2 = "data/type_vs_shape_merged_gen.csv"
 
-construct_graph(file_name2,g,"Types","Body Shape",d3,generations)
+construct_graph(file_name2,g,"Types","Body Shape",d3,generations,1)
 
 }
 
@@ -68,7 +68,7 @@ function ColorvsBody(d3){
 
 	svg3.selectAll("*").remove();
 svg3.append("text").attr("x",300).attr("y",70)
-	.attr("class","header").text("Types vs Color Fraction %")
+	.attr("class","header").text("Types vs Color %")
 	.style("fill", 'black');
 	
 
@@ -76,9 +76,9 @@ var g = svg3.append("g").attr("transform","translate(150,100)")
 		
 
 
-			const file_name3 = "data/bodyvscolor_gen.csv"
+			const file_name3 = "data/type_vs_colors_merged_gen.csv"
 
-	construct_graph(file_name3,g,"BodyShape","Color",d3,generations)
+	construct_graph(file_name3,g,"Types","Color",d3,generations,1)
 
 }
 
@@ -86,7 +86,7 @@ var g = svg3.append("g").attr("transform","translate(150,100)")
 
 
 
-function construct_graph(file_name,g,var1,var2,d3,generations){
+function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 
 
@@ -143,8 +143,18 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 
 							
 
-							if(key == "source"){
+							if(key == "source" && flag == 1){
 								color[value] = intToRGB(hashCode(value))
+							}
+
+							console.log(flag)
+
+							if(key == "target" && flag == 2){
+
+
+								color[value] = intToRGB(hashCode(value))
+
+
 							}
 						}
 						
@@ -168,8 +178,8 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 						.height(700)
 						.width(400)
 						.barSize(35)
-						.fill(d=>color[d.primary]);
-						
+						.fill(d=> (flag == 1? color[d.primary] :   color[d.secondary]));
+
 				
 					g.call(bp2)
 						.transition()

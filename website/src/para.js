@@ -9,7 +9,7 @@ var generations_ = d3v3.select("#tool")
                 generations_
                 .append("select")
                 .selectAll("option")
-                    .data(generation)
+                    .data(generation_)
                     .enter()
                     .append("option")
                     .attr("value", function(d){
