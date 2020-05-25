@@ -3,10 +3,10 @@ var chart = d3v3.parsets()
 var vis = d3v3.select("#tool").append("svg")
                       .attr("width", chart.width())
                       .attr("height", chart.height());
-var generation = ["1","2","3","4","5","6"]
-var generations = d3v3.select("#tool")
+var generation_ = ["1","2","3","4","5","6"]
+var generations_ = d3v3.select("#tool")
 
-                generations
+                generations_
                 .append("select")
                 .selectAll("option")
                     .data(generation)
@@ -178,7 +178,7 @@ var partition = d3v3.layout.partition()
 
 
 
-generations.on('change', function(){
+generations_.on('change', function(){
 
 
                 d3v3.select('#vis').select('svg').selectAll('g').remove().transition()

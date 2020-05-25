@@ -1,4 +1,4 @@
-
+var switch_
 
 var svg3 = d3.select("#bipartite2").append("svg").attr("width", 1000).attr("height", 800);
 var generation = [1,2,3,4,5,6]
@@ -21,11 +21,8 @@ var generations = d3.select("#bipartite2")
 						        })
 
 
-AbilitiesvsTypes(d3)
 
 function AbilitiesvsTypes(d3) {
-
-
 	svg3.selectAll("*").remove();
 
 svg3.append("text").attr("x",300).attr("y",70)
@@ -68,6 +65,7 @@ construct_graph(file_name2,g,"Types","Body Shape",d3,generations)
 
 
 function ColorvsBody(d3){
+
 
 	svg3.selectAll("*").remove();
 svg3.append("text").attr("x",300).attr("y",70)
@@ -155,11 +153,13 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 				})
 				
 							
-					console.log(data_)
 					generation= generation.filter( onlyUnique );
-					console.log(generation)
 
-				function initial_graph (data_,g,var1,var2,d3){
+				function initial_graph (data_,g,var1=0,var2=0,d3){
+
+					const v1 = var1
+					const v2 = var2
+			
 
 					var bp2=viz.bP()
 						.data(data_)
@@ -175,9 +175,9 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 						.transition()
                  			 .duration(1000)
 					
-					g.append("text").attr("x",-50).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var1)
+					g.append("text").attr("x",-50).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(v1)
 					.style("fill", 'black');
-					g.append("text").attr("x", 450).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(var2)
+					g.append("text").attr("x", 450).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(v2)
 						.style("fill", 'black');
 					
 					g.append("line").attr("x1",-100).transition().duration(1000).attr("x2",0);
@@ -207,7 +207,6 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 						
 						.text(function(d){ 
 
-							console.log(d)
 
 							
 								return "  "+d3.format("0.0%")(d.percent)
@@ -223,7 +222,6 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 				function mouseover(d){
 					
 						bp2.mouseover(d);
-						console.log(d)
 						
 						
 							g.selectAll(".mainBars").select(".perc")
@@ -252,7 +250,10 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 				d3.select(self.frameElement).style("height", "800px");}
 	
 
-				 var updateGraph = function(value,g,var1,var2,d3){
+				 var updateGraph = function(value,data_,g,d3){
+
+
+
 
  		// Filter the data to include only fruit of interest
 					 		var selectGen= data_.filter(function(d){
@@ -275,7 +276,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 					
 
 					 	}
-					 	updateGraph(1,g,var1,var2,d3)
+					 	updateGraph(selectGen=1,data_,g,d3)
 
 
 
@@ -283,17 +284,20 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 
 
 				     	generations.on('change', function(){
-				     		console.log('wesg')
 
  		// Find which fruit was selected from the dropdown
 						 		var selectedFruit = d3.select(this)
 						            .select("select")
 						            .property("value")
 
+						
 
 
-						        // Run update function with the selected fruit
-						        updateGraph(selectedFruit,g,var1,var2,d3)
+
+
+
+						        // Run update function with the selected frit
+						        updateGraph(selectedFruit,data_,g,d3)
 
 
 						    });
