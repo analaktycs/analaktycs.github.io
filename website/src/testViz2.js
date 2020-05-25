@@ -1,4 +1,3 @@
-var switch_
 
 var svg3 = d3.select("#bipartite2").append("svg").attr("width", 1000).attr("height", 800);
 var generation = [1,2,3,4,5,6]
@@ -114,6 +113,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 
 				    return "00000".substring(0, 6 - c.length) + c;
 				}
+				console.log(d3.version)
 
 					var data_= []
 					var generation = []
@@ -309,8 +309,11 @@ function construct_graph(file_name,g,var1,var2,d3,generations){
 
 
 
+window.addEventListener('load', function() {
+    console.log('All assets are loaded')
+    AbilitiesvsTypes(d3v3)
+})
 
-   
 
    
    //Update data section (Called from the onclick)
