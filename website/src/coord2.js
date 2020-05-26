@@ -21,7 +21,7 @@ var m = [40, 0, 10, 0],
      svg,
     background,
     highlighted,
-    dimensions,                           
+    dimensions,
     legend,
     render_speed = 50,
     brush_count = 0,
@@ -99,7 +99,7 @@ d3.csv("data/spk2.csv", function(raw_data) {
 
 
 
-    return (_.isNumber(data[0][k])) && (yscale[k] = d3.scale.linear()
+    return (_.isNumber(data[0][k])) && (yscale[k] = d3.scaleLinear()
       .domain(d3.extent(data, function(d) { return +d[k]; }))
       .range([v, 0]));
   }))
@@ -111,7 +111,7 @@ d3.csv("data/spk2.csv", function(raw_data) {
       .data(dimensions)
     .enter().append("svg:g")
       .attr("class", "dimension")
-      .attr("transform", function(d) { 
+      .attr("transform", function(d) {
 
         return "translate(" + xscale(d) + ")"; })
       .call(d3.behavior.drag()
@@ -238,7 +238,7 @@ function create_legend(colors,brush) {
   var legend = legend_data
     .enter().append("div")
       .attr("title", "Hide group")
-      .on("click", function(d) { 
+      .on("click", function(d) {
         // toggle food group
         if (_.contains(excluded_groups, d)) {
           d3.select(this).attr("title", "Hide group")
@@ -253,23 +253,23 @@ function create_legend(colors,brush) {
 
   legend
     .append("span")
-    .style("background", function(d,i) { 
+    .style("background", function(d,i) {
       return color(d,0.85)})
     .attr("class", "color-bar");
 
   legend
     .append("span")
     .attr("class", "tally")
-    .text(function(d,i) { return 0});  
+    .text(function(d,i) { return 0});
 
   legend
     .append("span")
-    .text(function(d,i) { return " " + d});  
+    .text(function(d,i) { return " " + d});
 
   return legend;
 }
- 
-// render polylines i to i+render_speed 
+
+// render polylines i to i+render_speed
 function render_range(selection, i, max, opacity) {
   selection.slice(i,max).forEach(function(d) {
     path(d, foreground, color(d.Body_Style,opacity));
@@ -302,7 +302,7 @@ function data_table(sample) {
       .text(function(d) { return "  "+ String(d.name); })
 }
 
-// Adjusts rendering speed 
+// Adjusts rendering speed
 function optimize(timer) {
   var delta = (new Date()).getTime() - timer;
   render_speed = Math.max(Math.ceil(render_speed * 30 / delta), 8);
@@ -330,7 +330,7 @@ function selection_stats(opacity, n, total) {
 // Highlight single polyline
 function highlight(d) {
   d3.select("#foreground").style("opacity", "0.25");
-  d3.selectAll(".row").style("opacity", function(p) { 
+  d3.selectAll(".row").style("opacity", function(p) {
 
     return (d.Body_Style == p) ? null : "0.3" });
   path(d, highlighted, color(d.Body_Style,1));
@@ -430,7 +430,7 @@ function brush() {
           .selectAll('text')
           .style('font-weight', 'bold')
           .style('font-size', '13px')
-          .style('display', function() { 
+          .style('display', function() {
             var value = d3.select(this).data();
             return extent[0] <= value && value <= extent[1] ? null : "none"
           });
@@ -451,7 +451,7 @@ function brush() {
         .style('fill','black');
     });
     ;
- 
+
   // bold dimensions with label
   d3.selectAll('.label')
     .style("font-weight", function(dimension) {
@@ -506,7 +506,7 @@ function brush() {
     });
 
   legend.selectAll(".tally")
-    .text(function(d,i) { return " " + tallies[d].length});  
+    .text(function(d,i) { return " " + tallies[d].length});
 
   // Render selected lines
   paths(selected, foreground, brush_count, true);
@@ -672,14 +672,14 @@ window.onresize = function() {
       .attr("height", v + m[0] + m[2])
     .select("g")
       .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
-  
+
   xscale = d3.scale.ordinal().rangePoints([0, z], 1).domain(dimensions);
   dimensions.forEach(function(d) {
     yscale[d].range([v, 0]);
   });
 
   d3.selectAll(".dimension")
-    .attr("transform", function(d) { 
+    .attr("transform", function(d) {
 
 
       return "translate(" + xscale(d) + ")"; })
@@ -722,11 +722,11 @@ function exclude_data() {
 function remove_axis(d,g) {
   dimensions = _.difference(dimensions, [d]);
   xscale.domain(dimensions);
-  g.attr("transform", function(p) { 
+  g.attr("transform", function(p) {
 
 
     return "translate(" + position(p) + ")"; });
-  g.filter(function(p) { return p == d; }).remove(); 
+  g.filter(function(p) { return p == d; }).remove();
   update_ticks();
 }
 

@@ -124,7 +124,7 @@ function add_chart(svg_name, csv_file, gen, feature, d3_version){
 * */
 function add_legend(features, d3_version){
     d3 = d3_version
-    let svg = d3.select("#svg_circle")
+    let svg7= d3.select("#svg_circle")
     let l = features.length
     let space = 0.5*window.innerWidth
     let interval = 50
@@ -139,7 +139,7 @@ function add_legend(features, d3_version){
             legend="legendary"
         }
         let px_txt=px+10
-        let leg=svg.append("text")
+        let leg=svg7.append("text")
             .text(legend)
             .attr("transform", "translate("+px_txt+", 25) rotate(35)")
             .style("font-size", 18)
@@ -153,12 +153,12 @@ function add_legend(features, d3_version){
         let color = d3.csv("data/dot_colors.csv").then(function(d){
             let feat=features[i]
             let index = d.findIndex((k)=>{ return k.feature === feat})
-            svg.append("circle")
+            svg7.append("circle")
                 .attr("cx", px)
                 .attr("cy", 20)
                 .attr("r", 10)
                 .style("fill", d[index].color)
-            svg.append("rect")
+            svg7.append("rect")
                 .attr("transform", "translate("+px+", 10) rotate(35)")
                 .attr("width", l)
                 .attr("height", 18)
@@ -626,13 +626,13 @@ function add_select_gen(gen, feature, d3_version){
     var width = 400, height = 600;
     l=l*10;
     let main_svg = d3.select("#svg_circle")
-    svg=main_svg.append("svg")
+    svg7=main_svg.append("svg")
         .attr("width", width)
         .attr("height", height)
         .append("g")
         .attr("class","dropdown");
 
-    let select = svg.append("g")
+    let select = svg7.append("g")
         .attr("class", "select")
 
     select.append("rect")
@@ -648,7 +648,7 @@ function add_select_gen(gen, feature, d3_version){
         .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .attr("id","mydropdown")
         .text( selection[gen]);
-    var options = svg.selectAll(".myBars")
+    var options = svg7.selectAll(".myBars")
         .data(selection)
         .enter()
         .append("g");
@@ -699,13 +699,13 @@ function add_select_feature(gen, feature, d3_version){
     l=l*10;
     px=140
     let main_svg = d3.select("#svg_circle")
-    svg=main_svg.append("svg")
+    svg7=main_svg.append("svg")
         .attr("width", width)
         .attr("height", height)
         .append("g")
         .attr("class","dropdown");
 
-    let select = svg.append("g")
+    let select = svg7.append("g")
         .attr("class", "select")
 
     select.append("rect")
@@ -720,7 +720,7 @@ function add_select_feature(gen, feature, d3_version){
         .attr("font-family", "Andale Mono,AndaleMono,monospace")
         .attr("id","mydropdown")
         .text( feature);
-    var options = svg.selectAll(".myBars")
+    var options = svg7.selectAll(".myBars")
         .data(selection)
         .enter()
         .append("g");
