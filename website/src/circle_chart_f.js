@@ -1002,7 +1002,7 @@ function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_versi
             .attr("y", py)
             .text(stat[i])
             .attr("font-family", "Andale Mono,AndaleMono,monospace")
-            .style("font-size", 0)
+            .style("font-size", 15)
             .attr("class", "id_card")
             .attr("alignment-baseline", "central")
             .attr("text-anchor", "middle")
@@ -1018,7 +1018,7 @@ function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_versi
         .attr("stroke", "none")
         .attr("stroke-width", 2)
         .attr("fill", col)
-        .attr("opacity", 0.7)
+        .attr("opacity", 0.5)
         .attr("class", "id_card")
 
 
