@@ -21,3 +21,9 @@ rect.dropdown {
 circle.name_dot {
     fill: rgb(139, 0, 10)
 }
+svg{
+  position: "relative"
+}
+svg.circle{
+  position: "relative"
+}
