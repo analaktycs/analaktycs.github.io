@@ -1,4 +1,15 @@
+var sound_on = true;
+
+
+/*
+* this function creates a svg, this is the main svg that will contain all of the
+* w is the width of the svg
+* h is the height of the svg
+* color is the background color
+* */
 function create_svg(w, h, color){
+
+
     let canvas = d3.select("body")
         .append("svg")
         .attr("width", w)
@@ -8,35 +19,44 @@ function create_svg(w, h, color){
 
 }
 
-var sound_on = true;
 
+/*
+* this function draws a sound icon
+* this d3 element has an on click event that turns sound on and off by changing the value of the global variable sound_on
+* */
 function add_sound_icon(d3_version){
     d3=d3_version
     let pic = d3.select("#svg_circle")
         .append("image")
         .attr("xlink:href", "src/images/sound.png")
-        .attr("x", 140)
+        .attr("x", 240)
         .attr("y", 15)
         .attr("width", 20)
         .attr("height", 20)
 
-    if(sound_on===false){ draw_cross(140, 15, 20, 20)}
+    if(sound_on===false){ draw_cross(240, 15, 20, 20)}
 
     let rect = d3.select("#svg_circle")
         .append("rect")
-        .attr("x",140)
+        .attr("x",240)
         .attr("y", 15)
         .attr("width", 20)
         .attr("height", 20)
         .attr("opacity", 0)
         .on("click", function(){
             sound_on = !sound_on
-            if(sound_on===false){ draw_cross(140, 15, 20, 20)}
+            if(sound_on===false){ draw_cross(240, 15, 20, 20)}
             else{d3.selectAll(".sound_cross").remove()}
         })
 
 
 }
+
+/*
+* this function draws a cross
+* the upper right corner is at coordinate (x,y)
+* the height and width of the cross are defined by the variables height and width
+ */
 function draw_cross(x, y, width, height){
     let line_1 = d3.select("#svg_circle")
         .append("line")
@@ -61,10 +81,18 @@ function draw_cross(x, y, width, height){
 
 }
 
-function add_chart(svg_name, color, csv_file, gen, feature, d3_version){
+
+/*
+* This calls other functions that will add all the elements to the SVG
+* svg_name is the id of the svg we want to add the chart to
+* csv_file is the main data file path
+* gen is the default generation
+* feature is the default feature
+* */
+function add_chart(svg_name, csv_file, gen, feature, d3_version){
     let size= window.innerWidth/3
     let posx=  window.innerWidth/2
-    let posy=  window.innerHeight/2
+    let posy=  window.innerHeight/1.8
     let diameter = size/2
     d3.csv(csv_file).then(function(d){
         let gen_pkm = get_gen(d, gen)
@@ -76,7 +104,7 @@ function add_chart(svg_name, color, csv_file, gen, feature, d3_version){
                 name: k.name
             }
         });
-    d3=d3_version
+        d3=d3_version
         let nb_angles = names.length
         add_sound_icon(d3_version)
         create_pokeball(diameter, posx, posy, d3_version)
@@ -89,13 +117,18 @@ function add_chart(svg_name, color, csv_file, gen, feature, d3_version){
 
 }
 
+
+/*
+* this function adds the legend for the features
+* the variable features is an array of string with all the possibilities in the selected feature
+* */
 function add_legend(features, d3_version){
     d3 = d3_version
     let svg = d3.select("#svg_circle")
     let l = features.length
     let space = 0.5*window.innerWidth
-    let interval = space/l
-    let start = space/2
+    let interval = 50
+    let start = 300
     for(let i=0; i<features.length; i++){
         let px = start+i*interval
         let legend = features[i]
@@ -109,12 +142,12 @@ function add_legend(features, d3_version){
         let leg=svg.append("text")
             .text(legend)
             .attr("transform", "translate("+px_txt+", 25) rotate(35)")
-            .style("font-size", window.innerWidth/100)
+            .style("font-size", 18)
             .style("fill", "black")
             .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("alignment-baseline", "central")
             .attr("id", "legend_"+i)
-        let l = document.getElementById("legend_"+i).getBoundingClientRect().width*1.5
+        let l = document.getElementById("legend_"+i).getBoundingClientRect().width*1.3
 
 
         let color = d3.csv("data/dot_colors.csv").then(function(d){
@@ -140,6 +173,12 @@ function add_legend(features, d3_version){
 
 }
 
+
+/*
+* this function is used for the animation of the pokeball
+* arc is the arc that is animated
+* newAngle is the final angle that the arc will have
+* */
 function arcTween(newAngle, arc, d3_version) {
     d3=d3_version
     return function(d) {
@@ -151,11 +190,18 @@ function arcTween(newAngle, arc, d3_version) {
     }
 }
 
+
+
+/*
+* function that creates the pokeball with the animation of it being created
+* size is the diameter of the pokeball
+* the center of the pokeball is at coordinate (posx, posy)
+* */
 function create_pokeball(size, posx, posy, d3_version){
 
     d3=d3_version
     let base_circle = d3.select("#svg_circle")
-    const opa=0.5
+    const opa=0.7
 
     let arc = d3.arc()
         .innerRadius(0)
@@ -235,6 +281,16 @@ function create_pokeball(size, posx, posy, d3_version){
 
 }
 
+
+/*
+* this function creates circles elements and text elements and place them around a pokeball
+* names is an array of pokemon names from the selected generation
+* nb_angles is the length of the name array
+* size is the diameter of the main circle formed by the dots
+* the center of the pokéball is at coordinate (posx, posy)
+* pkm is an array of all the pokémons from the chosen generation
+* feature is the feature that will dictate the order of pokémons around the circle (chosen feature)
+* */
 function add_names_and_dots(names, nb_angles, size, posx, posy, pkm, feature, d3_version){
     d3 = d3_version
     let base_circle = d3.select("#svg_circle")
@@ -270,8 +326,8 @@ function add_names_and_dots(names, nb_angles, size, posx, posy, pkm, feature, d3
                 .attr("olol_x", posx)
                 .attr("olol_y", posy)
                 .on("mouseover", function(){
-                    create_ID_card(posx, posy, size, a, pokemon, d3_version)
-                    })
+                    create_ID_card(posx, posy, pokemon, d3_version)
+                })
                 .on("click", function(){
                     let url_id = id.toString()
 
@@ -287,7 +343,7 @@ function add_names_and_dots(names, nb_angles, size, posx, posy, pkm, feature, d3
                     let name = pokemon["name"]
                     let name_url = name.charAt(0).toLowerCase()+name.slice(1)
                     if(sound_on){playSound("https://play.pokemonshowdown.com/audio/cries/"+name_url+".mp3")}
-                    })
+                })
                 .on("mouseout", function(){
                     d3.selectAll(".id_card").remove()
                 })
@@ -313,6 +369,17 @@ function add_names_and_dots(names, nb_angles, size, posx, posy, pkm, feature, d3
 
 }
 
+
+/*
+* this function is used to separate a given array of pokemon into two categories
+*       1) the pokemons that win against a given pokemon
+*       2) the pokemons that lose against that given pokemon
+* It will create two new smaller pokebals with their names and dots
+* id is the pokedex number of the chosen pokemon
+* pkm_list is the array of pokemons from the selected generation
+* radius is the radius of the small dots
+* rad is the radius of the full pokeball which center is at coordinates (posx, posy)
+* */
 function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3_version){
     d3=d3_version
     duration = 3000
@@ -349,6 +416,8 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3_v
         loss=loosers.length
         let rad_win = radius*winners.length/len
         let rad_loose = radius*loosers.length/len
+        winner_y=posy-window.innerHeight/8+rad_win/2
+        looser_y=posy-window.innerHeight/8+rad_loose/2
         d3.selectAll(".pokeball").remove()
         create_pokeball(rad_win+rad ,winner_x, winner_y, d3_version)
         create_pokeball(rad_loose+rad ,looser_x, looser_y, d3_version)
@@ -483,6 +552,11 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3_v
 
 }
 
+
+/*
+* This function takes as argument a pokémon and a selected feature
+* It will find what type of feature the pokemon possesses and return the corresponding color from dot_color file
+* */
 function get_color(pkm, feature){
     let color = d3.csv("data/dot_colors.csv").then(function(d){
         let feat=pkm[feature]
@@ -492,6 +566,10 @@ function get_color(pkm, feature){
     return color
 }
 
+/*
+* This function returns an array with all the pokemon from the chosen generation gen
+* data is the data with all the pokemons
+* */
 function get_gen(data, gen){
     data_gen=[]
     for(let i=0; i<data.length; i++){
@@ -502,6 +580,11 @@ function get_gen(data, gen){
     return data_gen
 }
 
+
+/*
+* this function returns all possible values for a selected feature
+* data is the data with all the pokemons
+* */
 function get_feat(data, feature){
     let features = []
     for(let i=0; i<data.length; i++){
@@ -526,6 +609,12 @@ function get_feat(data, feature){
     return [features, ordered_pkm]
 }
 
+
+/*
+* this function creates the drop down menu for the generation
+* gen is the chosen gen
+* feature is the chosen feature
+* */
 function add_select_gen(gen, feature, d3_version){
     d3 = d3_version
     let selection=["generation 1", "generation 2", "generation 3", "generation 4", "generation 5", "generation 6", "generation 7"]
@@ -592,6 +681,12 @@ function add_select_gen(gen, feature, d3_version){
 
 }
 
+
+/*
+* this function creates the drop down menu for the feature
+* gen is the chosen gen
+* feature is the chosen feature
+* */
 function add_select_feature(gen, feature, d3_version){
     d3 = d3_version
     let selection=["Type", "Legendary", "Body-Style", "Color"]
@@ -602,7 +697,7 @@ function add_select_feature(gen, feature, d3_version){
     let l = "legendary".length
     var width = 4000, height = 3000;
     l=l*10;
-    px=(window.innerWidth*0.95)-l
+    px=140
     let main_svg = d3.select("#svg_circle")
     svg=main_svg.append("svg")
         .attr("width", width)
@@ -658,14 +753,25 @@ function add_select_feature(gen, feature, d3_version){
 
 }
 
+
+/*
+* this function updates the chart after the drop down menu has been used
+* index is the chosen generation
+* feature is the chosen feature
+* it deletes the main SVG and recreates the chart
+* */
 function update_chart(index, feature, d3_version){
     d3.select("#svg_circle").remove()
     let w = window.innerWidth
     let h = window.innerHeight
     create_svg(w, h, "#f8f8f8")
-    add_chart("svg_circle", "#f8f8f8", csv_file, index, feature, d3_version)
+    add_chart("svg_circle", csv_file, index, feature, d3_version)
 }
 
+/*
+* this function calculates the arc angle of an arc centered in (cx, cy)
+* x, y are the coordinates of the angle's second branch
+* */
 function get_angle(x, y, cx, cy){
     let dx = x-cx
     let dy = y-cy
@@ -688,7 +794,14 @@ function get_angle(x, y, cx, cy){
     return a
 }
 
-function create_ID_card(posx, posy, size, angle, pkm, d3_version){
+
+/*
+* This function creates an ID card
+* it is called when there's a mouse over event with the dots around a pokeball
+* posx and posy are the coordinates of the center of the pokeball which the dot is around of
+* pkm is the pokemon that gets mouse-overed
+* */
+function create_ID_card(posx, posy, pkm, d3_version){
     d3=d3_version
     let pkm_nbr=pkm["pokedex_number"]
     poke_circle = d3.select("#circle_"+pkm_nbr)
@@ -787,6 +900,15 @@ function create_ID_card(posx, posy, size, angle, pkm, d3_version){
 
 }
 
+
+/*
+* This function creates an empty radar chart with the pokemon's stats
+* data is the chosen pokemon
+* nb_angle is the total number of stats (6)
+* posx, posy are the coordinates of the radar chart
+* nb_sep is the number of lines that are inside of the spider chart
+* col is the color of the display
+* */
 function create_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_version){
     d3=d3_version
     let labels = ["hp", "def", "atk", "sp_def", "sp_atk", "spd"]
@@ -834,6 +956,15 @@ function create_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_version
 
 }
 
+
+/*
+* This function adds data to an empty spider chart
+* data is the chosen pokemon
+* nb_angle is the total number of stats (6)
+* posx, posy are the coordinates of the radar chart
+* nb_sep is the number of lines that are inside of the spider chart
+* col is the color of the display
+* */
 function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_version){
     d3=d3_version
     let labels = ["hp", "def", "atk", "sp_def", "sp_atk", "spd"]
@@ -871,7 +1002,7 @@ function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_versi
             .attr("y", py)
             .text(stat[i])
             .attr("font-family", "Andale Mono,AndaleMono,monospace")
-            .style("font-size", window.innerWidth/150)
+            .style("font-size", 0)
             .attr("class", "id_card")
             .attr("alignment-baseline", "central")
             .attr("text-anchor", "middle")
@@ -894,6 +1025,14 @@ function add_data_radar(data, nb_angles, size, posx, posy, nb_sep, col, d3_versi
 
 }
 
+
+/*
+* this function creates the information sheet that pops up upon the on click event of the dots
+* pkm is the pokemon that has been clicked
+* index is the generation that is currently selected
+* feature is the feature that is currently selected
+* pkm_list is an array with all the pokemons that are in the same generation as the one selected
+* */
 function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
     d3=d3_version
     let width = window.innerWidth/4
@@ -1158,6 +1297,10 @@ function create_info_sheet(pkm, index, feature, pkm_list, d3_version){
         })
 }
 
+/*
+* this function plays the sound soundFile
+* it is used when there is a click event on a dot
+* */
 function playSound(soundfile) {
     let sound =new Audio(soundfile)
     sound.play();
