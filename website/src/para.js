@@ -1,5 +1,5 @@
 var chart = d3v3.parsets()
-                        .dimensions(["abilities", "types", "Body_Style", "Color"]);
+                        .dimensions(["types", "Body_Style", "Color","abilities"]);
 var vis = d3v3.select("#tool").append("svg")
                       .attr("width", chart.width())
                       .attr("height", chart.height());
@@ -23,7 +23,7 @@ var generations_ = d3v3.select("#tool")
                     })
 
 
-var file_name = "data/parallel_generation.csv"
+var file_name = "data/l9wada.csv"
 
 
 

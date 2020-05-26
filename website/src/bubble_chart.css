@@ -1,13 +1,20 @@
-<style>
 .bubbles {
   stroke-width: 1px;
   stroke: black;
-  opacity: .8
+  opacity: .8;
 }
 .bubbles:hover {
   stroke: black;
 }
-.svg{
-  position: relative;
+
+.axisBlack line{
+  stroke: black;
 }
-</style>
+
+.axisBlack path{
+  stroke: black;
+}
+
+.axisBlack text{
+  fill: black;
+}
