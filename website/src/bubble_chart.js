@@ -10,7 +10,7 @@ var svg5 = d3v4.select("#my_dataviz")
 .attr("height", height + margin.top + margin.bottom)
 .append("g")
 .attr("transform",
-"translate(" + margin.left + "," + margin.top + ")");
+"translate(" + 30 + "," + margin.top + ")");
 
 //Read the data
 d3v4.csv("data/first6gens_short.csv", function(data) {
@@ -88,7 +88,8 @@ svg5
   .attr("text-anchor", "end")
   .attr("x", width)
   .attr("y", height+50 )
-  .attr("display", null)
+  .attr("position", "absolute")
+  .style("fill", "black")
   .text("Attack");
 
   // Add Y axis
@@ -100,7 +101,7 @@ svg5
 .append("g")
   .attr("class",'axisBlack')
   .call(d3v4.axisLeft(y))
-  .attr("transform", "translate(30,0)")
+  .attr("transform", "translate(0,0)")
   .attr("position", "absolute")
   .style("opacity", 1);
 
