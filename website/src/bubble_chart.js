@@ -86,7 +86,7 @@ svg5
   var x_label = svg5.append("text")
   .attr("id", "x_label")
   .attr("text-anchor", "end")
-  .attr("x", width)
+  .attr("x", width-50)
   .attr("y", height+50 )
   .attr("position", "absolute")
   .style("fill", "black")
