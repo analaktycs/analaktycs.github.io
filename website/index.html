@@ -232,9 +232,22 @@
               let d3_ludo = d3
               </script>
 
+              <h1>Welcome to the battle arena!</h1>
+              <h3>
+                <small class="text-muted">Aims at showing how chosing a specfic value for a feature will impact on another statistic.
+                  With this visualization, explore the whole Pokémon population generation-wise. Choose the
+                  generation you're interested in with the left drop down menu and then sort out the Pokémons of that
+                  generation according to a certain feature chosen with the right drop down menu. Then you can put
+                  your mouse over the dots around the Pokéball to display an ID card of the corresponding Pokémon which
+                  contains a picture and a spider chart with its stats. When you find a Pokémon to your liking and want
+                  more informations on it or if you are curious about how strong a certain Pokémon is, you can click
+                  on the dot: a more complete information sheet will appear and the outcome of every battles will be
+                  displayed. Upon clicking, the in-game cry of the Pokémon will be played. To turn that sound on and
+                  off, click on the sound icon.</small>
+              </h3>
+
               <div id = "circle_chart_div">
                 <script src="src/circle_chart_f.js"></script>
-                <script src="src/add_text_circle_chart.js"></script>
                 <link rel="stylesheet" href="src/circle_chart.css">
                 <script src="https://d3js.org/d3.v5.js"></script>
                 <script>
@@ -244,9 +257,7 @@
                   let csv_file="data/data_for_circle_chart.csv"
                   let w = window.innerWidth
                   let h = window.innerHeight*1.6
-                  create_svg_txt(w, h, "#f8f8f8")
                   create_svg(w, h, "#f8f8f8")
-                  add_text_desc(color_txt_titel, color_txt_bod)
                   add_chart("main_svg", csv_file, 0, "Type", d3_ludo)
 
 
