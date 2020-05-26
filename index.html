@@ -14,10 +14,10 @@
     <!-- Bootstrap CSS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+
     <link href="src/style.css" rel="stylesheet" />
 
-  
+
   </head>
 
   <body>
@@ -106,7 +106,7 @@
       </div>
 
 
-      <div id = "Figure3"> 
+      <div id = "Figure3">
                 <h1>Figure 3 : Feature Relationship </h1>
           <h3>
               <small class="text-muted">Aims at showing how chosing a specfic value for a feature will impact on another statistic.
@@ -116,10 +116,10 @@
             Dynamical vue over the generations.</small>
          </h3>
 
-          <h3>Figure 3.1 : Bipartite display of feature relation ships, in proportion and frequency</h3>   
+          <h3>Figure 3.1 : Bipartite display of feature relation ships, in proportion and frequency</h3>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-primary">
-                      <input type="checkbox" checked="" autocomplete="off"  value ="AbilitiesvsTypes" onclick="AbilitiesvsTypes()"/> Abilities vs Types 
+                      <input type="checkbox" checked="" autocomplete="off"  value ="AbilitiesvsTypes" onclick="AbilitiesvsTypes()"/> Abilities vs Types
                     </label>
                     <label class="btn btn-primary active">
                       <input type="checkbox" autocomplete="off" onclick="TypesvsBody()"/> Types vs Body
@@ -127,46 +127,46 @@
                     <label class="btn btn-primary active">
                       <input type="checkbox" autocomplete="off" onclick="ColorvsBody()"/> Body vs Color
                     </label>
-                     
+
                      </div>
-                     <div id = "bipartite2">    
-  
-                        <script src="http://vizjs.org/viz.v1.1.0.min.js"></script> 
+                     <div id = "bipartite2">
+
+                        <script src="http://vizjs.org/viz.v1.1.0.min.js"></script>
                           <script src="src/testViz2.js" ></script> </div>
 
 
-    <h3>Figure 3.3 : Bipartite display of feature relation ships, in flow manner </h3>   
+    <h3>Figure 3.3 : Bipartite display of feature relation ships, in flow manner </h3>
 
           <div id = "sankey">
 
 
 
                <script class="box" src="src/sankeyTest.js"></script>
-  
+
                 </div>
 
 
 
            </div>
 
-  <h3>Figure 3.3 : Coordinate display of categorical features relation ships</h3>   
-               
+  <h3>Figure 3.3 : Coordinate display of categorical features relation ships</h3>
+
 
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-primary">
-                      <input type="checkbox" checked="" autocomplete="off"  value ="overall" onclick="overall()"/> Abilities vs Types 
+                      <input type="checkbox" checked="" autocomplete="off"  value ="overall" onclick="overall()"/> Abilities vs Types
                     </label>
                     <label class="btn btn-primary active">
                       <input type="checkbox" autocomplete="off" onclick="spk()"/> Types vs Body
                     </label>
 
-                     
+
                      </div>
                       <div  id="chartArea">
 
                      <script src="https://d3js.org/d3.v4.js"></script>
               <script class = 'box' src = "src/spk_coord.js" > </script></div>
- 
+
 
       </div>
 
