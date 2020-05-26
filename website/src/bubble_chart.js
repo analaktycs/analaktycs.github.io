@@ -72,7 +72,7 @@ console.log(data)
 
   // Add X axis
   const x = d3v4.scaleLinear()
-  .domain([0, 240])
+  .domain([0, 260])
   .range([ 0, width ])
 
 svg5
