@@ -106,17 +106,19 @@
       </div>
 
 
-      <div id = "Figure3">
-        <h1>Figure 3 : Feature Relationship </h1>
-        <h3>
-          <small class="text-muted">Aims at showing how chosing a specfic value for a feature will impact on another statistic.
-            Dynamical bipartite graphic.
-            By default, displayed features would be the ones juged having significant relationship across generations.
-            User could chose the two features he is interested in.
-            Dynamical vue over the generations.</small>
-          </h3>
+       <div id = "Figure3">
+        <h1>Feature Relationship, pokemon search </h1>
 
-          <h3>Figure 3.1 : Bipartite display of feature relationships, in proportion and frequency</h3>
+
+        <h2>Pokemon type influence</h2>
+
+
+          <p>How does the choice of a specific ability influence the type of my pokemon ? Whats is the outcome of choosing a water pokemon on its body style ? How will my pokemon look like if i want him to be white ? How is my choice going to be affected by the generation i am looking into ?<br>
+</p>
+<p>
+        <strong>All does questions can be answered by this bipartite visualization </strong>. <br> <br>Just select which type of comparison you want to make whether you are interested in knowing the relationship between  Abilities and types, types and body styles or types and colors. By hovering over a specific feature element (in either displayed features), the figure will give you insights on the outcome of such choice over the type pokemon feature distribution. Investigation can also be conducted generation wise to apprehend changes in feature distribution over time. Select your generation using the according toggle and see what happens for you feature of interest.
+      </p>
+
 
           <script src="lib/viz.js"></script>
           <script src="https://d3js.org/d3.v3.js"></script>
@@ -144,13 +146,33 @@
             <script src="https://d3js.org/d3.v3.js"></script>
             <script > console.log(d3.version)</script>
             <script src="lib/viz.js"></script>
-            <script src="src/testViz2.js" ></script> </div>
+
+            <script src="src/testViz2.js" ></script>
+            <p>As pokemon type is a determinant feature in pokemon capabilities and esthetics, the above figure will provide the reader quantitative insights on such relationships. Depending on the reader’s interest in abilities or esthetic outcome upon type decision, he might favor one generation over the other.
+ <br> <br>
+Let’s say the reader is interested in poisonous pokemons and wants to get insights on the related diversity of pokemons across the generations as well as the capabilities and esthetics possibilities there are for such pokemons. First off, the reader might want to focus on generation one as 14% of the most present abilities are poison related while it does not exceed 6% for the other generations. It is confirmed in the esthetic comparisons as 19 % of the most present bodyshapes and colors are related to poisonous pokemons. With that being said, the reader might end up with a purple pokemon as it is present in 51 % percent of the poisonous pokemons cases. Body shapes are petty much uniformly distributed for that category.
+ <br> <br>
+For figure clarity sake, only most represented types, colors, body styles and abilities per generation are shown. The diversity in those features explains the sometime low displayed percentages.
+
+
+                  </p>
 
 
 
-            <h3>Figure 3.2 : Coordinate display of categorical feature relationships</h3>
+           </div>
+
+
+
+            <h2>Abilities and esthetics</h2>
 
             <div>
+              <p> Let’s go deeper. As the reader may have gained insights on flying pokemon color across generations or the various pokemon types having the ability to levitate, the above visualization will bridge the gap between types abilities and esthetics all together.
+<br> <br>
+If you are wondering what will be the type and abilities of your pokemon if you want him to be black and have wings, or how many esthetic - types combinaisons you have left upon choosing a telepathic pokemon in the first generation, this figure will provide the answer.
+Moreover, the figure also displays quantitative insights on pokemon distribution for each pattern or for a specific feature value as the path widths are proportional to pokemon distribution.
+<br> <br>
+Hover over a given feature value to see the possible left choices for the other feature values. The pokemon distribution as well as the selected pattern will be displayed at the bottom. The reader can also chose a specific generation as well as a curve shaped display to better apprehend how many pokemons are left for each pattern. The figure is also made so that the reader can change the order of feature display by shifting them up and down upon dragging, as well as changing feature value upon left and right draggin as well. Moreover, feature value can also be displayed by size or alphabetical order upon clicking on the respective toggle “size” and “alpha” after hovering on the feature.
+</p>
 
               <div id = "vis">
                 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -168,8 +190,22 @@
                 <script src="https://d3js.org/d3.v4.js"></script>
               </div>
 
+              <p>
+                Let’s get back to our poisonous pokemons of generation 1. Hovering over the poison type  highlights the various combinations of abilities and esthetics among the 33 available pokemons (representing 18 % of the selected pokemons of generation 1). Then hovering over the purple color as before reveals the possible body style and abilities combinations for the 14 left pokemons (representing 8 % of the selected pokemons of generation 1). Hence the reader will that his left with the  abilities - bodyshapes possibilities : <br><br>
+<li>Run-Away -- Bipedal : 1 pokemon </li><br>
+<li>Poison touch - Head-arms : 2 pokemons</li><br>
+<li>Unnerve - Serpentine : 2 pokemons</li><br>
+<li>Poison point - quadrupled : 2 pokemons</li><br>
+<li>Poison point - bipedal-tailed : 1 pokemon </li><br>
+<li>Hustle - quandrupled :  2 pokemons</li><br>
+<li>Inner focus - two wings :  2 pokemons</li><br>
+
+
+
+</p>
+
               <div id="header">
-                <h1>Pokemon Explorer</h1>
+                <h2>Pokemon Explorer</h2>
                 <div class="controls">
                   <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
                   <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
@@ -183,7 +219,13 @@
                 </div>
                 <div style="clear:both;"></div>
               </div>
-
+<p>
+  <br><br>Finally, it is time to put it all together. As abilities and esthetics are important for pokemon choice, they are not the only features that matters. In fact other categorical ones such as health points (hp), attack points (attack), special defence (sp_defence) and so on  exist and provide quantitative informations on pokemon’s behaviour in combat as well as other general characteristics. Hence, it is important to investigate the different patterns across those features among the pokemons for the 6 available generations. In fact, some readers might only want to focus on such categories for there pokemon choice. Highest Hp and special attack, with a low likelihood of encounter (low capture rate) have proven to be important features in public choice. For that, the following coordinate visualization will  provide answers to the reader in many ways.
+ <br><br>
+ First off, its possible to select for more than one feature a given range of values upon clicking and dragging on the corresponding axis range of interest. Such selection will make the figure display the pokemons name and patterns fitting such range of values. The number of displayed pokemons is shown on top of the figure. Hence, it is also possible to compare pokemon distribution for a given subset of values across generations.
+The order of features can be changed as well upon left and right click and drag on the feature of interest.
+<br><br>
+ </p>
               <div id="chart">
                 <canvas id="background"></canvas>
                 <canvas id="foreground"></canvas>
@@ -212,7 +254,8 @@
                     </p>
                   </div>
                 </div>
-                <div  class="third">
+
+              <div  class="third">
                   <small>
                     <!--Last rendered <strong id="render-speed"></strong> lines-->
                   </small>
@@ -227,6 +270,9 @@
                 </div>
               </div>
 
+
+
+
               <script src="https://d3js.org/d3.v4.js"></script>
 
               <script src="lib/v2.js"></script>
@@ -238,6 +284,7 @@
 
 
               <script>
+
               let d3_kamil = d3
               console.log(d3_kamil.version,'wesh')
               console.log(window.version,'window')
@@ -249,6 +296,19 @@
               <script>
               let d3_ludo = d3
               </script>
+
+              <div>
+                <p>
+                <br><br><br><br><br><br>
+                On the other hand, the reader can  search for a specific pokemon’s pattern upon name entry. Hovering over it will only display its pattern in the foreground.
+                <br><br>
+                Lastly, this visualization bridges the gap between body styles and categorical features. Such relationship investigation can be of use to better apprehend body style influence on the pokemon’s behaviour.
+                <br><br>
+                With that being said, it is time to find our poisonous pokemons. To choses between the remaining options, we select the possible body types in the first generation and look for the best pattern in terms of attack ( above 90  ) and rareness  (low values, caputre_rate less than 50 ). Quadrupled and bipedal_tailed  seem to match such conditions giving respectively Venusaur and both Nidoking and Nidoqueen for the bipedal_tailed.
+
+
+                </p>
+                </div>
 
               <h1>Welcome to the battle arena!</h1>
               <h3>
