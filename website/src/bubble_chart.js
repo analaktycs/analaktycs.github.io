@@ -1,16 +1,10 @@
-
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
-
-<script>
-
 // set the dimensions and margins of the graph
 var margin = {top: 40, right: 150, bottom: 60, left: 30},
 width = 1000 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3v4.select("#my_dataviz")
 .append("svg")
 .attr("width", width + margin.left + margin.right)
 .attr("height", height + margin.top + margin.bottom)
@@ -19,7 +13,7 @@ var svg = d3.select("#my_dataviz")
 "translate(" + margin.left + "," + margin.top + ")");
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-project-analaktycs/master/data/first6gens_short.csv", function(data) {
+d3v4.csv("data/first6gens_short.csv", function(data) {
 
   // ---------------------------//
   //       SELECT               //
@@ -31,8 +25,9 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   var rGroup = ["hp", "attack", "defense", "sp_attack", "sp_defense", "speed", "capture_rate", "weight_kg", "height_cm"]
   var genGroup = [1,2,3,4,5,6]
 
+console.log(data)
   //Create 1st dropdown
-  var xMenu = d3.select("#x_dropdown")
+  var xMenu = d3v4.select("#x_dropdown")
   xMenu.append("select")
   .selectAll('myOptions')
   .data(xGroup)
@@ -42,7 +37,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
   //Create 2nd dropdown
-  var yMenu = d3.select("#y_dropdown")
+  var yMenu = d3v4.select("#y_dropdown")
   yMenu.append("select")
   .selectAll('myOptions')
   .data(yGroup)
@@ -52,7 +47,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
   //Create 3rd dropdown
-  var rMenu = d3.select("#r_dropdown")
+  var rMenu = d3v4.select("#r_dropdown")
   rMenu.append("select")
   .selectAll('myOptions')
   .data(rGroup)
@@ -62,7 +57,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
   //Create 4th dropdown
-  var genMenu = d3.select("#gen_dropdown")
+  var genMenu = d3v4.select("#gen_dropdown")
   genMenu.append("select")
   .selectAll('myOptions')
   .data(genGroup)
@@ -76,12 +71,14 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   // ---------------------------//
 
   // Add X axis
-  var x = d3.scaleLinear()
+  var x = d3v4.scaleLinear()
   .domain([0, 240])
-  .range([ 0, width ]);
+  .range([ 0, width ])
   svg.append("g")
   .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(x));
+  .call(d3v4.axisBottom(x))
+  .attr("position", "absolute")
+  .style("opacity", 1);
 
   // Add X axis label:
   var x_label = svg.append("text")
@@ -89,14 +86,20 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   .attr("text-anchor", "end")
   .attr("x", width)
   .attr("y", height+50 )
+  .attr("display", null)
+  .attr("position", "absolute")
+  .style("fill", "black")
   .text("Attack");
 
   // Add Y axis
-  var y = d3.scaleLinear()
+  var y = d3v4.scaleLinear()
   .domain([0, 240])
-  .range([ height, 0]);
+  .range([ height, 0])
   svg.append("g")
-  .call(d3.axisLeft(y));
+  .call(d3v4.axisLeft(y))
+  .attr("transform", "translate(30,0)")
+  .attr("position", "absolute")
+  .style("opacity", 1);
 
   // Add Y axis label:
   var y_label = svg.append("text")
@@ -104,17 +107,19 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   .attr("text-anchor", "end")
   .attr("x", 0)
   .attr("y", -20 )
+  .attr("position", "absolute")
+  .style("fill", "black")
   .text("Defense")
   .attr("text-anchor", "start")
 
   // Add a scale for bubble size
-  var z = d3.scaleSqrt()
+  var z = d3v4.scaleSqrt()
   .domain([1, 300])
   .range([ 3, 15]);
 
   //TODO: fix the order of types
   // Add a scale for bubble color
-  var myColor = d3.scaleOrdinal()
+  var myColor = d3v4.scaleOrdinal()
   .domain(["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"])
   .range(["#A8A77A", //normal
   "#C22E28", //fighting
@@ -157,7 +162,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
     .text(y_label_select.options[y_label_select.selectedIndex].text);
 
     //update circles
-    var u = d3.select("#graphArea").selectAll("#graphCircles")
+    var u = d3v4.select("#graphArea").selectAll("#graphCircles")
     .data(dataFilter);
 
     u.enter()
@@ -173,15 +178,15 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
 
     u.exit().remove();
 
-    d3.select("#graphArea").selectAll("circle").on("mouseover", showTooltip);
-    d3.select("#graphArea").selectAll("circle").on("mousemove", moveTooltip);
-    d3.select("#graphArea").selectAll("circle").on("mouseleave", hideTooltip);
+    d3v4.select("#graphArea").selectAll("circle").on("mouseover", showTooltip);
+    d3v4.select("#graphArea").selectAll("circle").on("mousemove", moveTooltip);
+    d3v4.select("#graphArea").selectAll("circle").on("mouseleave", hideTooltip);
     x_label.exit().remove();
     y_label.exit().remove();
   }
 
   // When the button is changed, run the updateChart function
-  d3.select("#x_dropdown").on("change", function(d) {
+  d3v4.select("#x_dropdown").on("change", function(d) {
     // recover the option that has been chosen
     var selectedGen = document.getElementById('gen_dropdown').value
     var selectedX = document.getElementById('x_dropdown').value;
@@ -192,7 +197,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   })
 
   // When the button is changed, run the updateChart function
-  d3.select("#y_dropdown").on("change", function(d) {
+  d3v4.select("#y_dropdown").on("change", function(d) {
     // recover the option that has been chosen
     var selectedGen = document.getElementById('gen_dropdown').value
     var selectedY = document.getElementById('y_dropdown').value;
@@ -203,7 +208,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   })
 
   // When the button is changed, run the updateChart function
-  d3.select("#r_dropdown").on("change", function(d) {
+  d3v4.select("#r_dropdown").on("change", function(d) {
     // recover the option that has been chosen
     var selectedGen = document.getElementById('gen_dropdown').value
     var selectedY = document.getElementById('y_dropdown').value;
@@ -214,7 +219,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   })
 
   // When the button is changed, run the updateChart function
-  d3.select("#gen_dropdown").on("change", function(d){
+  d3v4.select("#gen_dropdown").on("change", function(d){
     // recover the option that has been chosen
     var selectedGen = document.getElementById('gen_dropdown').value
     var selectedY = document.getElementById('y_dropdown').value;
@@ -227,7 +232,7 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   // ---------------------------//
   //      TOOLTIP               //
   // ---------------------------//
-  var tooltip_Picture = d3.select("#my_dataviz").append("div")
+  var tooltip_Picture = d3v4.select("#my_dataviz").append("div")
   .attr("id", "tooltip_picture_div")
   .attr("width", "100")
   .attr("height", "100");
@@ -258,30 +263,33 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
 
     tooltip
     .transition()
-    .duration(200)
+    .duration(5)
     tooltip
     .style("opacity", 1)
+    .style("fill", "black")
     .html("<h3> #" + d.pokedex_number + " " + d.name + "</h3> <p> <b>HP:</b> " + d.hp + " <b>Attack:</b> " + d.attack + " <b>Defense: </b>" + d.defense + " <b>Sp. Atk: </b>" + d.sp_attack + " <b>Sp. Def:</b> " + d.sp_defense + " <b>Speed: </b>" + d.speed + " <b>Weight (kg): </b>" + d.weight_kg + " <b>Height (cm):</b> " + d.height_cm + " </p>") //TODO: give as parameter
-    .style("left", (d3.mouse(this)[0]+30) + "px")
-    .style("top", (d3.mouse(this)[1]+30) + "px")
+    //.style("left", (d3v4.mouse(this)[0]) + "px")
+    //.style("top", (d3v4.mouse(this)[1]) + "px")
 
 
   }
 
   var moveTooltip = function(d) {
     tooltip
-    .style("left", (d3.mouse(this)[0]) + "px")
-    .style("top", (d3.mouse(this)[1]) + "px")
+    //.style("left", (d3v4.mouse(this)[0]) + "px")
+    //.style("top", (d3v4.mouse(this)[1]) + "px")
   }
   var hideTooltip = function(d) {
     tooltip
     .transition()
     .duration(10)
+    .attr("width", 100)
+    .attr("height", 100)
     .style("opacity", 0)
 
-    d3.select("#pokemon_image").remove();
-    d3.select("#pokemon_image_svg").remove();
-    d3.select("#pokemon_image_div").remove();
+    d3v4.select("#pokemon_image").remove();
+    d3v4.select("#pokemon_image_svg").remove();
+    d3v4.select("#pokemon_image_div").remove();
   }
 
   // ---------------------------//
@@ -291,14 +299,14 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   // What to do when one group is hovered
   var highlight = function(d){
     // reduce opacity of all groups
-    d3.selectAll(".bubbles").style("opacity", .05)
+    d3v4.selectAll(".bubbles").style("opacity", .05)
     // except the one that is hovered
-    d3.selectAll("."+d).style("opacity", 1)
+    d3v4.selectAll("."+d).style("opacity", 1)
   }
 
   // And when it is not hovered anymore
   var noHighlight = function(d){
-    d3.selectAll(".bubbles").style("opacity", 0.8)
+    d3v4.selectAll(".bubbles").style("opacity", 0.8)
   }
 
   // ---------------------------//
@@ -356,5 +364,3 @@ d3.csv("https://raw.githubusercontent.com/com-480-data-visualization/com-480-pro
   .on("mouseover", highlight)
   .on("mouseleave", noHighlight)
 })
-
-</script>

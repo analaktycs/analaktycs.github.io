@@ -155,7 +155,7 @@ function create_pokeball(size, posx, posy, d3_version){
 
     d3=d3_version
     let base_circle = d3.select("#svg_circle")
-    const opa=0.5
+    const opa=0.7
 
     let arc = d3.arc()
         .innerRadius(0)

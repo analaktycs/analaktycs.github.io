@@ -10,7 +10,7 @@ var generations = d3.select("#bipartite2")
 						        .enter()
 						        .append("option")
 						        .attr("value", function(d){
-						        	console.log(d)
+						        	//console.log(d)
 						            return d;
 						        })
 						        .text(function(d){
@@ -27,12 +27,12 @@ function AbilitiesvsTypes(d3) {
 svg3.append("text").attr("x",300).attr("y",70)
 	.attr("class","header").text("Abilities vs Fraction %")
 	.style("fill", 'black');
-	
+
 
 
 
 var g =svg3.append("g").attr("transform","translate(150,100)");
-		
+
 
 
 
@@ -51,10 +51,10 @@ svg3.selectAll("*").remove();
 svg3.append("text").attr("x",300).attr("y",70)
 	.attr("class","header").text("Types vs BodyShape Fraction %")
 	.style("fill", 'black');
-	
+
 
 var g = svg3.append("g").attr("transform","translate(150,100)")
-		
+
 
 const file_name2 = "data/type_vs_shape_merged_gen.csv"
 
@@ -70,10 +70,10 @@ function ColorvsBody(d3){
 svg3.append("text").attr("x",300).attr("y",70)
 	.attr("class","header").text("Types vs Color %")
 	.style("fill", 'black');
-	
+
 
 var g = svg3.append("g").attr("transform","translate(150,100)")
-		
+
 
 
 			const file_name3 = "data/type_vs_colors_merged_gen.csv"
@@ -92,7 +92,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 				d3.csv(file_name, function(error, data) {
 
-					function onlyUnique(value, index, self) { 
+					function onlyUnique(value, index, self) {
 						    return self.indexOf(value) === index;
 						}
 
@@ -104,7 +104,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 				       hash = str.charCodeAt(i) + ((hash << 5) - hash);
 				    }
 				    return hash;
-				} 
+				}
 
 				function intToRGB(i){
 				    var c = (i & 0x00FFFFFF)
@@ -124,7 +124,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 						let interr = new Array(0)
 
 					for (const [key, value] of Object.entries(d)) {
-						
+
 
 						if (key == "value" || key == "values"){
 
@@ -141,7 +141,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 								generation.push(value)
 							}
 
-							
+
 
 							if(key == "source" && flag == 1){
 								color[value] = intToRGB(hashCode(value))
@@ -157,19 +157,19 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 							}
 						}
-						
+
 					}
 					data_.push(interr)
 				})
-				
-							
+
+
 					generation= generation.filter( onlyUnique );
 
 				function initial_graph (data_,g,var1=0,var2=0,d3){
 
 					const v1 = var1
 					const v2 = var2
-			
+
 
 					var bp2=viz.bP()
 						.data(data_)
@@ -180,22 +180,22 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 						.barSize(35)
 						.fill(d=> (flag == 1? color[d.primary] :   color[d.secondary]));
 
-				
+
 					g.call(bp2)
 						.transition()
                  			 .duration(1000)
-					
+
 					g.append("text").attr("x",-50).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(v1)
 					.style("fill", 'black');
 					g.append("text").attr("x", 450).attr("y",-8).transition().duration(1000).style("text-anchor","left").text(v2)
 						.style("fill", 'black');
-					
+
 					g.append("line").attr("x1",-100).transition().duration(1000).attr("x2",0);
 					g.append("line").attr("x1",400).transition().duration(1000).attr("x2",500);
-					
+
 					g.append("line").attr("y1",710).transition().duration(1000).attr("y2",710).attr("x1",-100).attr("x2",0);
 					g.append("line").attr("y1",710).transition().duration(1000).attr("y2",710).attr("x1",200).attr("x2",300);
-					
+
 					g.selectAll(".mainBars")
 						.on("mouseover",mouseover)
 						.on("mouseout",mouseout)
@@ -209,56 +209,56 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
                  			 .duration(1000)
 						.style("fill", 'black')
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
-					
+
 					g.selectAll(".mainBars").append("text").attr("class","perc")
 						.attr("x",d=>(d.part=="primary"? -100: 100))
 						.style("fill", 'black')
 						.attr("y",d=>+6)
-						
-						.text(function(d){ 
+
+						.text(function(d){
 
 
-							
+
 								return "  "+d3.format("0.0%")(d.percent)
 							})
 						.transition()
                   			.duration(1000)
-							
-						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
-						
 
-				
+						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
+
+
+
 
 				function mouseover(d){
-					
+
 						bp2.mouseover(d);
-						
-						
+
+
 							g.selectAll(".mainBars").select(".perc")
 							.text(function(d){ return "   " +d3.format("0.0%")(d.percent)})
 							.transition()
                   			.duration(1000);;
 						}
 
-						
-					
-				
+
+
+
 				function mouseout(d){
 						bp2.mouseout(d);
-						
-						
 
-						
+
+
+
 							g.selectAll(".mainBars").select(".perc")
 
 							.text(function(d){ return d3.format("0.0%")(d.percent)})
 							.transition()
                   			.duration(1000);
-						
-			
+
+
 				}
 				d3.select(self.frameElement).style("height", "800px");}
-	
+
 
 				 var updateGraph = function(value,data_,g,d3){
 
@@ -277,13 +277,13 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 
 							var g =svg3.append("g").attr("transform","translate(150,100)")
-									
+
 
 
 					 		// Select all of the grouped elements and update the data
 						    initial_graph(selectGen,g,var1,var2,d3)
 
-					
+
 
 					 	}
 					 	updateGraph(selectGen=1,data_,g,d3)
@@ -300,7 +300,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 						            .select("select")
 						            .property("value")
 
-						
+
 
 
 
@@ -312,7 +312,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 						    });
 
-				     })	
+				     })
 
 
 				};
@@ -325,5 +325,5 @@ window.addEventListener('load', function() {
 })
 
 
-   
+
    //Update data section (Called from the onclick)
