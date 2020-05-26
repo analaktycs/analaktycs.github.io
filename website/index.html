@@ -55,42 +55,43 @@
 
       <!-- Create a div where the graph will take place -->
 
-      <select id="x_dropdown">
-        <option value="attack">Attack</option>
-        <option value="defense">Defense</option>
-        <option value="sp_attack">Sp. Attack</option>
-        <option value="sp_defense">Sp. Defense</option>
-        <option value="speed">Speed</option>
-      </select>
-      <select id="y_dropdown">
-        <option value="defense">Defense</option>
-        <option value="attack">Attack</option>
-        <option value="sp_attack">Sp. Attack</option>
-        <option value="sp_defense">Sp. Defense</option>
-        <option value="speed">Speed</option>
-      </select>
-      <select id="r_dropdown">
-        <option value="hp">HP</option>
-        <option value="weight_kg">Weight (kg)</option>
-        <option value="height_cm">Height (cm)</option>
-      </select>
-      <select id="gen_dropdown">
-        <option value="1">Generation 1</option>
-        <option value="2">Generation 2</option>
-        <option value="3">Generation 3</option>
-        <option value="4">Generation 4</option>
-        <option value="5">Generation 5</option>
-        <option value="6">Generation 6</option>
-      </select>
 
       <div id="my_dataviz">
+
+              <select id="x_dropdown">
+                <option value="attack">Attack</option>
+                <option value="defense">Defense</option>
+                <option value="sp_attack">Sp. Attack</option>
+                <option value="sp_defense">Sp. Defense</option>
+                <option value="speed">Speed</option>
+              </select>
+              <select id="y_dropdown">
+                <option value="defense">Defense</option>
+                <option value="attack">Attack</option>
+                <option value="sp_attack">Sp. Attack</option>
+                <option value="sp_defense">Sp. Defense</option>
+                <option value="speed">Speed</option>
+              </select>
+              <select id="r_dropdown">
+                <option value="hp">HP</option>
+                <option value="weight_kg">Weight (kg)</option>
+                <option value="height_cm">Height (cm)</option>
+              </select>
+              <select id="gen_dropdown">
+                <option value="1">Generation 1</option>
+                <option value="2">Generation 2</option>
+                <option value="3">Generation 3</option>
+                <option value="4">Generation 4</option>
+                <option value="5">Generation 5</option>
+                <option value="6">Generation 6</option>
+              </select>
+              <script src="https://d3js.org/d3.v4.js"></script>
         <script>
         d3v4 = d3;
         window.d3=null
         </script>
         <script src="src/bubble_chart.js" ></script>
       </div>
-      <script src="https://d3js.org/d3.v4.min.js"></script>
 
 
       <div id = "Figure3">
@@ -214,10 +215,15 @@
                 </div>
               </div>
 
-              <script src="res/underscore.js"></script>
+              <script src="https://d3js.org/d3.v4.js"></script>
+
               <script src="lib/v2.js"></script>
+
+
+                <script src="res/underscore.js"></script>
               <script src="src/coord2.js"></script>
               <script src="https://d3js.org/d3.v4.js"></script>
+
 
               <script>
               let d3_kamil = d3

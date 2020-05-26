@@ -1,16 +1,16 @@
-// set the dimensions and margins of the graph
+
 var margin = {top: 40, right: 150, bottom: 60, left: 30},
-width = 1000 - margin.left - margin.right,
-height = 500 - margin.top - margin.bottom;
+width = 800,
+height = 800;
 
 // append the svg object to the body of the page
-var svg = d3v4.select("#my_dataviz")
+var svg5 = d3v4.select("#my_dataviz")
 .append("svg")
 .attr("width", width + margin.left + margin.right)
 .attr("height", height + margin.top + margin.bottom)
 .append("g")
 .attr("transform",
-"translate(" + margin.left + "," + margin.top + ")");
+"translate(" + 30 + "," + margin.top + ")");
 
 //Read the data
 d3v4.csv("data/first6gens_short.csv", function(data) {
@@ -71,38 +71,42 @@ console.log(data)
   // ---------------------------//
 
   // Add X axis
-  var x = d3v4.scaleLinear()
+  const x = d3v4.scaleLinear()
   .domain([0, 240])
   .range([ 0, width ])
-  svg.append("g")
+
+svg5
+.append("g")
+  .attr("class",'axisBlack')
   .attr("transform", "translate(0," + height + ")")
   .call(d3v4.axisBottom(x))
-  .attr("position", "absolute")
   .style("opacity", 1);
 
   // Add X axis label:
-  var x_label = svg.append("text")
+  var x_label = svg5.append("text")
   .attr("id", "x_label")
   .attr("text-anchor", "end")
-  .attr("x", width)
+  .attr("x", width-50)
   .attr("y", height+50 )
-  .attr("display", null)
   .attr("position", "absolute")
   .style("fill", "black")
   .text("Attack");
 
   // Add Y axis
-  var y = d3v4.scaleLinear()
+  const y = d3v4.scaleLinear()
   .domain([0, 240])
   .range([ height, 0])
-  svg.append("g")
+
+svg5
+.append("g")
+  .attr("class",'axisBlack')
   .call(d3v4.axisLeft(y))
-  .attr("transform", "translate(30,0)")
+  .attr("transform", "translate(0,0)")
   .attr("position", "absolute")
   .style("opacity", 1);
 
   // Add Y axis label:
-  var y_label = svg.append("text")
+  var y_label = svg5.append("text")
   .attr("id", "y_label")
   .attr("text-anchor", "end")
   .attr("x", 0)
@@ -153,12 +157,12 @@ console.log(data)
 
     //update x-axis label
     var x_label_select = document.getElementById("x_dropdown");
-    var x_label = svg.selectAll("#x_label")
+    var x_label = svg5.selectAll("#x_label")
     .text(x_label_select.options[x_label_select.selectedIndex].text);
 
     //update y-axis label
     var y_label_select = document.getElementById("y_dropdown");
-    var y_label = svg.selectAll("#y_label")
+    var y_label = svg5.selectAll("#y_label")
     .text(y_label_select.options[y_label_select.selectedIndex].text);
 
     //update circles
@@ -314,7 +318,7 @@ console.log(data)
   // ---------------------------//
 
   // Add dots
-  var dot = svg
+  var dot = svg5
   .append('g')
   .attr("id", "graphArea")
   .selectAll("dot")
@@ -339,7 +343,7 @@ console.log(data)
   // Add one dot in the legend for each name.
   var size = 20
   var firstType = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"]
-  svg.selectAll("myrect")
+  svg5.selectAll("myrect")
   .data(firstType)
   .enter()
   .append("circle")
@@ -351,7 +355,8 @@ console.log(data)
   .on("mouseleave", noHighlight)
 
   // Add labels beside legend dots
-  svg.selectAll("mylabels")
+  svg5
+  .selectAll("mylabels")
   .data(firstType)
   .enter()
   .append("text")
