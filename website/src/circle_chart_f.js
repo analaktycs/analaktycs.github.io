@@ -15,7 +15,6 @@ function create_svg(w, h, color){
         .attr("width", w)
         .attr("height", h)
         .attr("id", "svg_circle")
-        .style("background-color", color)
 
 }
 

@@ -88,7 +88,6 @@ svg5
   .attr("text-anchor", "end")
   .attr("x", width-50)
   .attr("y", height+50 )
-  .attr("position", "absolute")
   .style("fill", "black")
   .text("Attack");
 
@@ -102,7 +101,6 @@ svg5
   .attr("class",'axisBlack')
   .call(d3v4.axisLeft(y))
   .attr("transform", "translate(0,0)")
-  .attr("position", "absolute")
   .style("opacity", 1);
 
   // Add Y axis label:
@@ -111,7 +109,6 @@ svg5
   .attr("text-anchor", "end")
   .attr("x", 0)
   .attr("y", -20 )
-  .attr("position", "absolute")
   .style("fill", "black")
   .text("Defense")
   .attr("text-anchor", "start")

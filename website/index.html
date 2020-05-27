@@ -16,13 +16,14 @@
   <!-- Bootstrap CSS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
   <link href="src/style.css" rel="stylesheet" />
   <link href="lib/d3.parsets.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="res/parallel.css" />
 </head>
 
 
-<body style="background-color: #FFFFFF">
+<body style="width:100%";>
   <script src="https://bl.ocks.org/syntagmatic/raw/3341641/render-queue.js"></script>
 
   <!-- Navigation Bar -->
@@ -42,8 +43,7 @@
   </div>
 </nav>
 
-<div class="container">
-  <div class="container">
+  <div class="container" >
     <div class="jumbotron" style="background-color: #FFFFFF">
       <h1 class="display-4">Welcome to the Interactive Guide to</h1>
       <img src="img/all_gens.png" width="1024" height="640">
@@ -308,6 +308,13 @@
                       </script>
 
                       <div>
+                        <p><br><br><br></p>
+                          <p><br><br><br></p>
+                            <p><br><br><br></p>
+                              <p><br><br><br></p>
+                                <p><br><br></p>
+
+                                    <p><br><br><br></p>
                         <p>
                           <br><br><br><br><br><br>
                           On the other hand, the reader can  search for a specific pokemon’s pattern upon name entry. Hovering over it will only display its pattern in the foreground.
@@ -334,7 +341,7 @@
                           off, click on the sound icon.</small>
                         </h4>
 
-                        <div id = "circle_chart_div">
+                        <div id = "circle_chart_div" class="relative" style="opacity:1">
                           <script src="src/circle_chart_f.js"></script>
                           <link rel="stylesheet" href="src/circle_chart.css">
                           <script src="https://d3js.org/d3.v5.js"></script>
