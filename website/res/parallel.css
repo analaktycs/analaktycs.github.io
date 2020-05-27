@@ -34,12 +34,14 @@ svg {
 canvas {
 
   position: absolute;
-  padding-top: 40px;
+  padding-top: 0px;
   padding-bottom:10px;
 
 }
 #chart {
   position: relative;
+  width: 2000px;
+  height: 1000px;
 }
 .brush rect.extent {
   fill: rgba(100,100,100,0.15);

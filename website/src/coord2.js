@@ -5,7 +5,7 @@
 
 
 
-var width =1000
+var width =2000
     height = 800;
 
 var m = [40, 0, 10, 0],

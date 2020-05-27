@@ -366,8 +366,7 @@
           categoryEnter.append("text")
               .attr("dy", "-.3em")
               .style("fill", 'black')
-        .style("font-weight", 10000)
-        .style("font-size", "1.2em")
+        .style("font-size", "1em")
         .transition()
                           .duration(500);
 
@@ -457,7 +456,7 @@
         .style("fill","black");
 
 
-    return d3v3.rebind(parsets, event, "on").value(1).width(1000).height(800);
+    return d3v3.rebind(parsets, event, "on").value(1).width(2000).height(1000);
 
     function dimensionFormatName(d, i) {
       return dimensionFormat.call(this, d.name, i);
