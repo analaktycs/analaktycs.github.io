@@ -25,8 +25,8 @@ var generations = d3v4.select("#bipartite2")
 function AbilitiesvsTypes(d3v4) {
 	svg3.selectAll("*").remove();
 
-svg3.append("text").attr("x",300).attr("y",70)
-	.attr("class","header").text("Abilities vs Fraction %")
+svg3.append("text").attr("x",250).attr("y",70)
+	.attr("class","header").text("Abilities and Types")
 	.style("fill", 'black');
 
 
@@ -49,8 +49,8 @@ var g =svg3.append("g").attr("transform","translate(150,100)");
 function TypesvsBody(d3v4){
 
 svg3.selectAll("*").remove();
-svg3.append("text").attr("x",300).attr("y",70)
-	.attr("class","header").text("Types vs BodyShape Fraction %")
+svg3.append("text").attr("x",250).attr("y",70)
+	.attr("class","header").text("Types and Body styles ")
 	.style("fill", 'black');
 
 
@@ -68,8 +68,8 @@ function ColorvsBody(d3v4){
 
 
 	svg3.selectAll("*").remove();
-svg3.append("text").attr("x",300).attr("y",70)
-	.attr("class","header").text("Types vs Color %")
+svg3.append("text").attr("x",250).attr("y",70)
+	.attr("class","header").text("Types and Colors ").style("font-weight", 'bold')
 	.style("fill", 'black');
 
 
