@@ -11157,3 +11157,11 @@ line{
   -o-background-size: cover;
   background-size: cover;
 }
+figure {
+
+}
+figure img {
+}
+figure figcaption {
+  text-align: left;
+}

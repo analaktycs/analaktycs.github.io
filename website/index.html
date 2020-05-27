@@ -200,15 +200,21 @@
                         <script src="https://d3js.org/d3.v4.js"></script>
                       </div>
 
-                      <p>
-                        Let’s get back to our poisonous pokemons of generation 1. Hovering over the poison type  highlights the various combinations of abilities and esthetics among the 33 available pokemons (representing 18 % of the selected pokemons of generation 1). Then hovering over the purple color as before reveals the possible body style and abilities combinations for the 14 left pokemons (representing 8 % of the selected pokemons of generation 1). Hence the reader will that his left with the  abilities - bodyshapes possibilities : <br><br>
-                        <li>Run-Away -- Bipedal : 1 pokemon </li><br>
-                        <li>Poison touch - Head-arms : 2 pokemons</li><br>
-                        <li>Unnerve - Serpentine : 2 pokemons</li><br>
-                        <li>Poison point - quadrupled : 2 pokemons</li><br>
-                        <li>Poison point - bipedal-tailed : 1 pokemon </li><br>
-                        <li>Hustle - quandrupled :  2 pokemons</li><br>
-                        <li>Inner focus - two wings :  2 pokemons</li><br>
+
+
+                        <p>
+                          Let’s get back to our poisonous pokemons of generation 1. Hovering over the poison type  highlights the various combinations of abilities and esthetics among the 33 available pokemons (representing 18 % of the selected pokemons of generation 1). Then hovering over the purple color as before reveals the possible body style and abilities combinations for the 14 left pokemons (representing 8 % of the selected pokemons of generation 1). Hence the reader will that his left with the  abilities - bodyshapes possibilities : <br><br>
+
+
+
+
+                                                <li>Run-Away -- Bipedal : 1 pokemon </li>
+                                                <li>Poison touch - Head-arms : 2 pokemons</li>
+                                                <li>Unnerve - Serpentine : 2 pokemons</li>
+                                                <li>Poison point - quadrupled : 2 pokemons</li>
+                                                <li>Poison point - bipedal-tailed : 1 pokemon </li>
+                                                <li>Hustle - quandrupled :  2 pokemons</li>
+                                                <li>Inner focus - two wings :  2 pokemons</li>
 
 
 
@@ -291,6 +297,7 @@
 
                       <script src="res/underscore.js"></script>
                       <script src="src/coord2.js"></script>
+                      <script src="lib/v2.js"></script>
 
 
                       <script>
@@ -301,7 +308,6 @@
                       </script>
 
 
-                      <script src="https://d3js.org/d3.v5.js"></script>
 
                       <script>
                       let d3_ludo = d3
@@ -316,15 +322,57 @@
 
                                     <p><br><br><br></p>
                         <p>
-                          <br><br><br><br><br><br>
+                          <br><br><br>
+                          <br><br><br>
+                          <br><br><br>
+                          <br><br>
                           On the other hand, the reader can  search for a specific pokemon’s pattern upon name entry. Hovering over it will only display its pattern in the foreground.
                           <br><br>
+                          <h3>Pokemon body styles (from left to right) : </h3>
+
+
+                            <figure>
+                            <img class="image" src="img/body_shapes.png" width="650" height="450" align="right"/>
+                              </figure>
+
+
+
+                            <li>head_legs</li>
+                            <li>with_fins</li>
+
+                            <li>insectoid</li>
+
+                            <li>quadruped</li>
+
+                            <li>four_wings</li>
+
+                            <li>multiple_bodies</li>
+                            <li>several_limbs</li>
+
+                            <li>head_base</li>
+                            <li>bipedal_tailed</li>
+                            <li>bipedal_tailless</li>
+
+                            <li>two wings</li>
+                            <li>serpentine_body</li>
+                            <li>head_arms</li>
+                            <br><br>
+
+
                           Lastly, this visualization bridges the gap between body styles and categorical features. Such relationship investigation can be of use to better apprehend body style influence on the pokemon’s behaviour.
                           <br><br>
-                          With that being said, it is time to find our poisonous pokemons. To choses between the remaining options, we select the possible body types in the first generation and look for the best pattern in terms of attack ( above 90  ) and rareness  (low values, caputre_rate less than 50 ). Quadrupled and bipedal_tailed  seem to match such conditions giving respectively Venusaur and both Nidoking and Nidoqueen for the bipedal_tailed.
+                          With that being said, it is time to find our poisonous pokemons. To chose between the remaining options, we select the possible body types in the first generation and look for the best pattern in terms of attack ( above 90  ) and rareness  (low values, caputre_rate less than 50 ). Quadrupled and bipedal_tailed  seem to match such conditions giving respectively Venusaur and both Nidoking and Nidoqueen for the bipedal_tailed.
+
+                                                        <img class="image" src="img/venusaur.png" width="200" height="200"/>
+                                                        <span class="caption">Venusaur</span>
+                                                        <img class="image" src="img/2034-Shiny-Nidoking.png" width="200" height="200"/>
+                                                        <span class="caption">Nidoking</span>
+                                                        <img class="image" src="img/nidoqueen.png" width="200" height="200"/>
+                                                        <span class="caption">Nidoqueen</span>
 
 
                         </p>
+
 
                       <h1>Welcome to the battle arena!</h1>
                       <h4>

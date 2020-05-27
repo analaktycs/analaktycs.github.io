@@ -99,7 +99,7 @@ d3v2.csv("data/spk2.csv", function(raw_data) {
 
 
 
-    return (_.isNumber(data[0][k])) && (yscale[k] = d3v2.scaleLinear()
+    return (_.isNumber(data[0][k])) && (yscale[k] = d3v4.scaleLinear()
       .domain(d3v2.extent(data, function(d) { return +d[k]; }))
       .range([v, 0]));
   }))
@@ -223,6 +223,7 @@ function grayscale(pixels, args) {
     d[i] = d[i+1] = d[i+2] = v
   }
   return pixels;
+
 };
 
 function create_legend(colors,brush) {
@@ -419,7 +420,7 @@ function brush() {
       extents = actives.map(function(p) { return yscale[p].brush.extent(); });
 
   // hack to hide ticks beyond extent
-  var b = d3.selectAll('.dimension')[0]
+  var b = d3v3.selectAll('.dimension')[0]
     .forEach(function(element, i) {
       var dimension = d3v3.select(element).data()[0];
       if (_.include(actives, dimension)) {
