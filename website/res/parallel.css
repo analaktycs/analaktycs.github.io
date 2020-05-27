@@ -1,16 +1,4 @@
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-}
-body {
-  font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
-  font-size: 12px;
-  line-height: 1.4em;
-  background: #f7f7f7;
-  color: #404040;
-}
+
 body.dark {
   background: #131313;
   color: #e3e3e3;
@@ -79,9 +67,7 @@ canvas {
   fill: none;
 }
 .axis line, .axis path {
-  fill: black;
   display: block;
-  background-color: black;
   stroke: #777;
   stroke-width: 3;
 }

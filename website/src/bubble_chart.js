@@ -25,7 +25,6 @@ d3v4.csv("data/first6gens_short.csv", function(data) {
   var rGroup = ["hp", "attack", "defense", "sp_attack", "sp_defense", "speed", "capture_rate", "weight_kg", "height_cm"]
   var genGroup = [1,2,3,4,5,6]
 
-console.log(data)
   //Create 1st dropdown
   var xMenu = d3v4.select("#x_dropdown")
   xMenu.append("select")

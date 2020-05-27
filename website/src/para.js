@@ -13,7 +13,6 @@ var generations_ = d3v3.select("#tool")
                     .enter()
                     .append("option")
                     .attr("value", function(d){
-                      console.log(d)
                         return d;
                     })
                     .text(function(d){
@@ -74,7 +73,7 @@ var partition = d3v3.layout.partition()
 
 
 
-  
+
   window.icicle = function() {
     var newIce = this.checked,
         tension = chart.tension();
@@ -193,7 +192,7 @@ generations_.on('change', function(){
                 create_intial(csv,d3v3,selectedgen,vis)
 
                     // Run update function with the selected fruit
-                   
+
 
 
 
@@ -266,4 +265,3 @@ d3v3.select("#file").on("change", function() {
   };
   reader.readAsText(file);
 });
-     

@@ -2551,7 +2551,7 @@ textarea.form-control {
   font-size: 0.875rem;
   line-height: 1.5;
   color: #fff;
-  background-color: rgba(255, 120, 81, 0.9);
+  background-color: rgba(255, 120, 81, 1);
   border-radius: 0.4rem;
 }
 
@@ -6239,7 +6239,7 @@ a.close.disabled {
   max-width: 350px;
   overflow: hidden;
   font-size: 0.875rem;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 1);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
@@ -6276,7 +6276,7 @@ a.close.disabled {
           align-items: center;
   padding: 0.25rem 0.75rem;
   color: #888;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255,1);
   background-clip: padding-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -10729,7 +10729,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
   .container {
     min-width: 992px !important;
-    opacity: 1;
+
   }
   .navbar {
     display: none;

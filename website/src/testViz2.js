@@ -1,11 +1,14 @@
 
-var svg3 = d3.select("#bipartite2").append("svg").attr("width", 1000).attr("height", 800);
+console.log(d3v4.version);
+
+var svg3 = d3v4.select("#bipartite2").append("svg").attr("width", 800).attr("height", 800);
 var generation = [1,2,3,4,5,6]
-var generations = d3.select("#bipartite2")
+var generations = d3v4.select("#bipartite2")
 
 						    generations
 								.append("select")
 								.selectAll("option")
+								.attr('class',"btn btn-success")
 						        .data(generation)
 						        .enter()
 						        .append("option")
@@ -21,7 +24,7 @@ var generations = d3.select("#bipartite2")
 
 
 
-function AbilitiesvsTypes(d3) {
+function AbilitiesvsTypes(d3v4) {
 	svg3.selectAll("*").remove();
 
 svg3.append("text").attr("x",300).attr("y",70)
@@ -39,13 +42,13 @@ var g =svg3.append("g").attr("transform","translate(150,100)");
 			const file_name1 = "data/test7_most_present_abs_test7_gen.csv"
 
 
-	construct_graph(file_name1,g,"Abilities","Types",d3,generations,2)
+	construct_graph(file_name1,g,"Abilities","Types",d3v4,generations,2)
 
 }
 
 
 
-function TypesvsBody(d3){
+function TypesvsBody(d3v4){
 
 svg3.selectAll("*").remove();
 svg3.append("text").attr("x",300).attr("y",70)
@@ -58,12 +61,12 @@ var g = svg3.append("g").attr("transform","translate(150,100)")
 
 const file_name2 = "data/type_vs_shape_merged_gen.csv"
 
-construct_graph(file_name2,g,"Types","Body Shape",d3,generations,1)
+construct_graph(file_name2,g,"Types","Body Shape",d3v4,generations,1)
 
 }
 
 
-function ColorvsBody(d3){
+function ColorvsBody(d3v4){
 
 
 	svg3.selectAll("*").remove();
@@ -78,7 +81,7 @@ var g = svg3.append("g").attr("transform","translate(150,100)")
 
 			const file_name3 = "data/type_vs_colors_merged_gen.csv"
 
-	construct_graph(file_name3,g,"Types","Color",d3,generations,1)
+	construct_graph(file_name3,g,"Types","Color",d3v4,generations,1)
 
 }
 
@@ -86,11 +89,11 @@ var g = svg3.append("g").attr("transform","translate(150,100)")
 
 
 
-function construct_graph(file_name,g,var1,var2,d3,generations,flag){
+function construct_graph(file_name,g,var1,var2,d3v4,generations,flag){
 
 
 
-				d3.csv(file_name, function(error, data) {
+				d3v4.csv(file_name, function(error, data) {
 
 					function onlyUnique(value, index, self) {
 						    return self.indexOf(value) === index;
@@ -113,7 +116,6 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 				    return "00000".substring(0, 6 - c.length) + c;
 				}
-				console.log(d3.version)
 
 					var data_= []
 					var generation = []
@@ -147,7 +149,6 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 								color[value] = intToRGB(hashCode(value))
 							}
 
-							console.log(flag)
 
 							if(key == "target" && flag == 2){
 
@@ -165,7 +166,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 					generation= generation.filter( onlyUnique );
 
-				function initial_graph (data_,g,var1=0,var2=0,d3){
+				function initial_graph (data_,g,var1=0,var2=0,d3v4){
 
 					const v1 = var1
 					const v2 = var2
@@ -219,7 +220,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 
 
-								return "  "+d3.format("0.0%")(d.percent)
+								return "  "+d3v4.format("0.0%")(d.percent)
 							})
 						.transition()
                   			.duration(1000)
@@ -235,7 +236,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 
 							g.selectAll(".mainBars").select(".perc")
-							.text(function(d){ return "   " +d3.format("0.0%")(d.percent)})
+							.text(function(d){ return "   " +d3v4.format("0.0%")(d.percent)})
 							.transition()
                   			.duration(1000);;
 						}
@@ -251,16 +252,16 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 							g.selectAll(".mainBars").select(".perc")
 
-							.text(function(d){ return d3.format("0.0%")(d.percent)})
+							.text(function(d){ return d3v4.format("0.0%")(d.percent)})
 							.transition()
                   			.duration(1000);
 
 
 				}
-				d3.select(self.frameElement).style("height", "800px");}
+				d3v4.select(self.frameElement).style("height", "800px");}
 
 
-				 var updateGraph = function(value,data_,g,d3){
+				 var updateGraph = function(value,data_,g,d3v4){
 
 
 
@@ -281,12 +282,12 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 
 					 		// Select all of the grouped elements and update the data
-						    initial_graph(selectGen,g,var1,var2,d3)
+						    initial_graph(selectGen,g,var1,var2,d3v4)
 
 
 
 					 	}
-					 	updateGraph(selectGen=1,data_,g,d3)
+					 	updateGraph(selectGen=1,data_,g,d3v4)
 
 
 
@@ -296,7 +297,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 				     	generations.on('change', function(){
 
  		// Find which fruit was selected from the dropdown
-						 		var selectedFruit = d3.select(this)
+						 		var selectedFruit = d3v4.select(this)
 						            .select("select")
 						            .property("value")
 
@@ -307,7 +308,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 
 						        // Run update function with the selected frit
-						        updateGraph(selectedFruit,data_,g,d3)
+						        updateGraph(selectedFruit,data_,g,d3v4)
 
 
 						    });
@@ -321,7 +322,7 @@ function construct_graph(file_name,g,var1,var2,d3,generations,flag){
 
 window.addEventListener('load', function() {
     console.log('All assets are loaded')
-    AbilitiesvsTypes(d3v3)
+    AbilitiesvsTypes(d3v4)
 })
 
 

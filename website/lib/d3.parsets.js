@@ -22,7 +22,6 @@
     function parsets(selection) {
       selection.each(function(data, i) {
 
-        console.log(data)
         var g = d3v3.select(this),
             ordinal = d3v3.scale.ordinal(),
             dragging = false,
@@ -216,8 +215,7 @@
                 d.source.x0 = d.source.x;
                 d.target.x0 = d.target.x;
               })
-              .attr("class", function(d) { 
-                 console.log(d)
+              .attr("class", function(d) {
                 return "category-" + d.major; })
               .attr("d", ribbonPath);
           ribbon.sort(function(a, b) { return b.count - a.count; });
@@ -225,7 +223,7 @@
 
 
           var mouse = g.select(".ribbon-mouse").selectAll("path")
-              .data(nodes, function(d) { 
+              .data(nodes, function(d) {
                 return d.path; });
           mouse.enter().append("path")
               .on("mousemove.parsets", function(d) {
