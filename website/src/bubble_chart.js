@@ -1,6 +1,5 @@
-
 var margin = {top: 40, right: 150, bottom: 60, left: 30},
-width = 800,
+width = 1600,
 height = 800;
 
 // append the svg object to the body of the page
@@ -86,8 +85,9 @@ svg5
   var x_label = svg5.append("text")
   .attr("id", "x_label")
   .attr("text-anchor", "end")
-  .attr("x", width)
+  .attr("x", width-50)
   .attr("y", height+50 )
+  .attr("class", "bubble_legend")
   .style("fill", "black")
   .text("Attack");
 
@@ -109,6 +109,7 @@ svg5
   .attr("text-anchor", "end")
   .attr("x", 0)
   .attr("y", -20 )
+  .attr("class", "bubble_legend")
   .style("fill", "black")
   .text("Defense")
   .attr("text-anchor", "start")
@@ -344,7 +345,7 @@ svg5
   .data(firstType)
   .enter()
   .append("circle")
-  .attr("cx", 900)
+  .attr("cx", 1600)
   .attr("cy", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
   .attr("r", 7)
   .style("fill", function(d){ return myColor(d)})
@@ -357,7 +358,8 @@ svg5
   .data(firstType)
   .enter()
   .append("text")
-  .attr("x", 900 + size*.8)
+  .attr("class", "bubble_legend")
+  .attr("x", 1600 + size*.8)
   .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
   .style("fill", function(d){ return myColor(d)})
   .text(function(d){ return d})
