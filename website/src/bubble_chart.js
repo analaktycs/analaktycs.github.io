@@ -71,7 +71,7 @@ d3v4.csv("data/first6gens_short.csv", function(data) {
 
   // Add X axis
   const x = d3v4.scaleLinear()
-  .domain([0, 240])
+  .domain([0, 260])
   .range([ 0, width ])
 
 svg5
@@ -85,7 +85,7 @@ svg5
   var x_label = svg5.append("text")
   .attr("id", "x_label")
   .attr("text-anchor", "end")
-  .attr("x", width-50)
+  .attr("x", width-100)
   .attr("y", height+50 )
   .attr("class", "bubble_legend")
   .style("fill", "black")
