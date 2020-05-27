@@ -1,7 +1,7 @@
 
 var margin = {top: 40, right: 150, bottom: 60, left: 30},
-width = 2000,
-height = 1000;
+width = 800,
+height = 800;
 
 // append the svg object to the body of the page
 var svg5 = d3v4.select("#my_dataviz")
@@ -72,7 +72,7 @@ d3v4.csv("data/first6gens_short.csv", function(data) {
 
   // Add X axis
   const x = d3v4.scaleLinear()
-  .domain([0, 260])
+  .domain([0, 240])
   .range([ 0, width ])
 
 svg5
@@ -86,7 +86,7 @@ svg5
   var x_label = svg5.append("text")
   .attr("id", "x_label")
   .attr("text-anchor", "end")
-  .attr("x", width-50)
+  .attr("x", width)
   .attr("y", height+50 )
   .style("fill", "black")
   .text("Attack");
@@ -344,7 +344,7 @@ svg5
   .data(firstType)
   .enter()
   .append("circle")
-  .attr("cx", 1900)
+  .attr("cx", 900)
   .attr("cy", function(d,i){ return 10 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
   .attr("r", 7)
   .style("fill", function(d){ return myColor(d)})
@@ -357,7 +357,7 @@ svg5
   .data(firstType)
   .enter()
   .append("text")
-  .attr("x", 1900 + size*.8)
+  .attr("x", 900 + size*.8)
   .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
   .style("fill", function(d){ return myColor(d)})
   .text(function(d){ return d})
