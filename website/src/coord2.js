@@ -3,7 +3,6 @@
 // Released under the BSD License: http://opensource.org/licenses/BSD-3-Clause
 
 
-console.log(d3v2);
 
 
 var width =1000
@@ -104,7 +103,6 @@ d3v2.csv("data/spk2.csv", function(raw_data) {
       .range([v, 0]));
   }))
 
-  console.log(d3v2.keys(data[0]))
 
   // Add a group element for each dimension.
   var g = svg11.selectAll(".dimension")

@@ -2787,6 +2787,12 @@ fieldset:disabled a.btn {
   border-color: #78C2AD;
 }
 
+select {
+  color: #fff;
+  background-color: #78C2AD;
+  border-color: #78C2AD;
+}
+
 .btn-primary:hover {
   color: #fff;
   background-color: #5eb69d;

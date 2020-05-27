@@ -1,5 +1,4 @@
 
-console.log(d3v4.version);
 
 var svg3 = d3v4.select("#bipartite2").append("svg").attr("width", 800).attr("height", 800);
 var generation = [1,2,3,4,5,6]
@@ -7,13 +6,12 @@ var generations = d3v4.select("#bipartite2")
 
 						    generations
 								.append("select")
+								.attr("class","btn-primary")
 								.selectAll("option")
-								.attr('class',"btn btn-success")
 						        .data(generation)
 						        .enter()
 						        .append("option")
 						        .attr("value", function(d){
-						        	//console.log(d)
 						            return d;
 						        })
 						        .text(function(d){
@@ -321,7 +319,6 @@ function construct_graph(file_name,g,var1,var2,d3v4,generations,flag){
 
 
 window.addEventListener('load', function() {
-    console.log('All assets are loaded')
     AbilitiesvsTypes(d3v4)
 })
 

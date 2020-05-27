@@ -270,7 +270,6 @@
 
         // Highlight a node and its descendants, and optionally its ancestors.
         function highlight(d, ancestors) {
-          console.log('aa')
           if (dragging) return;
           var highlight = [];
           (function recurse(d) {
@@ -692,7 +691,6 @@
       if (d.name) path.unshift(d.name);
       d = d.parent;
     }
-    console.log(path.join(" → ") + "<br>" + comma(count) + " (" + percent(count / d.count) + ")")
     return path.join(" → ") + "<br>" + comma(count) + " (" + percent(count / d.count) + ")";
   }
 
