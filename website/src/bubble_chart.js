@@ -89,7 +89,8 @@ svg5
   .attr("x", width-50)
   .attr("y", height+50 )
   .style("fill", "black")
-  .text("Attack");
+  .text("Attack")
+  .attr("class", "bubble_legend");
 
   // Add Y axis
   const y = d3v4.scaleLinear()
@@ -111,6 +112,7 @@ svg5
   .attr("y", -20 )
   .style("fill", "black")
   .text("Defense")
+  .attr("class", "bubble_legend")
   .attr("text-anchor", "start")
 
   // Add a scale for bubble size
@@ -357,6 +359,7 @@ svg5
   .data(firstType)
   .enter()
   .append("text")
+  .attr("class", "bubble_legend")
   .attr("x", 1900 + size*.8)
   .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
   .style("fill", function(d){ return myColor(d)})
