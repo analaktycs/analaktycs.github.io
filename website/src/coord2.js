@@ -5,8 +5,8 @@
 
 
 
-var width =2000
-    height = 800;
+var width =window.width
+    height = window.height;
 
 var m = [40, 0, 10, 0],
     z = width - m[1] - m[3],
@@ -646,8 +646,8 @@ function export_csv() {
 
 // scale to window size
 window.onresize = function() {
-  width = 1000
-  height = 800
+  width = window.width
+  height = window.height
 
   z = width - m[1] - m[3],
   v = height - m[0] - m[2];

@@ -121,7 +121,7 @@
           var textEnter = dEnter.append("text")
               .attr("class", "dimension")
               .attr("transform", "translate(0,-25)")
-              .style("fill", 'black');
+              .style("fill", 'black')
           textEnter.append("tspan")
               .attr("class", "name")
               .text(dimensionFormatName)
@@ -130,12 +130,15 @@
               .attr("class", "sort alpha")
               .attr("dx", "2em")
               .text("alpha »")
+              .style("font-size","2em")
               .style("fill", 'black')
               .on("mousedown.parsets", cancelEvent);
           textEnter.append("tspan")
               .attr("class", "sort size")
               .attr("dx", "2em")
               .text("size »")
+              .style("font-size","2em")
+
               .style("fill", 'black')
               .on("mousedown.parsets", cancelEvent);
           dimension
@@ -297,7 +300,7 @@
               .data(function(d) { return d.categories; }, function(d) { return d.name; });
           var categoryEnter = category.enter().append("g")
               .attr("class", "category")
-              .attr("transform", function(d) { return "translate(" + d.x + ")"; });
+              .attr("transform", function(d) { return "translate(" + d.x + ")"; })
           category.exit().remove();
           category
               .on("mousemove.parsets", function(d) {
@@ -364,11 +367,11 @@
           categoryEnter.append("line")
               .style("stroke-width", 2);
           categoryEnter.append("text")
-              .attr("dy", "-.3em")
+              .attr("dy", "-.1em")
+              .style('font-size','1.2em')
               .style("fill", 'black')
-        .style("font-size", "1em")
-        .transition()
-                          .duration(500);
+
+
 
           category.select("rect")
               .attr("width", function(d) { return d.dx; })
@@ -376,15 +379,15 @@
                 return "category-" + (d.dimension === dimensions[0] ? ordinal(d.name) : "background");
               })
               .transition()
-                          .duration(500);
+                          .duration(1000);
 
           category.select("line")
               .attr("x2", function(d) { return d.dx; });
           category.select("text")
               .text(truncateText(function(d) { return d.name; }, function(d) { return d.dx; }))
               .style("fill", 'black')
-              .transition()
-                          .duration(500);
+              .style('font-size','1.2em');
+
 
         }
       });
@@ -456,7 +459,7 @@
         .style("fill","black");
 
 
-    return d3v3.rebind(parsets, event, "on").value(1).width(2000).height(1000);
+    return d3v3.rebind(parsets, event, "on").value(1).width(window.width).height(window.height);
 
     function dimensionFormatName(d, i) {
       return dimensionFormat.call(this, d.name, i);

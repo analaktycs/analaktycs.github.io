@@ -1,8 +1,8 @@
 var chart_ = d3v3.parsets()
                         .dimensions(["types", "Body_Style", "Color","abilities"]);
 var vis = d3v3.select("#tool").append("svg")
-                      .attr("width", 2000)
-                      .attr("height", 1000);
+                      .attr("width", window.width)
+                      .attr("height", window.height);
 var generation_ = ["1","2","3","4","5","6"]
 var generations_ = d3v3.select("#tool")
 
@@ -60,7 +60,7 @@ d3v3.csv(file_name, function(csv) {
 
 var partition = d3v3.layout.partition()
     .sort(null)
-    .size([chart_.width(), chart_.height() * 6 / 4])
+    .size([chart_.width(), chart_.height() * 5 / 4])
     .children(function(d) { return d.children ? d3v3.values(d.children) : null; })
     .value(function(d) { return d.count; });
 
@@ -180,7 +180,7 @@ generations_.on('change', function(){
 
 
                 d3v3.select('#tool').select('svg').selectAll('g').remove()
-                .style("height",1000).transition()
+                .transition()
                           .duration(500);
 
     // Find which fruit was selected from the dropdown

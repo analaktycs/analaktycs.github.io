@@ -26,7 +26,6 @@ span:last-of-type {
 }
 svg {
   font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
-
   position: relative;
 
 
@@ -34,14 +33,13 @@ svg {
 canvas {
 
   position: absolute;
-  padding-top: 0px;
-  padding-bottom:10px;
+  padding-top: 40px;
+  padding-bottom:0px;
 
 }
 #chart {
   position: relative;
-  width: 2000px;
-  height: 1000px;
+
 }
 .brush rect.extent {
   fill: rgba(100,100,100,0.15);
@@ -71,6 +69,7 @@ canvas {
 .axis line, .axis path {
   display: block;
   stroke: #777;
+  padding-bottom: 40px
   stroke-width: 3;
 }
 .dark .axis line, .dark .axis path {
@@ -89,9 +88,9 @@ canvas {
 }
 .axis text.label {
   opacity: 1;
-  font-size: 12px;
+  font-size: 0.8em;
   cursor: move;
-  padding-top: 2000px;
+  padding-top: 12px;
 }
 .dark .axis text {
   fill: #f2f2f2;
