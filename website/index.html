@@ -115,261 +115,253 @@
                     <div id = "Figure3">
                       <h1>The influence of types</h1>
                       <h2><small class="text-muted">How does the choice of a specific ability influence the type of my Pokemon? Whats is the outcome of choosing a water Pokemon on its body style? How will my Pokemon look like if I want him to be white? How is my choice going to be affected by the generation I am looking into?
-                       <br> <br> <strong>All these questions can be answered by this bipartite visualization </strong>. <br> <br> Just select which type of comparison you want to make whether you are interested in knowing the relationship between abilities and types, types and body styles, or types and colors. By hovering over a specific feature element (in either displayed features), this figure will give you insights on the outcome of such choice over the type Pokemon feature distribution. Investigation can also be conducted generation-wise to apprehend changes in feature distribution over time. Select your generation using the according toggle and see what happens for your feature of interest.</small></h2>
+                        <br> <br> <strong>All these questions can be answered by this bipartite visualization </strong>. <br> <br> Just select which type of comparison you want to make whether you are interested in knowing the relationship between abilities and types, types and body styles, or types and colors. By hovering over a specific feature element (in either displayed features), this figure will give you insights on the outcome of such choice over the type Pokemon feature distribution. Investigation can also be conducted generation-wise to apprehend changes in feature distribution over time. Select your generation using the according toggle and see what happens for your feature of interest.</small></h2>
 
-                      <script>
-                      let kam = d3
-                      </script>
-
-                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-primary">
-                          <input type="checkbox" checked="checked" autocomplete="on"  value ="yes" onclick="AbilitiesvsTypes(kam)"  /> Abilities
-                        </label>
-                        <label class="btn btn-primary active">
-                          <input type="checkbox" autocomplete="off" onclick="TypesvsBody(kam)"/> Body style
-                        </label>
-                        <label class="btn btn-primary active">
-                          <input type="checkbox" autocomplete="off" onclick="ColorvsBody(kam)"/> Color
-                        </label>
-                      </div>
-
-                      <div id = "bipartite2">
-                        <script src="https://d3js.org/d3.v4.js"></script>
                         <script>
-                        d3v4 = d3;
+                        let kam = d3
                         </script>
 
-                        <script src="lib/viz.js"></script>
-                        <script src="src/testViz2.js" ></script>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                          <label class="btn btn-primary">
+                            <input type="checkbox" checked="checked" autocomplete="on"  value ="yes" onclick="AbilitiesvsTypes(kam)"  /> Abilities
+                          </label>
+                          <label class="btn btn-primary active">
+                            <input type="checkbox" autocomplete="off" onclick="TypesvsBody(kam)"/> Body style
+                          </label>
+                          <label class="btn btn-primary active">
+                            <input type="checkbox" autocomplete="off" onclick="ColorvsBody(kam)"/> Color
+                          </label>
+                        </div>
 
-                        <h2><small class="text-muted">As Pokemon type is a determinant feature in Pokemon capabilities and aesthetics, the below figure will provide the reader quantitative insights on such relationships. Depending on the reader’s interest in abilities or aesthetic outcome upon type decision, he might favor one generation over the other.
-                          <br> <br>
-                          Let’s say the reader is interested in poisonous Pokemon and wants to get insights on the related diversity of Pokemon across generations as well as the capabilities and aesthetic possibilities for such Pokemon. First off, the reader might want to focus on generation 1 as 14% of the most present abilities are poison-related while it does not exceed 6% for the other generations. It is confirmed in the aesthetic comparisons as 19% of the most present body shapes and colors are related to poisonous Pokemon. With that being said, the reader might end up with a purple Pokemon as it is present in 51% percent of the poisonous Pokemons cases. Body shapes are petty much uniformly distributed for that category.
-                          <br> <br>
-                          For figure clarity sake, only most represented types, colors, body styles and abilities per generation are shown. The diversity in those features explains the sometimes low displayed percentages.<br> <br></small></h2>
-                      </div>
-
-                        <h1>The influence of visual appearance</h1>
-                      <div>
-                        <h2><small class="text-muted">Let’s go deeper. As the reader may have gained insights on flying Pokemon color across generations or the various Pokemon types having the ability to levitate, the above visualization will bridge the gap between types abilities and esthetics all together.
-                          <br> <br>
-                          If you are wondering what will be the type and abilities of your Pokemon if you want him to be black and have wings, or how many esthetic - types combinaisons you have left upon choosing a telepathic Pokemon in the first generation, this figure will provide the answer.
-                          Moreover, the figure also displays quantitative insights on Pokemon distribution for each pattern or for a specific feature value as the path widths are proportional to Pokemon distribution.
-                          <br> <br>
-                          Hover over a given feature value to see the possible left choices for the other feature values. The Pokemon distribution as well as the selected pattern will be displayed at the bottom. The reader can also chose a specific generation as well as a curve shaped display to better apprehend how many Pokemons are left for each pattern. The figure is also made so that the reader can change the order of feature display by shifting them up and down upon dragging, as well as changing feature value upon left and right draggin as well. Moreover, feature value can also be displayed by size or alphabetical order upon clicking on the respective toggle “size” and “alpha” after hovering on the feature.
-                        <br> <br></small></h2>
-
-                        <div id = "vis">
-                          <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-                          <script src="https://www.jasondavies.com/parallel-sets/highlight.min.js"></script>
-
+                        <div id = "bipartite2">
+                          <script src="https://d3js.org/d3.v4.js"></script>
                           <script>
-                          d3v3 = d3;
-                          window.d3=null
+                          d3v4 = d3;
                           </script>
-                          <script src="https://d3js.org/d3.v4.js"></script>
 
-                          <div id = "tool"></div>
-                          <script  src = "lib/d3.parsets.js" > </script>
-                          <span class="curves"><label for="curved"><input type="checkbox" id="curved"  onchange="curves.call(this)"> Curves?</label></span>
-                          <script src = "src/para.js"></script>
-                          <script src="https://d3js.org/d3.v4.js"></script>
-                        </div>
+                          <script src="lib/viz.js"></script>
+                          <script src="src/testViz2.js" ></script>
 
-                        <h2><small class="text-muted">
-                          Let’s get back to our poisonous Pokemons of generation 1. Hovering over the poison type  highlights the various combinations of abilities and esthetics among the 33 available Pokemons (representing 18 % of the selected Pokemons of generation 1). Then hovering over the purple color as before reveals the possible body style and abilities combinations for the 14 left Pokemons (representing 8 % of the selected Pokemons of generation 1). Hence the reader will that his left with the  abilities - bodyshapes possibilities : <br><br>
-
-                          <li>Run-Away -- Bipedal : 1 Pokemon </li>
-                          <li>Poison touch -- Head-arms : 2 Pokemon</li>
-                          <li>Unnerve -- Serpentine : 2 Pokemosn</li>
-                          <li>Poison point -- quadrupled : 2 Pokemon</li>
-                          <li>Poison point -- bipedal-tailed : 1 Pokemon </li>
-                          <li>Hustle -- quandrupled :  2 Pokemon</li>
-                          <li>Inner focus -- two wings :  2 Pokemon</li>
-                        </small></h2><br>
-
-                        <h1>Pokemon explorer</h1>
-                        <h2><small class="text-muted">
-                        Finally, it is time to put it all together. As abilities and esthetics are important for Pokemon choice, they are not the only features that matters. In fact other categorical ones such as health points (hp), attack points (attack), special defence (sp_defence) and so on exist and provide quantitative informations on Pokemon’s behaviour in combat as well as other general characteristics. Hence, it is important to investigate the different patterns across those features among the Pokemons for the 6 available generations. In fact, some readers might only want to focus on such categories for there Pokemon choice. Highest hp and special attack, with a low likelihood of encounter (low capture rate) have proven to be important features in public choice. For that, the following coordinate visualization will provide answers to the reader in many ways.
-                        <br><br>
-                        First off, its possible to select for more than one feature a given range of values upon clicking and dragging on the corresponding axis range of interest. Such selection will make the figure display the Pokemons name and patterns fitting such range of values. The number of displayed Pokemons is shown on top of the figure. Hence, it is also possible to compare Pokemon distribution for a given subset of values across generations.
-                        The order of features can be changed as well upon left and right click and drag on the feature of interest.
-                        <br><br></small></h2>
-                          <div class="controls">
-                            <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
-                            <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
-                            Lines at <strong id="opacity"></strong> opacity.
-                            <span class="settings">
-                              <button id="hide-ticks">Hide Ticks</button>
-                              <button id="show-ticks" disabled="disabled">Show Ticks</button>
-                              <button id="dark-theme">Dark</button>
-                              <button id="light-theme" disabled="disabled">Light</button>
-                            </span>
-                          </div>
-                          <div style="clear:both;"></div><br><br>
-                        <div id="chart">
-                          <canvas id="background"></canvas>
-                          <canvas id="foreground"></canvas>
-                          <canvas id="highlight"></canvas>
-                          <svg></svg>
-                        </div>
-                        <div id="wrap">
-                          <div class="third" id="controls">
-                            <div class="bright">
-                            </div>
-                            <div class="little-box">
-                              <h2>Controls</h2>
-                              <p>
-                                <strong>Click</strong>: Click on the figure to display ticks and axis.<br/>
-                                <strong>Hide Ticks</strong>: Click on Hide ticks to hide ticks.<br/>
-                                <strong>Show Ticks</strong>: Click on Show ticks to display back ticks.<br/>
-                                <strong>Click</strong>: Click on the figure to display ticks.<br/>
-                                <strong>Brush</strong>: Drag vertically along an axis.<br/>
-                                <strong>Brush</strong>: Drag vertically along an axis.<br/>
-                                <strong>Remove Brush</strong>: Tap the axis background.<br/>
-                                <strong>Reorder Axes</strong>: Drag a label horizontally.<br/>
-                                <strong>Invert Axis</strong>: Tap an axis label.<br/>
-                                <strong>Remove Axis</strong>: Drag axis label to the left edge.<br/>
-                              </p>
-                            </div>
+                          <h2><small class="text-muted">As Pokemon type is a determinant feature in Pokemon capabilities and aesthetics, the below figure will provide the reader quantitative insights on such relationships. Depending on the reader’s interest in abilities or aesthetic outcome upon type decision, he might favor one generation over the other.
+                            <br> <br>
+                            Let’s say the reader is interested in poisonous Pokemon and wants to get insights on the related diversity of Pokemon across generations as well as the capabilities and aesthetic possibilities for such Pokemon. First off, the reader might want to focus on generation 1 as 14% of the most present abilities are poison-related while it does not exceed 6% for the other generations. It is confirmed in the aesthetic comparisons as 19% of the most present body shapes and colors are related to poisonous Pokemon. With that being said, the reader might end up with a purple Pokemon as it is present in 51% percent of the poisonous Pokemons cases. Body shapes are petty much uniformly distributed for that category.
+                            <br> <br>
+                            For figure clarity sake, only most represented types, colors, body styles and abilities per generation are shown. The diversity in those features explains the sometimes low displayed percentages.<br> <br></small></h2>
                           </div>
 
-                          <div  class="third">
-                            <small>
-                              <!--Last rendered <strong id="render-speed"></strong> lines-->
-                            </small>
-                            <h2>Count, Body Styles</h2>
-                            <p id="legend">
-                            </p>
-                          </div>
-                          <div class="third">
-                            <h2>Sample of 25 entries <input type="text" id="search" placeholder="Search Pokemons..."></input></h2>
-                            <p id="food-list">
-                            </p>
-                          </div>
-                        </div>
+                          <h1>The influence of visual appearance</h1>
+                          <div>
+                            <h2><small class="text-muted">Let’s go deeper. As the reader may have gained insights on flying Pokemon color across generations or the various Pokemon types having the ability to levitate, the above visualization will bridge the gap between types abilities and esthetics all together.
+                              <br> <br>
+                              If you are wondering what will be the type and abilities of your Pokemon if you want him to be black and have wings, or how many esthetic - types combinaisons you have left upon choosing a telepathic Pokemon in the first generation, this figure will provide the answer.
+                              Moreover, the figure also displays quantitative insights on Pokemon distribution for each pattern or for a specific feature value as the path widths are proportional to Pokemon distribution.
+                              <br> <br>
+                              Hover over a given feature value to see the possible left choices for the other feature values. The Pokemon distribution as well as the selected pattern will be displayed at the bottom. The reader can also chose a specific generation as well as a curve shaped display to better apprehend how many Pokemons are left for each pattern. The figure is also made so that the reader can change the order of feature display by shifting them up and down upon dragging, as well as changing feature value upon left and right draggin as well. Moreover, feature value can also be displayed by size or alphabetical order upon clicking on the respective toggle “size” and “alpha” after hovering on the feature.
+                              <br> <br></small></h2>
 
-                        <script src="lib/v2.js"></script>
+                              <div id = "vis">
+                                <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+                                <script src="https://www.jasondavies.com/parallel-sets/highlight.min.js"></script>
 
-                        <script>
-                        d3v2= d3;
-                        </script>
-                        <script src="res/underscore.js"></script>
-                        <script src="src/coord2.js"></script>
-                        <script>
-                        let d3_kamil = d3
-                        </script>
+                                <script>
+                                d3v3 = d3;
+                                window.d3=null
+                                </script>
+                                <script src="https://d3js.org/d3.v4.js"></script>
 
-                        <script>
-                        let d3_ludo = d3
-                        </script>
+                                <div id = "tool"></div>
+                                <script  src = "lib/d3.parsets.js" > </script>
+                                <span class="curves"><label for="curved"><input type="checkbox" id="curved"  onchange="curves.call(this)"> Curves?</label></span>
+                                <script src = "src/para.js"></script>
+                                <script src="https://d3js.org/d3.v4.js"></script>
+                              </div>
 
-                        <div>
-                          <p><br><br><br></p>
-                          <p><br><br><br></p>
-                          <p><br><br><br></p>
-                          <p><br><br><br></p>
-                          <p><br><br></p>
+                              <h2><small class="text-muted">
+                                Let’s get back to our poisonous Pokemons of generation 1. Hovering over the poison type  highlights the various combinations of abilities and esthetics among the 33 available Pokemons (representing 18 % of the selected Pokemons of generation 1). Then hovering over the purple color as before reveals the possible body style and abilities combinations for the 14 left Pokemons (representing 8 % of the selected Pokemons of generation 1). Hence the reader will that his left with the  abilities - bodyshapes possibilities : <br><br>
 
-                          <p><br><br><br></p>
-                          <p>
-                            <br><br><br>
-                            <br><br><br>
-                            <br><br><br><h2><small class="text-muted">
-                            On the other hand, the reader can  search for a specific Pokemon’s pattern upon name entry. Hovering over it will only display its pattern in the foreground.</small></h2>
+                                <li>Run-Away -- Bipedal : 1 Pokemon </li>
+                                <li>Poison touch -- Head-arms : 2 Pokemon</li>
+                                <li>Unnerve -- Serpentine : 2 Pokemosn</li>
+                                <li>Poison point -- quadrupled : 2 Pokemon</li>
+                                <li>Poison point -- bipedal-tailed : 1 Pokemon </li>
+                                <li>Hustle -- quandrupled :  2 Pokemon</li>
+                                <li>Inner focus -- two wings :  2 Pokemon</li>
+                              </small></h2><br>
 
-                            <h2>Pokemon body styles (from left to right) : </h2>
+                              <h1>Pokemon explorer</h1>
+                              <h2><small class="text-muted">
+                                Finally, it is time to put it all together. As abilities and esthetics are important for Pokemon choice, they are not the only features that matters. In fact other categorical ones such as health points (hp), attack points (attack), special defence (sp_defence) and so on exist and provide quantitative informations on Pokemon’s behaviour in combat as well as other general characteristics. Hence, it is important to investigate the different patterns across those features among the Pokemons for the 6 available generations. In fact, some readers might only want to focus on such categories for there Pokemon choice. Highest hp and special attack, with a low likelihood of encounter (low capture rate) have proven to be important features in public choice. For that, the following coordinate visualization will provide answers to the reader in many ways.
+                                <br><br>
+                                First off, its possible to select for more than one feature a given range of values upon clicking and dragging on the corresponding axis range of interest. Such selection will make the figure display the Pokemons name and patterns fitting such range of values. The number of displayed Pokemons is shown on top of the figure. Hence, it is also possible to compare Pokemon distribution for a given subset of values across generations.
+                                The order of features can be changed as well upon left and right click and drag on the feature of interest.
+                                <br><br></small></h2>
+                                <div class="controls">
+                                  <strong id="rendered-count"></strong>/<strong id="selected-count"></strong><!--<strong id="data-count"></strong>-->
+                                  <div class="fillbar"><div id="selected-bar"><div id="rendered-bar">&nbsp;</div></div></div>
+                                  Lines at <strong id="opacity"></strong> opacity.
+                                  <span class="settings">
+                                    <button id="hide-ticks">Hide Ticks</button>
+                                    <button id="show-ticks" disabled="disabled">Show Ticks</button>
+                                    <button id="dark-theme">Dark</button>
+                                    <button id="light-theme" disabled="disabled">Light</button>
+                                  </span>
+                                </div>
+                                <div style="clear:both;"></div><br><br>
+                                <div id="chart">
+                                  <canvas id="background"></canvas>
+                                  <canvas id="foreground"></canvas>
+                                  <canvas id="highlight"></canvas>
+                                  <svg></svg>
+                                </div>
+                                <div id="wrap">
+                                  <div class="third" id="controls">
+                                    <div class="bright">
+                                    </div>
+                                    <div class="little-box">
+                                      <h2>Controls</h2>
+                                      <p>
+                                        <strong>Click</strong>: Click on the figure to display ticks and axis.<br/>
+                                        <strong>Hide Ticks</strong>: Click on Hide ticks to hide ticks.<br/>
+                                        <strong>Show Ticks</strong>: Click on Show ticks to display back ticks.<br/>
+                                        <strong>Click</strong>: Click on the figure to display ticks.<br/>
+                                        <strong>Brush</strong>: Drag vertically along an axis.<br/>
+                                        <strong>Brush</strong>: Drag vertically along an axis.<br/>
+                                        <strong>Remove Brush</strong>: Tap the axis background.<br/>
+                                        <strong>Reorder Axes</strong>: Drag a label horizontally.<br/>
+                                        <strong>Invert Axis</strong>: Tap an axis label.<br/>
+                                        <strong>Remove Axis</strong>: Drag axis label to the left edge.<br/>
+                                      </p>
+                                    </div>
+                                  </div>
 
-                            <figure>
-                              <img class="image" src="img/body_shapes.png" width="850" height="550" align="right"/>
-                            </figure>
+                                  <div  class="third">
+                                    <small>
+                                      <!--Last rendered <strong id="render-speed"></strong> lines-->
+                                    </small>
+                                    <h2>Count, Body Styles</h2>
+                                    <p id="legend">
+                                    </p>
+                                  </div>
+                                  <div class="third">
+                                    <h2>Sample of 25 entries <input type="text" id="search" placeholder="Search Pokemons..."></input></h2>
+                                    <p id="food-list">
+                                    </p>
+                                  </div>
+                                </div>
 
-                            <h2><small class="text-muted">
-                            <li>head_only</li>
-                            <li>head_legs</li>
-                            <li>with_fins</li>
+                                <script src="lib/v2.js"></script>
 
-                            <li>insectoid</li>
+                                <script>
+                                d3v2= d3;
+                                </script>
+                                <script src="res/underscore.js"></script>
+                                <script src="src/coord2.js"></script>
+                                <script>
+                                let d3_kamil = d3
+                                </script>
 
-                            <li>quadruped</li>
+                                <script>
+                                let d3_ludo = d3
+                                </script>
 
-                            <li>four_wings</li>
+                                <div>
+                                  <p><br><br><br></p>
+                                  <p><br><br><br></p>
+                                  <p><br><br><br></p>
+                                  <p><br><br><br></p>
+                                  <p><br><br></p>
 
-                            <li>multiple_bodies</li>
-                            <li>several_limbs</li>
+                                  <p><br><br><br></p>
+                                  <p>
+                                    <br><br><br>
+                                    <br><br><br>
+                                    <h2><small class="text-muted">
+                                      On the other hand, the reader can  search for a specific Pokemon’s pattern upon name entry. Hovering over it will only display its pattern in the foreground.</small></h2>
 
-                            <li>head_base</li>
-                            <li>bipedal_tailed</li>
-                            <li>bipedal_tailless</li>
+                                      <h2>Pokemon body styles (from left to right) : </h2>
 
-                            <li>two wings</li>
-                            <li>serpentine_body</li>
-                            <li>head_arms</li>
-                            <br><br></small></h2>
+                                      <figure>
+                                        <img class="image" src="img/body_shapes.png" width="850" height="550" align="right"/>
+                                      </figure>
 
-                          <h2><small class="text-muted">
-                            Lastly, this visualization bridges the gap between body styles and categorical features. Such relationship investigation can be of use to better apprehend body style influence on the Pokemon’s behaviour.
-                            <br><br>
-                            With that being said, it is time to find our poisonous Pokemon. To chose between the remaining options, we select the possible body types in the first generation and look for the best pattern in terms of attack (above 90) and rareness (low values, capture_rate less than 50). Quadrupled and bipedal_tailed seem to match such conditions giving respectively Venusaur and both Nidoking and Nidoqueen for the bipedal_tailed.
-                            <br><br></small></h2>
-                            <img class="image" src="img/venusaur.png" width="200" height="200"/>
-                            <span class="caption">Venusaur</span>
-                            <img class="image" src="img/2034-Shiny-Nidoking.png" width="200" height="200"/>
-                            <span class="caption">Nidoking</span>
-                            <img class="image" src="img/nidoqueen.png" width="200" height="200"/>
-                            <span class="caption">Nidoqueen</span
+                                      <h2><small class="text-muted">
+                                        <li>head_only</li>
+                                        <li>head_legs</li>
+                                        <li>with_fins</li>
 
-                          <br><br><br>
-                          <h1>Welcome to the battle arena!</h1>
-                          <h2>
-                            <small class="text-muted">
-                              With this visualization, explore the whole Pokémon population generation-wise. Choose the
-                              generation you're interested in with the left drop down menu and then sort out the Pokémons of that
-                              generation according to a certain feature chosen with the right drop down menu. Then you can put
-                              your mouse over the dots around the Pokéball to display an ID card of the corresponding Pokémon which
-                              contains a picture and a spider chart with its stats. When you find a Pokémon to your liking and want
-                              more informations on it or if you are curious about how strong a certain Pokémon is, you can click
-                              on the dot: a more complete information sheet will appear and the outcome of every battles will be
-                              displayed. Upon clicking, the in-game cry of the Pokémon will be played. To turn that sound on and
-                              off, click on the sound icon.</small>
-                            </h2><br>
+                                        <li>insectoid</li>
 
-                            <div id = "circle_chart_div" class="fixed" style="opacity:1">
-                              <script src="src/circle_chart_f.js"></script>
-                              <link rel="stylesheet" href="src/circle_chart.css">
-                              <script src="https://d3js.org/d3.v5.js"></script>
-                              <script>
-                              d3v5 = d3;
-                              window.d3 = d3v3
-                              </script>
-                              <script>
+                                        <li>quadruped</li>
 
-                              let color_txt_titel = "#686868"
-                              let color_txt_bod = "#9c9c9c"
-                              let csv_file="data/data_for_circle_chart.csv"
-                              let w = window.innerWidth
-                              let h = window.innerHeight*1.6
-                              create_svg(w, h, "#f8f8f8")
-                              add_chart("main_svg", csv_file, 0, "Type", d3_ludo)
+                                        <li>four_wings</li>
 
+                                        <li>multiple_bodies</li>
+                                        <li>several_limbs</li>
 
+                                        <li>head_base</li>
+                                        <li>bipedal_tailed</li>
+                                        <li>bipedal_tailless</li>
 
-                              </script>
+                                        <li>two wings</li>
+                                        <li>serpentine_body</li>
+                                        <li>head_arms</li>
+                                        <br><br></small></h2>
 
-                            </div>
-                            <script>
+                                        <h2><small class="text-muted">
+                                          Lastly, this visualization bridges the gap between body styles and categorical features. Such relationship investigation can be of use to better apprehend body style influence on the Pokemon’s behaviour.
+                                          <br><br>
+                                          With that being said, it is time to find our poisonous Pokemon. To chose between the remaining options, we select the possible body types in the first generation and look for the best pattern in terms of attack (above 90) and rareness (low values, capture_rate less than 50). Quadrupled and bipedal_tailed seem to match such conditions giving respectively Venusaur and both Nidoking and Nidoqueen for the bipedal_tailed.
+                                          <br><br></small></h2>
+                                          <img class="image" src="img/venusaur.png" width="200" height="200"/>
+                                          <span class="caption">Venusaur</span>
+                                          <img class="image" src="img/2034-Shiny-Nidoking.png" width="200" height="200"/>
+                                          <span class="caption">Nidoking</span>
+                                          <img class="image" src="img/nidoqueen.png" width="200" height="200"/>
+                                          <span class="caption">Nidoqueen</span
 
-                            </script>
-                          </div>
-                        </div>
-                      </div>
+                                            <br><br><br><br><br>
+                                            <h1>Welcome to the battle arena!</h1>
+                                            <h2>
+                                              <small class="text-muted">
+                                                With this visualization, explore the whole Pokémon population generation-wise. Choose the
+                                                generation you're interested in with the left drop down menu and then sort out the Pokémons of that
+                                                generation according to a certain feature chosen with the right drop down menu. Then you can put
+                                                your mouse over the dots around the Pokéball to display an ID card of the corresponding Pokémon which
+                                                contains a picture and a spider chart with its stats. When you find a Pokémon to your liking and want
+                                                more informations on it or if you are curious about how strong a certain Pokémon is, you can click
+                                                on the dot: a more complete information sheet will appear and the outcome of every battles will be
+                                                displayed. Upon clicking, the in-game cry of the Pokémon will be played. To turn that sound on and
+                                                off, click on the sound icon.</small>
+                                              </h2><br>
 
+                                              <div id = "circle_chart_div" class="fixed" style="opacity:1">
+                                                <script src="src/circle_chart_f.js"></script>
+                                                <link rel="stylesheet" href="src/circle_chart.css">
+                                                <script src="https://d3js.org/d3.v5.js"></script>
+                                                <script>
+                                                d3v5 = d3;
+                                                window.d3 = d3v3
+                                                </script>
+                                                <script>
 
-                      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-                      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-                      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+                                                let color_txt_titel = "#686868"
+                                                let color_txt_bod = "#9c9c9c"
+                                                let csv_file="data/data_for_circle_chart.csv"
+                                                let w = window.innerWidth
+                                                let h = window.innerHeight*1.6
+                                                create_svg(w, h, "#f8f8f8")
+                                                add_chart("main_svg", csv_file, 0, "Type", d3_ludo)
+                                                </script>
+                                              </div>
+                                              <script>
+                                              </script>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                                        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-                    </body>
+                                      </body>
 
-
-                    </html>
+                                      </html>
