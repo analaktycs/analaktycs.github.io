@@ -19,3 +19,6 @@ rect.dropdown {
 circle.name_dot {
     fill: rgb(139, 0, 10)
 }
+#svg_circle{
+  position: fixed;
+}

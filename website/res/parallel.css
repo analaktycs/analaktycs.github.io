@@ -1,16 +1,4 @@
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-}
-body {
-  font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
-  font-size: 12px;
-  line-height: 1.4em;
-  background: #f7f7f7;
-  color: #404040;
-}
+
 body.dark {
   background: #131313;
   color: #e3e3e3;
@@ -38,7 +26,6 @@ span:last-of-type {
 }
 svg {
   font-family: Ubuntu, Tahoma, Helvetica, sans-serif;
-
   position: relative;
 
 
@@ -47,11 +34,12 @@ canvas {
 
   position: absolute;
   padding-top: 40px;
-  padding-bottom:10px;
+  padding-bottom:0px;
 
 }
 #chart {
   position: relative;
+
 }
 .brush rect.extent {
   fill: rgba(100,100,100,0.15);
@@ -79,10 +67,9 @@ canvas {
   fill: none;
 }
 .axis line, .axis path {
-  fill: black;
   display: block;
-  background-color: black;
   stroke: #777;
+  padding-bottom: 40px
   stroke-width: 3;
 }
 .dark .axis line, .dark .axis path {
@@ -101,9 +88,9 @@ canvas {
 }
 .axis text.label {
   opacity: 1;
-  font-size: 12px;
+  font-size: 0.8em;
   cursor: move;
-  padding-top: 2000px;
+  padding-top: 12px;
 }
 .dark .axis text {
   fill: #f2f2f2;

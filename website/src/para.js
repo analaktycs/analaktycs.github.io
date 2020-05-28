@@ -1,8 +1,8 @@
-var chart = d3v3.parsets()
+var chart_ = d3v3.parsets()
                         .dimensions(["types", "Body_Style", "Color","abilities"]);
 var vis = d3v3.select("#tool").append("svg")
-                      .attr("width", chart.width())
-                      .attr("height", chart.height());
+                      .attr("width", window.width)
+                      .attr("height", window.height);
 var generation_ = ["1","2","3","4","5","6"]
 var generations_ = d3v3.select("#tool")
 
@@ -13,7 +13,6 @@ var generations_ = d3v3.select("#tool")
                     .enter()
                     .append("option")
                     .attr("value", function(d){
-                      console.log(d)
                         return d;
                     })
                     .text(function(d){
@@ -37,7 +36,7 @@ function curves() {
     t.delay(10);
     icicle();
   }
-  t.call(chart.tension(this.checked ? .5 : 1));
+  t.call(chart_.tension(this.checked ? .5 : 1));
 }
 
 d3v3.csv(file_name, function(csv) {
@@ -46,6 +45,8 @@ d3v3.csv(file_name, function(csv) {
     function create_intial(csv,d3v3,selectedgen,vis){
 
 
+      d3v3.select('#tool').select('svg').selectAll('g').remove()
+    
 
 
 
@@ -61,23 +62,23 @@ d3v3.csv(file_name, function(csv) {
 
 var partition = d3v3.layout.partition()
     .sort(null)
-    .size([chart.width(), chart.height() * 5 / 4])
+    .size([chart_.width(), chart_.height() * 5 / 4])
     .children(function(d) { return d.children ? d3v3.values(d.children) : null; })
     .value(function(d) { return d.count; });
 
 
 
 
-  vis.datum(csv).call(chart);
+  vis.datum(csv).call(chart_);
 
 
 
 
 
-  
+
   window.icicle = function() {
     var newIce = this.checked,
-        tension = chart.tension();
+        tension = chart_.tension();
     if (newIce === ice) return;
     if (ice = newIce) {
       var dimensions = [];
@@ -127,10 +128,9 @@ var partition = d3v3.layout.partition()
           })
           .text(function(d) { return d.source.dx > 15 ? d.node.name : null; })
           .style("opacity", 1e-6))
-          .style("opacity", 1);
+
       iceTransition(vis.selectAll("g.dimension rect, g.category")
-          .style("opacity", 1))
-          .style("opacity", 1e-6)
+          .style("opacity", 1e-6))
           .each("end", function() { d3v3.select(this).attr("visibility", "hidden"); });
       iceTransition(vis.selectAll("text.dimension"))
           .attr("transform", "translate(0,-5)");
@@ -159,8 +159,7 @@ var partition = d3v3.layout.partition()
           .style("opacity", 1e-6).remove();
       iceTransition(vis.selectAll("g.dimension rect, g.category")
           .attr("visibility", null)
-          .style("opacity", 1e-6))
-          .style("opacity", 1);
+          .style("opacity", 1e-6));
       iceTransition(vis.selectAll("text.dimension"))
           .attr("transform", "translate(0,-25)");
       vis.selectAll("tspan.sort").style("visibility", null);
@@ -177,11 +176,11 @@ var partition = d3v3.layout.partition()
     create_intial(csv,d3v3,"none",vis)
 
 
-
 generations_.on('change', function(){
 
 
-                d3v3.select('#vis').select('svg').selectAll('g').remove().transition()
+                d3v3.select('#tool').select('svg').selectAll('g').remove()
+                .transition()
                           .duration(500);
 
     // Find which fruit was selected from the dropdown
@@ -193,7 +192,7 @@ generations_.on('change', function(){
                 create_intial(csv,d3v3,selectedgen,vis)
 
                     // Run update function with the selected fruit
-                   
+
 
 
 
@@ -260,10 +259,9 @@ d3v3.select("#file").on("change", function() {
       reader = new FileReader;
   reader.onloadend = function() {
     var csv = d3v3.csv.parse(reader.result);
-    vis.datum(csv).call(chart
+    vis.datum(csv).call(chart_
         .value(csv[0].hasOwnProperty("Number") ? function(d) { return +d.Number; } : 1)
         .dimensions(function(d) { return d3.keys(d[0]).filter(function(d) { return d !== "Number"; }).sort(); }));
   };
   reader.readAsText(file);
 });
-     

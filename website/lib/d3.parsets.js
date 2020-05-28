@@ -22,7 +22,6 @@
     function parsets(selection) {
       selection.each(function(data, i) {
 
-        console.log(data)
         var g = d3v3.select(this),
             ordinal = d3v3.scale.ordinal(),
             dragging = false,
@@ -122,7 +121,6 @@
           var textEnter = dEnter.append("text")
               .attr("class", "dimension")
               .attr("transform", "translate(0,-25)")
-              .style("fill", 'black');
           textEnter.append("tspan")
               .attr("class", "name")
               .text(dimensionFormatName)
@@ -131,12 +129,15 @@
               .attr("class", "sort alpha")
               .attr("dx", "2em")
               .text("alpha »")
+              .style("font-size","2em")
               .style("fill", 'black')
               .on("mousedown.parsets", cancelEvent);
           textEnter.append("tspan")
               .attr("class", "sort size")
               .attr("dx", "2em")
               .text("size »")
+              .style("font-size","2em")
+
               .style("fill", 'black')
               .on("mousedown.parsets", cancelEvent);
           dimension
@@ -216,8 +217,7 @@
                 d.source.x0 = d.source.x;
                 d.target.x0 = d.target.x;
               })
-              .attr("class", function(d) { 
-                 console.log(d)
+              .attr("class", function(d) {
                 return "category-" + d.major; })
               .attr("d", ribbonPath);
           ribbon.sort(function(a, b) { return b.count - a.count; });
@@ -225,7 +225,7 @@
 
 
           var mouse = g.select(".ribbon-mouse").selectAll("path")
-              .data(nodes, function(d) { 
+              .data(nodes, function(d) {
                 return d.path; });
           mouse.enter().append("path")
               .on("mousemove.parsets", function(d) {
@@ -272,7 +272,6 @@
 
         // Highlight a node and its descendants, and optionally its ancestors.
         function highlight(d, ancestors) {
-          console.log('aa')
           if (dragging) return;
           var highlight = [];
           (function recurse(d) {
@@ -300,7 +299,7 @@
               .data(function(d) { return d.categories; }, function(d) { return d.name; });
           var categoryEnter = category.enter().append("g")
               .attr("class", "category")
-              .attr("transform", function(d) { return "translate(" + d.x + ")"; });
+              .attr("transform", function(d) { return "translate(" + d.x + ")"; })
           category.exit().remove();
           category
               .on("mousemove.parsets", function(d) {
@@ -367,12 +366,10 @@
           categoryEnter.append("line")
               .style("stroke-width", 2);
           categoryEnter.append("text")
-              .attr("dy", "-.3em")
-              .style("fill", 'black')
-        .style("font-weight", 10000)
-        .style("font-size", "1.2em")
-        .transition()
-                          .duration(500);
+              .attr("dy", "-.1em")
+              .style("fill", 'black');
+
+
 
           category.select("rect")
               .attr("width", function(d) { return d.dx; })
@@ -380,15 +377,14 @@
                 return "category-" + (d.dimension === dimensions[0] ? ordinal(d.name) : "background");
               })
               .transition()
-                          .duration(500);
+                          .duration(1000);
 
           category.select("line")
               .attr("x2", function(d) { return d.dx; });
           category.select("text")
               .text(truncateText(function(d) { return d.name; }, function(d) { return d.dx; }))
               .style("fill", 'black')
-              .transition()
-                          .duration(500);
+
 
         }
       });
@@ -460,7 +456,7 @@
         .style("fill","black");
 
 
-    return d3v3.rebind(parsets, event, "on").value(1).width(1000).height(800);
+    return d3v3.rebind(parsets, event, "on").value(1).width(window.width).height(window.height);
 
     function dimensionFormatName(d, i) {
       return dimensionFormat.call(this, d.name, i);
@@ -694,7 +690,6 @@
       if (d.name) path.unshift(d.name);
       d = d.parent;
     }
-    console.log(path.join(" → ") + "<br>" + comma(count) + " (" + percent(count / d.count) + ")")
     return path.join(" → ") + "<br>" + comma(count) + " (" + percent(count / d.count) + ")";
   }
 

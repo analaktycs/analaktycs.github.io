@@ -5,20 +5,19 @@
 
 
 
-
-var width =1000
-    height = 800;
+var width =window.width
+    height = window.height;
 
 var m = [40, 0, 10, 0],
     z = width - m[1] - m[3],
     v = height - m[0] - m[2],
-    xscale = d3.scale.ordinal().rangePoints([14, z], 1),
+    xscale = d3v2.scale.ordinal().rangePoints([14, z], 1),
     yscale = {},
     dragging = {},
-    line = d3.svg.line(),
-    axis = d3.svg.axis().orient("left").ticks(1+height/50),
+    line = d3v2.svg.line(),
+    axis = d3v2.svg.axis().orient("left").ticks(1+height/50),
     data,
-     svg,
+     svg11,
     background,
     highlighted,
     dimensions,
@@ -48,10 +47,10 @@ var colors = {'quadruped': [185,56,73],
 };
 
 // Scale chart and canvas height
-d3.select("#chart")
+d3v2.select("#chart")
     .style("height", (v + m[0] + m[2]) + "px")
 
-d3.selectAll("canvas")
+d3v2.selectAll("canvas")
     .attr("width", z)
     .attr("height", v)
 
@@ -76,14 +75,14 @@ background.strokeStyle = "rgba(0,100,160,0.1)";
 background.lineWidth = 1.7;
 
 // SVG for ticks, labels, and interactions
-var svg = d3.select('#chart').select("svg")
+var svg11 = d3v2.select('#chart').select("svg")
     .attr("width", z + m[1] + m[3])
     .attr("height", v + m[0] + m[2])
   .append("svg:g")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 // Load the data and visualization
-d3.csv("data/spk2.csv", function(raw_data) {
+d3v2.csv("data/spk2.csv", function(raw_data) {
 
   data = raw_data.map(function(d) {
     for (var k in d) {
@@ -95,24 +94,22 @@ d3.csv("data/spk2.csv", function(raw_data) {
   });
 
   // Extract the list of numerical dimensions and create a scale for each.
-  xscale.domain(dimensions = d3.keys(data[0]).filter(function(k) {
+  xscale.domain(dimensions = d3v2.keys(data[0]).filter(function(k) {
 
 
 
-    return (_.isNumber(data[0][k])) && (yscale[k] = d3.scaleLinear()
-      .domain(d3.extent(data, function(d) { return +d[k]; }))
+    return (_.isNumber(data[0][k])) && (yscale[k] = d3v4.scaleLinear()
+      .domain(d3v2.extent(data, function(d) { return +d[k]; }))
       .range([v, 0]));
   }))
 
-  console.log(d3.keys(data[0]))
 
   // Add a group element for each dimension.
-  var g = svg.selectAll(".dimension")
+  var g = svg11.selectAll(".dimension")
       .data(dimensions)
     .enter().append("svg:g")
       .attr("class", "dimension")
       .attr("transform", function(d) {
-
         return "translate(" + xscale(d) + ")"; })
       .call(d3.behavior.drag()
         .on("dragstart", function(d) {
@@ -131,9 +128,9 @@ d3.csv("data/spk2.csv", function(raw_data) {
 
           // Feedback for axis deletion if dropped
           if (dragging[d] < 12 || dragging[d] > z-12) {
-            d3.select(this).select(".background").style("fill", "#b00");
+            d3v2.select(this).select(".background").style("fill", "#b00");
           } else {
-            d3.select(this).select(".background").style("fill", null);
+            d3v2.select(this).select(".background").style("fill", null);
           }
         })
         .on("dragend", function(d) {
@@ -158,7 +155,7 @@ d3.csv("data/spk2.csv", function(raw_data) {
           update_ticks(d, extent);
 
           // rerender
-          d3.select("#foreground").style("opacity", null);
+          d3v2.select("#foreground").style("opacity", null);
           brush();
           delete this.__dragged__;
           delete this.__origin__;
@@ -169,8 +166,7 @@ d3.csv("data/spk2.csv", function(raw_data) {
   g.append("svg:g")
       .attr("class", "axis")
       .attr("transform", "translate(0,0)")
-      .each(function(d) { d3.select(this).call(axis.scale(yscale[d])); })
-      .style("fill","black")
+      .each(function(d) { d3v2.select(this).call(axis.scale(yscale[d])); })
     .append("svg:text")
       .style("display",null)
       .attr("text-anchor", "middle")
@@ -184,7 +180,7 @@ d3.csv("data/spk2.csv", function(raw_data) {
   // Add and store a brush for each axis.
   g.append("svg:g")
       .attr("class", "brush")
-      .each(function(d) { d3.select(this).call(yscale[d].brush = d3v3.svg.brush().y(yscale[d]).on("brush", brush)); })
+      .each(function(d) { d3v2.select(this).call(yscale[d].brush = d3v3.svg.brush().y(yscale[d]).on("brush", brush)); })
     .selectAll("rect")
     .style('display',null)
       .style("visibility", null)
@@ -225,11 +221,12 @@ function grayscale(pixels, args) {
     d[i] = d[i+1] = d[i+2] = v
   }
   return pixels;
+
 };
 
 function create_legend(colors,brush) {
   // create legend
-  var legend_data = d3.select("#legend")
+  var legend_data = d3v2.select("#legend")
     .html("")
     .selectAll(".row")
     .data( _.keys(colors).sort() )
@@ -241,11 +238,11 @@ function create_legend(colors,brush) {
       .on("click", function(d) {
         // toggle food group
         if (_.contains(excluded_groups, d)) {
-          d3.select(this).attr("title", "Hide group")
+          d3v2.select(this).attr("title", "Hide group")
           excluded_groups = _.difference(excluded_groups,[d]);
           brush();
         } else {
-          d3.select(this).attr("title", "Show group")
+          d3v2.select(this).attr("title", "Show group")
           excluded_groups.push(d);
           brush();
         }
@@ -280,11 +277,11 @@ function render_range(selection, i, max, opacity) {
 function data_table(sample) {
   // sort by first column
   var sample = sample.sort(function(a,b) {
-    var col = d3.keys(a)[0];
+    var col = d3v2.keys(a)[0];
     return a[col] < b[col] ? -1 : 1;
   });
 
-  var table = d3.select("#food-list")
+  var table = d3v2.select("#food-list")
     .html("")
     .selectAll(".row")
       .data(sample)
@@ -312,25 +309,25 @@ function optimize(timer) {
 
 // Feedback on rendering progress
 function render_stats(i,n,render_speed) {
-  d3.select("#rendered-count").text(i);
-  d3.select("#rendered-bar")
+  d3v2.select("#rendered-count").text(i);
+  d3v2.select("#rendered-bar")
     .style("width", (100*i/n) + "%");
-  d3.select("#render-speed").text(render_speed);
+  d3v2.select("#render-speed").text(render_speed);
 }
 
 // Feedback on selection
 function selection_stats(opacity, n, total) {
 
-  d3.select("#data-count").text(total);
-  d3.select("#selected-count").text(n);
-  d3.select("#selected-bar").style("width", (100*n/total) + "%");
-  d3.select("#opacity").text((""+(opacity*100)).slice(0,4) + "%");
+  d3v2.select("#data-count").text(total);
+  d3v2.select("#selected-count").text(n);
+  d3v2.select("#selected-bar").style("width", (100*n/total) + "%");
+  d3v2.select("#opacity").text((""+(opacity*100)).slice(0,4) + "%");
 }
 
 // Highlight single polyline
 function highlight(d) {
-  d3.select("#foreground").style("opacity", "0.25");
-  d3.selectAll(".row").style("opacity", function(p) {
+  d3v2.select("#foreground").style("opacity", "0.25");
+  d3v2.selectAll(".row").style("opacity", function(p) {
 
     return (d.Body_Style == p) ? null : "0.3" });
   path(d, highlighted, color(d.Body_Style,1));
@@ -338,8 +335,8 @@ function highlight(d) {
 
 // Remove highlight
 function unhighlight() {
-  d3.select("#foreground").style("opacity", null);
-  d3.selectAll(".row").style("opacity", null);
+  d3v2.select("#foreground").style("opacity", null);
+  d3v2.selectAll(".row").style("opacity", null);
   highlighted.clearRect(0,0,z,v);
 }
 
@@ -350,13 +347,13 @@ function invert_axis(d) {
   }
   if (yscale[d].inverted == true) {
     yscale[d].range([v, 0]);
-    d3.selectAll('.label')
+    d3v2.selectAll('.label')
       .filter(function(p) { return p == d; })
       .style("text-decoration", null);
     yscale[d].inverted = false;
   } else {
     yscale[d].range([0, v]);
-    d3.selectAll('.label')
+    d3v2.selectAll('.label')
       .filter(function(p) { return p == d; })
       .style("text-decoration", "underline");
     yscale[d].inverted = true;
@@ -423,37 +420,35 @@ function brush() {
   // hack to hide ticks beyond extent
   var b = d3v3.selectAll('.dimension')[0]
     .forEach(function(element, i) {
-      var dimension = d3.select(element).data()[0];
+      var dimension = d3v3.select(element).data()[0];
       if (_.include(actives, dimension)) {
         var extent = extents[actives.indexOf(dimension)];
-        d3.select(element)
+        d3v2.select(element)
           .selectAll('text')
           .style('font-weight', 'bold')
           .style('font-size', '13px')
           .style('display', function() {
-            var value = d3.select(this).data();
+            var value = d3v2.select(this).data();
             return extent[0] <= value && value <= extent[1] ? null : "none"
           });
       } else {
-        d3.select(element)
+        d3v2.select(element)
           .selectAll('text')
           .style('font-size', null)
           .style('font-weight', null)
-          .style('fill','black')
           .style('opacity',1)
           .style('display', null);
       }
-      d3.select(element)
+      d3v2.select(element)
         .selectAll('.label')
         .style('display', null)
         .style('opacity',1)
 
-        .style('fill','black');
     });
     ;
 
   // bold dimensions with label
-  d3.selectAll('.label')
+  d3v2.selectAll('.label')
     .style("font-weight", function(dimension) {
       if (_.include(actives, dimension)) return "bold";
       return null;
@@ -478,11 +473,11 @@ function brush() {
   }
 
   if (selected.length < data.length && selected.length > 0) {
-    d3.select("#keep-data").attr("disabled", null);
-    d3.select("#exclude-data").attr("disabled", null);
+    d3v2.select("#keep-data").attr("disabled", null);
+    d3v2.select("#exclude-data").attr("disabled", null);
   } else {
-    d3.select("#keep-data").attr("disabled", "disabled");
-    d3.select("#exclude-data").attr("disabled", "disabled");
+    d3v2.select("#keep-data").attr("disabled", "disabled");
+    d3v2.select("#exclude-data").attr("disabled", "disabled");
   };
 
   // total by food group
@@ -516,7 +511,7 @@ function brush() {
 function paths(selected, ctx, count) {
   var n = selected.length,
       i = 0,
-      opacity = d3.min([2/Math.pow(n,0.3),1]),
+      opacity = d3v2.min([2/Math.pow(n,0.3),1]),
       timer = (new Date()).getTime();
 
   selection_stats(opacity, n, data.length)
@@ -530,21 +525,21 @@ function paths(selected, ctx, count) {
   // render all lines until finished or a new brush event
   function animloop(){
     if (i >= n || count < brush_count) return true;
-    var max = d3.min([i+render_speed, n]);
+    var max = d3v2.min([i+render_speed, n]);
     render_range(shuffled_data, i, max, opacity);
     render_stats(max,n,render_speed);
     i = max;
     timer = optimize(timer);  // adjusts render_speed
   };
 
-  d3.timer(animloop);
+  d3v2.timer(animloop);
 }
 
 // transition ticks for reordering, rescaling and inverting
 function update_ticks(d, extent) {
   // update brushes
   if (d) {
-    var brush_el = d3.selectAll(".brush")
+    var brush_el = d3v2.selectAll(".brush")
         .filter(function(key) { return key == d; });
     // single tick
     if (extent) {
@@ -555,8 +550,8 @@ function update_ticks(d, extent) {
     }
   } else {
     // all ticks
-    d3.selectAll(".brush")
-      .each(function(d) { d3.select(this).call(yscale[d].brush = d3v3.svg.brush().y(yscale[d]).on("brush", brush)); })
+    d3v2.selectAll(".brush")
+      .each(function(d) { d3v2.select(this).call(yscale[d].brush = d3v3.svg.brush().y(yscale[d]).on("brush", brush)); })
   }
 
   brush_count++;
@@ -564,14 +559,13 @@ function update_ticks(d, extent) {
   show_ticks();
 
   // update axes
-  d3.selectAll(".axis")
+  d3v2.selectAll(".axis")
     .each(function(d,i) {
       // hide lines for better performance
-      d3.select(this).selectAll('line').style("display", "none");
+      d3v2.select(this).selectAll('line').style("display", "none");
 
       // transition axis numbers
-      d3.select(this)
-        .style('fill',"black")
+      d3v2.select(this)
         .style('opacity',"2")
         .transition()
         .duration(500)
@@ -579,9 +573,9 @@ function update_ticks(d, extent) {
         .call(axis.scale(yscale[d]));
 
       // bring lines back
-      d3.select(this).selectAll('line').transition().delay(500).style("display", null);
+      d3v2.select(this).selectAll('line').transition().delay(500).style("display", null);
 
-      d3.select(this)
+      d3v2.select(this)
         .selectAll('text')
         .style('opacity',"2")
         .style('font-weight', null)
@@ -596,13 +590,13 @@ function rescale() {
   // reset yscales, preserving inverted state
   dimensions.forEach(function(d,i) {
     if (yscale[d].inverted) {
-      yscale[d] = d3.scale.linear()
-          .domain(d3.extent(data, function(p) { return +p[d]; }))
+      yscale[d] = d3v2.scale.linear()
+          .domain(d3v2.extent(data, function(p) { return +p[d]; }))
           .range([0, v]);
       yscale[d].inverted = true;
     } else {
-      yscale[d] = d3.scale.linear()
-          .domain(d3.extent(data, function(p) { return +p[d]; }))
+      yscale[d] = d3v2.scale.linear()
+          .domain(d3v2.extent(data, function(p) { return +p[d]; }))
           .range([v, 0]);
     }
   });
@@ -631,7 +625,7 @@ function actives() {
   });
 
   // free text search
-  var query = d3.select("#search")[0][0].value;
+  var query = d3v2.select("#search")[0][0].value;
   if (query > 0) {
     selected = search(selected, query);
   }
@@ -641,57 +635,56 @@ function actives() {
 
 // Export data
 function export_csv() {
-  var keys = d3.keys(data[0]);
+  var keys = d3v2.keys(data[0]);
   var rows = actives().map(function(row) {
     return keys.map(function(k) { return row[k]; })
   });
-  var csv = d3.csv.format([keys].concat(rows)).replace(/\n/g,"<br/>\n");
+  var csv = d3v2.csv.format([keys].concat(rows)).replace(/\n/g,"<br/>\n");
   var styles = "<style>body { font-family: sans-serif; font-size: 12px; }</style>";
   window.open("text/csv").document.write(styles + csv);
 }
 
 // scale to window size
 window.onresize = function() {
-  width = 1000
-  height = 800
+  width = window.width
+  height = window.height
 
   z = width - m[1] - m[3],
   v = height - m[0] - m[2];
 
-  d3.select("#chart")
+  d3v2.select("#chart")
       .style("height", (v + m[0] + m[2]) + "px")
 
-  d3.selectAll("canvas")
+  d3v2.selectAll("canvas")
       .attr("width", z)
       .attr("height", v)
-      .style('fill','black')
       .style("padding", m.join("px ") + "px");
 
-  d3.select("svg")
+  d3v2.select("svg")
       .attr("width", z + m[1] + m[3])
       .attr("height", v + m[0] + m[2])
     .select("g")
       .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
-  xscale = d3.scale.ordinal().rangePoints([0, z], 1).domain(dimensions);
+  xscale = d3v2.scale.ordinal().rangePoints([0, z], 1).domain(dimensions);
   dimensions.forEach(function(d) {
     yscale[d].range([v, 0]);
   });
 
-  d3.selectAll(".dimension")
+  d3v2.selectAll(".dimension")
     .attr("transform", function(d) {
 
 
       return "translate(" + xscale(d) + ")"; })
   // update brush placement
-  d3.selectAll(".brush")
-    .each(function(d) { d3.select(this).call(yscale[d].brush = d3v3.svg.brush().y(yscale[d]).on("brush", brush)); })
+  d3v2.selectAll(".brush")
+    .each(function(d) { d3v2.select(this).call(yscale[d].brush = d3v3.svg.brush().y(yscale[d]).on("brush", brush)); })
   brush_count++;
 
   // update axis placement
   axis = axis.ticks(1+height/50),
-  d3.selectAll(".axis")
-    .each(function(d) { d3.select(this).call(axis.scale(yscale[d])); });
+  d3v2.selectAll(".axis")
+    .each(function(d) { d3v2.select(this).call(axis.scale(yscale[d])); });
 
   // render data
   brush();
@@ -730,45 +723,45 @@ function remove_axis(d,g) {
   update_ticks();
 }
 
-d3.select("#keep-data").on("click", keep_data);
-d3.select("#exclude-data").on("click", exclude_data);
-d3.select("#export-data").on("click", export_csv);
-d3.select("#search").on("keyup", brush);
+d3v2.select("#keep-data").on("click", keep_data);
+d3v2.select("#exclude-data").on("click", exclude_data);
+d3v2.select("#export-data").on("click", export_csv);
+d3v2.select("#search").on("keyup", brush);
 
 
 // Appearance toggles
-d3.select("#hide-ticks").on("click", hide_ticks);
-d3.select("#show-ticks").on("click", show_ticks);
+d3v2.select("#hide-ticks").on("click", hide_ticks);
+d3v2.select("#show-ticks").on("click", show_ticks);
 
-d3.select("#dark-theme").on("click", dark_theme);
-d3.select("#light-theme").on("click", light_theme);
+d3v2.select("#dark-theme").on("click", dark_theme);
+d3v2.select("#light-theme").on("click", light_theme);
 
 function hide_ticks() {
-  d3.selectAll(".axis g").style("display", "none");
-  d3.selectAll(".axis path").style("display", "none");
-  d3.selectAll(".background").style("visibility", "hidden");
-  d3.selectAll("#hide-ticks").attr("disabled", "disabled");
-  d3.selectAll("#show-ticks").attr("disabled", null);
+  d3v2.selectAll(".axis g").style("display", "none");
+  d3v2.selectAll(".axis path").style("display", "none");
+  d3v2.selectAll(".background").style("visibility", "hidden");
+  d3v2.selectAll("#hide-ticks").attr("disabled", "disabled");
+  d3v2.selectAll("#show-ticks").attr("disabled", null);
 };
 
 function show_ticks() {
-  d3.selectAll(".axis g").style("display", null).style('opacity',1);
-  d3.selectAll(".axis path").style("display", null).style('opacity',1);
-  d3.selectAll(".background").style("visibility", null);
-  d3.selectAll("#show-ticks").attr("disabled", "disabled");
-  d3.selectAll("#hide-ticks").attr("disabled", null);
+  d3v2.selectAll(".axis g").style("display", null).style('opacity',1);
+  d3v2.selectAll(".axis path").style("display", null).style('opacity',1);
+  d3v2.selectAll(".background").style("visibility", null);
+  d3v2.selectAll("#show-ticks").attr("disabled", "disabled");
+  d3v2.selectAll("#hide-ticks").attr("disabled", null);
 };
 
 function dark_theme() {
-  d3.select("body").attr("class", "dark");
-  d3.selectAll("#dark-theme").attr("disabled", "disabled");
-  d3.selectAll("#light-theme").attr("disabled", null);
+  d3v2.select("body").attr("class", "dark");
+  d3v2.selectAll("#dark-theme").attr("disabled", "disabled");
+  d3v2.selectAll("#light-theme").attr("disabled", null);
 }
 
 function light_theme() {
-  d3.select("body").attr("class", null);
-  d3.selectAll("#light-theme").attr("disabled", "disabled");
-  d3.selectAll("#dark-theme").attr("disabled", null);
+  d3v2.select("body").attr("class", null);
+  d3v2.selectAll("#light-theme").attr("disabled", "disabled");
+  d3v2.selectAll("#dark-theme").attr("disabled", null);
 }
 
 function search(selection,str) {
