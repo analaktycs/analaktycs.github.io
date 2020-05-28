@@ -190,10 +190,10 @@ function construct_graph(file_name,g,var1,var2,d3v4,generations,flag){
 						.style("fill", 'black');
 
 					g.append("line").attr("x1",-100).transition().duration(1000).attr("x2",0);
-					g.append("line").attr("x1",400).transition().duration(1000).attr("x2",500);
+					g.append("line").attr("x1",400).transition().duration(1000).attr("x2",550);
 
 					g.append("line").attr("y1",710).transition().duration(1000).attr("y2",710).attr("x1",-100).attr("x2",0);
-					g.append("line").attr("y1",710).transition().duration(1000).attr("y2",710).attr("x1",200).attr("x2",300);
+					g.append("line").attr("y1",710).transition().duration(1000).attr("y2",710).attr("x1",200).attr("x2",350);
 
 					g.selectAll(".mainBars")
 						.on("mouseover",mouseover)
@@ -201,16 +201,17 @@ function construct_graph(file_name,g,var1,var2,d3v4,generations,flag){
 						.transition().duration(3000);
 
 					g.selectAll(".mainBars").append("text").attr("class","label")
-						.attr("x",d=>(d.part=="primary"? -30: 30))
+						.attr("x",d=>(d.part=="primary"? -30: 50))
 						.attr("y",d=>+6)
 						.text(d=>d.key)
 						.transition()
                  			 .duration(1000)
 						.style("fill", 'black')
+				
 						.attr("text-anchor",d=>(d.part=="primary"? "end": "start"));
 
 					g.selectAll(".mainBars").append("text").attr("class","perc")
-						.attr("x",d=>(d.part=="primary"? -100: 100))
+						.attr("x",d=>(d.part=="primary"? -100: 150))
 						.style("fill", 'black')
 						.attr("y",d=>+6)
 
