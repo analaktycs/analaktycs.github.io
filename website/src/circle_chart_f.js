@@ -303,7 +303,7 @@ function add_names_and_dots(names, nb_angles, size, posx, posy, pkm, feature, d3
             .style("fill", "maroon")
             .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("alignment-baseline", "middle")
-            .style("font-size", "120%")
+            .style("font-size", window.innerWidth/100)
 
         let width = txt.node().getComputedTextLength()
         let a = i*2*Math.PI/nb_angles
