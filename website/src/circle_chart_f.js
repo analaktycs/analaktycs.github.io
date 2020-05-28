@@ -303,7 +303,7 @@ function add_names_and_dots(names, nb_angles, size, posx, posy, pkm, feature, d3
             .style("fill", "maroon")
             .attr("font-family", "Andale Mono,AndaleMono,monospace")
             .attr("alignment-baseline", "middle")
-            .style("font-size", window.innerWidth/100)
+            .style("font-size", "75%")
 
         let width = txt.node().getComputedTextLength()
         let a = i*2*Math.PI/nb_angles
@@ -464,7 +464,7 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3v5
             nom.transition()
                 .attr("transform", "translate("+name_x+","+name_y+") rotate("+rot+")")
                 .style("fill", "maroon")
-                .style("font-size", "100%")
+                .style("font-size", "60%")
                 .duration(duration)
 
 
@@ -511,7 +511,7 @@ function move_color_circle_and_names(id, pkm_list, radius, rad, posx, posy, d3v5
             nom.transition()
                 .attr("transform", "translate("+name_x+","+name_y+") rotate("+rot+")")
                 .style("fill", "maroon")
-                .style("font-size", "100%")
+                .style("font-size", "60%")
                 .duration(duration)
 
 
