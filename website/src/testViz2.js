@@ -68,7 +68,7 @@ function ColorvsBody(d3v4){
 
 
 	svg3.selectAll("*").remove();
-svg3.append("text").attr("x",25).attr("y",70)
+svg3.append("text").attr("x",250).attr("y",70)
 	.attr("class","header").text("Types and Colors ").style("font-weight", 'bold')
 	.style("fill", 'black');
 

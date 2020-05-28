@@ -45,6 +45,8 @@ d3v3.csv(file_name, function(csv) {
     function create_intial(csv,d3v3,selectedgen,vis){
 
 
+      d3v3.select('#tool').select('svg').selectAll('g').remove()
+    
 
 
 
@@ -126,10 +128,9 @@ var partition = d3v3.layout.partition()
           })
           .text(function(d) { return d.source.dx > 15 ? d.node.name : null; })
           .style("opacity", 1e-6))
-          .style("opacity", 1);
+
       iceTransition(vis.selectAll("g.dimension rect, g.category")
-          .style("opacity", 1))
-          .style("opacity", 1e-6)
+          .style("opacity", 1e-6))
           .each("end", function() { d3v3.select(this).attr("visibility", "hidden"); });
       iceTransition(vis.selectAll("text.dimension"))
           .attr("transform", "translate(0,-5)");
@@ -158,8 +159,7 @@ var partition = d3v3.layout.partition()
           .style("opacity", 1e-6).remove();
       iceTransition(vis.selectAll("g.dimension rect, g.category")
           .attr("visibility", null)
-          .style("opacity", 1e-6))
-          .style("opacity", 1);
+          .style("opacity", 1e-6));
       iceTransition(vis.selectAll("text.dimension"))
           .attr("transform", "translate(0,-25)");
       vis.selectAll("tspan.sort").style("visibility", null);

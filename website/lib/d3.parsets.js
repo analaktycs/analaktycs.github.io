@@ -121,7 +121,6 @@
           var textEnter = dEnter.append("text")
               .attr("class", "dimension")
               .attr("transform", "translate(0,-25)")
-              .style("fill", 'black')
           textEnter.append("tspan")
               .attr("class", "name")
               .text(dimensionFormatName)
@@ -368,8 +367,7 @@
               .style("stroke-width", 2);
           categoryEnter.append("text")
               .attr("dy", "-.1em")
-              .style('font-size','1.2em')
-              .style("fill", 'black')
+              .style("fill", 'black');
 
 
 
@@ -386,7 +384,6 @@
           category.select("text")
               .text(truncateText(function(d) { return d.name; }, function(d) { return d.dx; }))
               .style("fill", 'black')
-              .style('font-size','1.2em');
 
 
         }
